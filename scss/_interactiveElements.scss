@@ -1,0 +1,146 @@
+.up-vote,
+.category-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 0.625rem;
+  font-weight: bold;
+  @include font-size(13);
+  color: $blue;
+  background: $grey;
+
+  &:hover {
+    background: #cfd7ff;
+  }
+
+  &:active {
+    background: #4661e6;
+  }
+}
+
+// upvote button
+.up-vote {
+  width: 2.5rem;
+  height: 3.3125rem;
+
+  &:active {
+    color: $white;
+    .__quantity {
+      color: $white;
+    }
+  }
+
+  .__quantity {
+    color: #3a4374;
+  }
+}
+
+// category button
+.category-button {
+  width: 3rem;
+  height: 1.875rem;
+  color: $blue;
+
+  &:hover {
+    color: $blue;
+  }
+  &:active {
+    color: $white;
+  }
+}
+
+// dropdown menu
+.dropdown {
+  .dropdown-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12.125rem;
+    height: 3.5rem;
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: $blueGrey2;
+    font-family: "Jost", sans-serif;
+    @include font-size(13);
+    color: $white;
+
+    @include respond-above(sm) {
+      max-height: 4.5rem;
+      @include font-size(14);
+    }
+
+    .--sort-by {
+      font-weight: 400;
+
+      .chevron {
+        padding-top: 2px;
+      }
+    }
+
+    .--most-upvotes {
+      margin-left: 5px;
+      font-weight: bold;
+    }
+
+    &:hover {
+      color: $darkGrey;
+    }
+  }
+
+  .dropdown-menu {
+    position: absolute;
+    width: 255px;
+    padding: 0;
+    margin-top: 1rem;
+    box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
+    border-radius: 10px;
+    text-align: left;
+    cursor: pointer;
+    background: $white;
+
+    & :first-child button {
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+    }
+
+    & :last-child button {
+      border-bottom-right-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+
+    .dropdown-item {
+      width: 100%;
+      height: 47px;
+      padding: 0.75rem 1.5rem;
+      margin: 0;
+      border: none;
+      border-bottom: 1px solid #e1e3ea;
+      text-align: left;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      font-family: "Jost", sans-serif;
+      @include font-size(16);
+      color: $darkGrey;
+      background: $white;
+
+      &:hover {
+        color: $purple;
+        background: $white;
+      }
+
+      svg.check {
+        transform: scale(1.3);
+        color: $purple;
+      }
+    }
+  }
+}
+
+.home-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
