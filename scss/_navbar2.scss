@@ -1,0 +1,33 @@
+.nav-bar2__container {
+  padding: 1rem 1.5rem;
+  height: 56px;
+  width: 100%;
+  background-color: $blueGrey2;
+  color: $white;
+
+  .nav-bar2 {
+    height: 100%;
+    width: 100%;
+
+    .__left-content {
+      .--sort-by {
+        font-weight: 400;
+        @include font-size(13);
+      }
+
+      .--most-upvotes {
+        margin-left: 5px;
+
+        font-weight: bold;
+        @include font-size(13);
+
+        letter-spacing: -0.1875px;
+      }
+    }
+  }
+}
+
+.chevron {
+    padding-top: 8px;
+    padding-left: 5px;
+}

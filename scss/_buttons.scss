@@ -1,0 +1,44 @@
+.all-buttons {
+  width: 134px;
+  height: 40px;
+  border-radius: 10px;
+  font-family: "Jost", sans-serif;
+  font-weight: 700;
+  @include font-size(13);
+  @include line-height(19);
+  color: $grey;
+  border: none;
+  //padding: 1rem 0.625rem;
+
+  &.--purple-button {
+    background: $purple;
+
+    &:hover {
+      background: #c75af6;
+    }
+  }
+
+  &.--blue-button {
+    background: $blue;
+
+    &:hover {
+      background: #7c91f9;
+    }
+  }
+
+  &.--blue-grey-button {
+    background: $blueGrey;
+
+    &:hover {
+      background: #656ea3;
+    }
+  }
+
+  &.--red-button {
+    background: #d73737;
+
+    &:hover {
+      background: #e98888;
+    }
+  }
+}
