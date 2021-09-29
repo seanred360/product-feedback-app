@@ -1,18 +1,20 @@
 import React from "react";
 import AddFeedbackButton from "./AddFeedbackButton";
-import { GoChevronDown } from "react-icons/go";
+import DropDownBox from "./common/DropDownBox";
 
 const NavBar2 = () => {
+  const items = [
+    "Most Upvotes",
+    "Least Upvotes",
+    "Most Comments",
+    "Least Comments",
+  ];
+
   return (
     <div className="nav-bar2__container">
       <div className="nav-bar2 flex flex-jc-sb flex-ai-c">
         <div className="__left-content flex">
-          <span className="--sort-by flex flex-ai-c">
-            Sort by : <span className="--most-upvotes"> Most Upvotes</span>
-            <div className="chevron">
-              <GoChevronDown />
-            </div>
-          </span>
+          <DropDownBox dropdownItems={items} />
         </div>
         <AddFeedbackButton />
       </div>

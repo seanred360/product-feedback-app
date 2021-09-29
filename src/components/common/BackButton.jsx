@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { HiArrowNarrowLeft } from "react-icons/hi";
+import { GoChevronLeft } from "react-icons/go";
 
 const BackButton = () => {
   const history = useHistory();
@@ -10,12 +10,9 @@ const BackButton = () => {
   };
 
   return (
-    <button
-      className="back-button foreground-color hover-color flex flex-ai-c"
-      onClick={goBack}
-    >
-      <HiArrowNarrowLeft />
-      Back
+    <button className="all-buttons --back-button" onClick={goBack}>
+      <GoChevronLeft />
+      Go Back
     </button>
   );
 };

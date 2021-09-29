@@ -1,7 +1,5 @@
 import React from "react";
-import CategoryButton from "../common/CategoryButton";
-import UpVote from "../common/UpVote";
-import DropDownBox from "../common/DropDownBox";
+import TextInput from "../common/Form";
 
 const HomePage = () => {
   const items = [
@@ -13,9 +11,7 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <h1>homepage</h1>
-      <UpVote />
-      <CategoryButton />
-      <DropDownBox dropdownItems={items} />
+      <TextInput />
     </div>
   );
 };

@@ -41,4 +41,19 @@
       background: #e98888;
     }
   }
+
+  &.--back-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    color: $darkGrey;
+
+    svg {
+      margin-right: 1rem;
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
