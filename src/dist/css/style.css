@@ -543,4 +543,43 @@ input.form-control:focus {
   font-weight: bold;
   font-size: 1rem;
 }
+
+.no-feedback {
+  border-radius: 10px;
+  background: #ffffff;
+}
+
+.no-feedback .__inner-container {
+  padding: 76px 1.5rem;
+  flex-direction: column;
+}
+
+.no-feedback .__not-found-image {
+  width: 102px;
+  height: 108px;
+  margin-bottom: 39px;
+}
+
+.no-feedback .__header {
+  font-weight: bold;
+  font-size: 1.125rem;
+  text-align: center;
+  letter-spacing: -0.25px;
+  color: #3a4374;
+}
+
+.no-feedback p {
+  margin-top: 0.875rem;
+  margin-bottom: 1.5rem;
+  font-weight: normal;
+  font-size: 0.8125rem;
+  line-height: 1.1875rem;
+  text-align: center;
+  color: darkGrey;
+}
+
+.App {
+  padding: 1.5rem 2rem;
+  background: #f2f4ff;
+}
 /*# sourceMappingURL=style.css.map */

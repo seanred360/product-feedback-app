@@ -1,0 +1,33 @@
+.no-feedback {
+  border-radius: 10px;
+  background: $white;
+
+  .__inner-container {
+    padding: 76px 1.5rem;
+    flex-direction: column;
+  }
+
+  .__not-found-image {
+    width: 102px;
+    height: 108px;
+    margin-bottom: 39px;
+  }
+
+  .__header {
+    font-weight: bold;
+    @include font-size(18);
+    text-align: center;
+    letter-spacing: -0.25px;
+    color: $blueGrey2;
+  }
+
+  p {
+    margin-top: 0.875rem;
+    margin-bottom: 1.5rem;
+    font-weight: normal;
+    @include font-size(13);
+    @include line-height(19);
+    text-align: center;
+    color: darkGrey;
+  }
+}
