@@ -5,6 +5,7 @@ import { lightTheme, darkTheme } from "./components/styled-components/Themes";
 import Main from "./components/Main";
 import NavBar from "./components/common/NavBar";
 import NavBar2 from "./components/NavBar2";
+import MobileMenu from "./components/MobileMenu";
 
 const App = () => {
   const [theme, themeToggler, mountedComponent] = useDarkMode();
@@ -16,6 +17,7 @@ const App = () => {
       <>
         <GlobalStyles />
         <NavBar />
+        <MobileMenu />
         <NavBar2 />
         <div className="App">
           <Main />

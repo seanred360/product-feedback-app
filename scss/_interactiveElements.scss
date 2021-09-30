@@ -38,8 +38,11 @@
 
 // category button
 .category-button {
-  width: 3rem;
+  display: inline-block;
   height: 1.875rem;
+  margin-right: 0.5rem;
+  padding: 5px 1rem;
+  text-align: center;
   color: $blue;
 
   &:hover {

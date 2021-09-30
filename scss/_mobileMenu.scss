@@ -1,0 +1,95 @@
+.fade-overlay {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.mobile-menu-container {
+  position: absolute;
+  width: 271px;
+  height: 100vh;
+  right: 0;
+  top: 72px;
+  background: $grey2;
+  .__mobile-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 223px;
+    height: 380px;
+    margin: 1.5rem;
+    border-radius: 10px;
+
+    .--menu-top {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 223px;
+      height: 178px;
+      padding: 1.5rem 1.5rem;
+      background: $white;
+      border-radius: 10px;
+    }
+
+    .--menu-bottom {
+      width: 223px;
+      height: 178px;
+      padding: 1.5rem 1.5rem;
+      background: $white;
+      border-radius: 10px;
+
+      .--menu-bottom-title {
+        font-weight: bold;
+        @include font-size(18);
+        @include line-height(26);
+        letter-spacing: -0.25px;
+        color: $blueGrey2;
+      }
+
+      .--menu-bottom-view {
+        float: right;
+        font-weight: 600;
+        @include font-size(13);
+        text-decoration-line: underline;
+        color: $blue;
+      }
+
+      ul {
+        padding: 0;
+        margin: 1.5rem 0;
+        text-align: left;
+
+        li {
+          @include font-size(16);
+          color: $darkGrey;
+
+          .--dot {
+            display: inline-block;
+            width: 0.5rem;
+            height: 0.5rem;
+            margin-right: 1rem;
+            background-color: red;
+            border-radius: 50%;
+
+            &.-peach {
+              background-color: $peach;
+            }
+            &.-purple {
+              background-color: $purple;
+            }
+            &.-light-blue {
+              background-color: $lightBlue;
+            }
+          }
+
+          .--number {
+            float: right;
+            font-weight: bold;
+            @include font-size(16);
+          }
+        }
+      }
+    }
+  }
+}

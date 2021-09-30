@@ -302,8 +302,11 @@ Link:focus, Link:hover, Link:visited, Link:link, Link:active {
 }
 
 .category-button {
-  width: 3rem;
+  display: inline-block;
   height: 1.875rem;
+  margin-right: 0.5rem;
+  padding: 5px 1rem;
+  text-align: center;
   color: #4661e6;
 }
 
@@ -431,5 +434,104 @@ input.form-control:focus {
   font-size: 14px;
   line-height: 20px;
   color: #d73737;
+}
+
+.fade-overlay {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.mobile-menu-container {
+  position: absolute;
+  width: 271px;
+  height: 100vh;
+  right: 0;
+  top: 72px;
+  background: #f7f8fd;
+}
+
+.mobile-menu-container .__mobile-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 223px;
+  height: 380px;
+  margin: 1.5rem;
+  border-radius: 10px;
+}
+
+.mobile-menu-container .__mobile-menu .--menu-top {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 223px;
+  height: 178px;
+  padding: 1.5rem 1.5rem;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.mobile-menu-container .__mobile-menu .--menu-bottom {
+  width: 223px;
+  height: 178px;
+  padding: 1.5rem 1.5rem;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.mobile-menu-container .__mobile-menu .--menu-bottom .--menu-bottom-title {
+  font-weight: bold;
+  font-size: 1.125rem;
+  line-height: 1.625rem;
+  letter-spacing: -0.25px;
+  color: #3a4374;
+}
+
+.mobile-menu-container .__mobile-menu .--menu-bottom .--menu-bottom-view {
+  float: right;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-decoration-line: underline;
+  color: #4661e6;
+}
+
+.mobile-menu-container .__mobile-menu .--menu-bottom ul {
+  padding: 0;
+  margin: 1.5rem 0;
+  text-align: left;
+}
+
+.mobile-menu-container .__mobile-menu .--menu-bottom ul li {
+  font-size: 1rem;
+  color: #647196;
+}
+
+.mobile-menu-container .__mobile-menu .--menu-bottom ul li .--dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-right: 1rem;
+  background-color: red;
+  border-radius: 50%;
+}
+
+.mobile-menu-container .__mobile-menu .--menu-bottom ul li .--dot.-peach {
+  background-color: #f49f85;
+}
+
+.mobile-menu-container .__mobile-menu .--menu-bottom ul li .--dot.-purple {
+  background-color: #ad1fea;
+}
+
+.mobile-menu-container .__mobile-menu .--menu-bottom ul li .--dot.-light-blue {
+  background-color: #62bcfa;
+}
+
+.mobile-menu-container .__mobile-menu .--menu-bottom ul li .--number {
+  float: right;
+  font-weight: bold;
+  font-size: 1rem;
 }
 /*# sourceMappingURL=style.css.map */
