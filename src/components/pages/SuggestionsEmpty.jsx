@@ -2,9 +2,9 @@ import React from "react";
 import AddFeedbackButton from "../AddFeedbackButton";
 import empty from "../../starter-code/assets/suggestions/empty.svg";
 
-const NoFeedback = () => {
+const SuggestionsEmpty = () => {
   return (
-    <div className="no-feedback">
+    <div className="suggestions-empty">
       <div className="__inner-container flex flex-ai-c flex-jc-c">
         <div className="__not-found-image">
           <img src={empty} alt="No feedback found" />
@@ -20,4 +20,4 @@ const NoFeedback = () => {
   );
 };
 
-export default NoFeedback;
+export default SuggestionsEmpty;

@@ -544,23 +544,23 @@ input.form-control:focus {
   font-size: 1rem;
 }
 
-.no-feedback {
+.suggestions-empty {
   border-radius: 10px;
   background: #ffffff;
 }
 
-.no-feedback .__inner-container {
+.suggestions-empty .__inner-container {
   padding: 76px 1.5rem;
   flex-direction: column;
 }
 
-.no-feedback .__not-found-image {
+.suggestions-empty .__not-found-image {
   width: 102px;
   height: 108px;
   margin-bottom: 39px;
 }
 
-.no-feedback .__header {
+.suggestions-empty .__header {
   font-weight: bold;
   font-size: 1.125rem;
   text-align: center;
@@ -568,7 +568,7 @@ input.form-control:focus {
   color: #3a4374;
 }
 
-.no-feedback p {
+.suggestions-empty p {
   margin-top: 0.875rem;
   margin-bottom: 1.5rem;
   font-weight: normal;
