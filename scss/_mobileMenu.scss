@@ -1,17 +1,27 @@
 .fade-overlay {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.5);
+  background: transparent;
+
+  &.--open {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+  }
 }
 
 .mobile-menu-container {
   position: absolute;
   width: 271px;
   height: 100vh;
-  right: 0;
+  right: -100%;
   top: 72px;
   background: $grey2;
+  transition: all 0.3s ease;
+
+  &.--open {
+    right: 0;
+  }
+
   .__mobile-menu {
     display: flex;
     flex-direction: column;

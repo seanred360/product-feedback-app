@@ -1,7 +1,7 @@
 import React from "react";
 import HamburgerButton from "./HamburgerButton";
 
-const NavBar = () => {
+const NavBar = ({ onOpen }) => {
   return (
     <div className="nav-bar__container">
       <nav className="nav-bar flex flex-jc-sb flex-ai-c">
@@ -9,7 +9,7 @@ const NavBar = () => {
           <span className="__app-name">Frontend Mentor</span>
           <span className="__app-label">Feedback Board</span>
         </div>
-        <HamburgerButton />
+        <HamburgerButton onOpen={onOpen} />
       </nav>
     </div>
   );

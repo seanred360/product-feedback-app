@@ -3,9 +3,7 @@ import { ThemeProvider } from "styled-components";
 import { GlobalStyles } from "./components/styled-components/GlobalStyles";
 import { lightTheme, darkTheme } from "./components/styled-components/Themes";
 import Main from "./components/Main";
-import NavBar from "./components/common/NavBar";
-import NavBar2 from "./components/NavBar2";
-import MobileMenu from "./components/MobileMenu";
+import Menu from "./components/Menu";
 
 const App = () => {
   const [theme, themeToggler, mountedComponent] = useDarkMode();
@@ -16,9 +14,7 @@ const App = () => {
     <ThemeProvider theme={themeMode}>
       <>
         <GlobalStyles />
-        <NavBar />
-        <MobileMenu />
-        <NavBar2 />
+        <Menu />
         <div className="App">
           <Main />
         </div>

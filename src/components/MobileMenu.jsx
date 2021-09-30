@@ -1,13 +1,13 @@
 import React from "react";
 import CategoryButton from "./common/CategoryButton";
 
-const MobileMenu = () => {
+const MobileMenu = ({ isOpen }) => {
   const items = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
 
   return (
     <React.Fragment>
-      <div className="fade-overlay"></div>
-      <div className="mobile-menu-container">
+      <div className={`fade-overlay ${isOpen ? `--open` : ``}`}></div>
+      <div className={`mobile-menu-container ${isOpen ? `--open` : ``}`}>
         <div className="__mobile-menu">
           <div className="--menu-top">
             {items.map((item) => (

@@ -437,6 +437,10 @@ input.form-control:focus {
 }
 
 .fade-overlay {
+  background: transparent;
+}
+
+.fade-overlay.--open {
   position: absolute;
   width: 100vw;
   height: 100vh;
@@ -447,9 +451,14 @@ input.form-control:focus {
   position: absolute;
   width: 271px;
   height: 100vh;
-  right: 0;
+  right: -100%;
   top: 72px;
   background: #f7f8fd;
+  transition: all 0.3s ease;
+}
+
+.mobile-menu-container.--open {
+  right: 0;
 }
 
 .mobile-menu-container .__mobile-menu {
