@@ -550,12 +550,16 @@ input.form-control:focus {
 
 .suggestions-empty {
   border-radius: 10px;
-  background: #ffffff;
+  background: #f2f4ff;
+  padding: 1.5rem;
 }
 
 .suggestions-empty .__inner-container {
+  margin-top: 1rem;
   padding: 76px 1.5rem;
   flex-direction: column;
+  background: #ffffff;
+  border-radius: 10px;
 }
 
 .suggestions-empty .__not-found-image {
@@ -582,14 +586,11 @@ input.form-control:focus {
   color: darkGrey;
 }
 
-.App {
-  padding: 1.5rem 2rem;
-  background: #f2f4ff;
-}
-
 .home-page {
   display: flex;
   flex-direction: column;
+  padding: 1.5rem;
+  background: #f2f4ff;
 }
 
 .suggestion-box {
@@ -642,5 +643,10 @@ input.form-control:focus {
   text-align: center;
   letter-spacing: -0.180556px;
   color: #3a4374;
+}
+
+.feedback-detail {
+  padding: 2.125rem 1.5rem;
+  background: #f2f4ff;
 }
 /*# sourceMappingURL=style.css.map */

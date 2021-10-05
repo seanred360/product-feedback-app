@@ -9,9 +9,10 @@ const SuggestionBox = ({
   category,
   upvotes,
   commentsCount,
+  onClickEvent,
 }) => {
   return (
-    <div className="suggestion-box">
+    <div className="suggestion-box" onClick={onClickEvent}>
       <h1 className="__title">{title}</h1>
       <p className="__description">{description}</p>
       <CategoryButton itemName={category} />

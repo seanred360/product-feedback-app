@@ -1,53 +1,43 @@
 import React, { Component } from "react";
-import SuggestionBox from "../SuggestionBox";
-import axios from "axios";
 import _ from "lodash";
+import Menu from "../Menu";
 import SuggestionsEmpty from "../SuggestionsEmpty";
+import SuggestionBox from "../SuggestionBox";
 
 class HomePage extends Component {
-  state = {
-    isLoaded: false,
-    error: null,
-    currentUser: {},
-    productRequests: [],
+  handleOnClick = (selectedRequest) => {
+    this.props.onSelectRequest(selectedRequest);
+    this.props.history.push("/feedback-detail");
   };
 
-  componentDidMount() {
-    axios
-      .get("data.json")
-      .then((response) => {
-        this.setState({
-          isLoaded: true,
-          currentUser: response.data["currentUser"],
-          productRequests: response.data["productRequests"],
-        });
-      })
-      .catch((error) => {
-        this.setState({
-          isLoaded: true,
-          error,
-        });
-      });
-  }
-
   render() {
-    const { productRequests } = this.state;
+    const { productRequests } = this.props;
 
-    if (productRequests.length <= 0) return <SuggestionsEmpty />;
+    if (productRequests.length <= 0)
+      return (
+        <React.Fragment>
+          <Menu />
+          <SuggestionsEmpty />
+        </React.Fragment>
+      );
 
     return (
-      <div className="home-page">
-        {productRequests.map((product) => (
-          <SuggestionBox
-            key={product["title"]}
-            title={product["title"]}
-            description={product["description"]}
-            category={product["category"]}
-            upvotes={product["upvotes"]}
-            commentsCount={_.size(product["comments"])}
-          />
-        ))}
-      </div>
+      <React.Fragment>
+        <Menu />
+        <div className="home-page">
+          {productRequests.map((product) => (
+            <SuggestionBox
+              key={product["title"]}
+              title={product["title"]}
+              description={product["description"]}
+              category={product["category"]}
+              upvotes={product["upvotes"]}
+              commentsCount={_.size(product["comments"])}
+              onClickEvent={() => this.handleOnClick(product)}
+            />
+          ))}
+        </div>
+      </React.Fragment>
     );
   }
 }

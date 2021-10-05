@@ -1,10 +1,14 @@
 .suggestions-empty {
   border-radius: 10px;
-  background: $white;
+  background: $grey;
+  padding: 1.5rem;
 
   .__inner-container {
+    margin-top: 1rem;
     padding: 76px 1.5rem;
     flex-direction: column;
+    background: $white;
+    border-radius: 10px;
   }
 
   .__not-found-image {
