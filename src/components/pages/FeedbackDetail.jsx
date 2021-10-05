@@ -3,6 +3,7 @@ import BackButton from "../common/BackButton";
 import EditFeedbackButton from "../EditFeedbackButton";
 import SuggestionBox from "../SuggestionBox";
 import _ from "lodash";
+import CommentsSection from "../CommentsSection";
 
 class FeedbackDetail extends Component {
   render() {
@@ -26,6 +27,7 @@ class FeedbackDetail extends Component {
           upvotes={selectedRequest["upvotes"]}
           commentsCount={_.size(selectedRequest["comments"])}
         />
+        <CommentsSection />
       </div>
     );
   }

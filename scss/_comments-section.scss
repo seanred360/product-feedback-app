@@ -1,0 +1,66 @@
+.comments-section {
+  padding: 1.5rem;
+  background: $white;
+  border-radius: 10px;
+
+  .comments-count {
+    margin: 0;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 26px;
+    letter-spacing: -0.25px;
+    color: $blueGrey2;
+  }
+
+  .comment {
+    .__user {
+      .--user-image {
+        width: 40px;
+        height: 40px;
+        margin-right: 1rem;
+        border-radius: 50%;
+      }
+      .--user-text {
+        display: flex;
+        flex-direction: column;
+
+        .--user-name {
+          font-weight: bold;
+          font-size: 13px;
+          line-height: 19px;
+          letter-spacing: -0.180556px;
+          color: $blueGrey2;
+        }
+
+        .--user-alias {
+          font-weight: normal;
+          font-size: 13px;
+          line-height: 19px;
+          color: $darkGrey;
+        }
+      }
+      .--reply-button {
+        width: auto;
+        height: 19px;
+        margin-left: auto;
+        font-weight: 600;
+        color: $blueGrey;
+        background: transparent;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    .__content {
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #8c92b25a;
+      font-weight: normal;
+      font-size: 13px;
+      line-height: 19px;
+      color: $darkGrey;
+    }
+  }
+}

@@ -649,4 +649,69 @@ input.form-control:focus {
   padding: 2.125rem 1.5rem;
   background: #f2f4ff;
 }
+
+.comments-section {
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.comments-section .comments-count {
+  margin: 0;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.25px;
+  color: #3a4374;
+}
+
+.comments-section .comment .__user .--user-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.comments-section .comment .__user .--user-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.comments-section .comment .__user .--user-text .--user-name {
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 19px;
+  letter-spacing: -0.180556px;
+  color: #3a4374;
+}
+
+.comments-section .comment .__user .--user-text .--user-alias {
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 19px;
+  color: #647196;
+}
+
+.comments-section .comment .__user .--reply-button {
+  width: auto;
+  height: 19px;
+  margin-left: auto;
+  font-weight: 600;
+  color: #4661e6;
+  background: transparent;
+}
+
+.comments-section .comment .__user .--reply-button:hover {
+  text-decoration: underline;
+}
+
+.comments-section .comment .__content {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #8c92b25a;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 19px;
+  color: #647196;
+}
 /*# sourceMappingURL=style.css.map */
