@@ -24,6 +24,14 @@
   width: 2.5rem;
   height: 3.3125rem;
 
+  @include respond-below(sm) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 6px 14px;
+    width: 69px;
+    height: 32px;
+  }
+
   &:active {
     color: $white;
     .__quantity {
@@ -140,10 +148,4 @@
       }
     }
   }
-}
-
-.home-page {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

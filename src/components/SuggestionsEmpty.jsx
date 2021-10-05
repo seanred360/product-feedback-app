@@ -1,6 +1,6 @@
 import React from "react";
-import AddFeedbackButton from "../AddFeedbackButton";
-import empty from "../../starter-code/assets/suggestions/empty.svg";
+import AddFeedbackButton from "./AddFeedbackButton";
+import empty from "../starter-code/assets/suggestions/empty.svg";
 
 const SuggestionsEmpty = () => {
   return (

@@ -1,0 +1,50 @@
+.suggestion-box {
+  margin: 1rem 0;
+  padding: 1.5rem;
+  background: $white;
+  border-radius: 10px;
+  font-weight: normal;
+  @include line-height(19);
+
+  .__title {
+    margin: 9px 0;
+    font-weight: bold;
+    @include font-size(13);
+    letter-spacing: -0.180556px;
+    color: $blueGrey2;
+  }
+
+  .__description {
+    margin: 9px 0;
+    @include font-size(13);
+    color: $darkGrey;
+  }
+
+  .category-button {
+    margin: 9px 0;
+  }
+
+  .__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 9px 0;
+
+    .comments-counter {
+      display: flex;
+      .comments-icon {
+        fill: #cdd2ee;
+      }
+
+      .comments-count {
+        margin-left: 4px;
+        font-weight: bold;
+        @include font-size(13);
+        @include line-height(19);
+        text-align: center;
+        letter-spacing: -0.180556px;
+        color: $blueGrey2;
+      }
+    }
+  }
+}

@@ -1,9 +1,9 @@
 import React from "react";
 
-const CategoryButton = ({item}) => {
+const CategoryButton = ({itemName}) => {
   return (
     <div className="category-button">
-      <span className="__item-name">{item}</span>
+      <span className="__item-name">{itemName}</span>
     </div>
   );
 };

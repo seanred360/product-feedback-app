@@ -9,7 +9,7 @@ const UpVote = (props) => {
         style={{ cursor: "pointer" }}
         aria-hidden="true"
       />
-      <span className="__quantity">99</span>
+      <span className="__quantity">{props.upvotes}</span>
     </div>
   );
 };
