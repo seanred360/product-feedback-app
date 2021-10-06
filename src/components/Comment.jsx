@@ -1,28 +1,23 @@
 import React from "react";
-import imageElijah from "../starter-code/assets/user-images/image-elijah.jpg";
+// import imageElijah from "../starter-code/assets/user-images/image-elijah.jpg";
 
-const Comment = () => {
+const Comment = ({ userImage, userName, userAlias, content }) => {
   return (
     <div className="comment">
       <div className="__user flex">
         <img
           className="--user-image"
-          src={imageElijah}
-          alt="user image"
+          src={process.env.PUBLIC_URL + userImage}
+          alt="user"
           className="--user-image"
         />
         <div className="--user-text">
-          <span className="--user-name"></span>Elijah Moss
-          <span className="--user-alias">@hexagon.bestagon</span>
+          <span className="--user-name">{userName}</span>
+          <span className="--user-alias">{userAlias}</span>
         </div>
         <button className="--reply-button all-buttons">Reply</button>
       </div>
-      <p className="__content">
-        Also, please allow styles to be applied based on system preferences. I
-        would love to be able to browse Frontend Mentor in the evening after my
-        device’s dark mode turns on without the bright background it currently
-        has.
-      </p>
+      <p className="__content">{content}</p>
     </div>
   );
 };

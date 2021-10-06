@@ -8,6 +8,7 @@ import CommentsSection from "../CommentsSection";
 class FeedbackDetail extends Component {
   render() {
     const { selectedRequest } = this.props;
+    const commentsCount = _.size(selectedRequest["comments"]);
 
     if (!selectedRequest) {
       this.props.history.push("/not-found");
@@ -25,9 +26,12 @@ class FeedbackDetail extends Component {
           description={selectedRequest["description"]}
           category={selectedRequest["category"]}
           upvotes={selectedRequest["upvotes"]}
-          commentsCount={_.size(selectedRequest["comments"])}
+          commentsCount={commentsCount}
         />
-        <CommentsSection />
+        <CommentsSection
+          commentsCount={commentsCount}
+          comments={selectedRequest["comments"]}
+        />
       </div>
     );
   }
