@@ -666,19 +666,22 @@ input.form-control:focus {
   color: #3a4374;
 }
 
-.comments-section .comment .__user .--user-image {
+.comments-section .comment .__user .--user-image,
+.comments-section .reply-comment .__user .--user-image {
   width: 40px;
   height: 40px;
   margin-right: 1rem;
   border-radius: 50%;
 }
 
-.comments-section .comment .__user .--user-text {
+.comments-section .comment .__user .--user-text,
+.comments-section .reply-comment .__user .--user-text {
   display: flex;
   flex-direction: column;
 }
 
-.comments-section .comment .__user .--user-text .--user-name {
+.comments-section .comment .__user .--user-text .--user-name,
+.comments-section .reply-comment .__user .--user-text .--user-name {
   font-weight: bold;
   font-size: 13px;
   line-height: 19px;
@@ -686,14 +689,16 @@ input.form-control:focus {
   color: #3a4374;
 }
 
-.comments-section .comment .__user .--user-text .--user-alias {
+.comments-section .comment .__user .--user-text .--user-alias,
+.comments-section .reply-comment .__user .--user-text .--user-alias {
   font-weight: normal;
   font-size: 13px;
   line-height: 19px;
   color: #647196;
 }
 
-.comments-section .comment .__user .--reply-button {
+.comments-section .comment .__user .--reply-button,
+.comments-section .reply-comment .__user .--reply-button {
   width: auto;
   height: 19px;
   margin-left: auto;
@@ -702,13 +707,36 @@ input.form-control:focus {
   background: transparent;
 }
 
-.comments-section .comment .__user .--reply-button:hover {
+.comments-section .comment .__user .--reply-button:hover,
+.comments-section .reply-comment .__user .--reply-button:hover {
   text-decoration: underline;
 }
 
-.comments-section .comment .__content {
+.comments-section .comment .__content,
+.comments-section .reply-comment .__content {
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid #8c92b25a;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 19px;
+  color: #647196;
+}
+
+.comments-section .__replies .reply-comment {
+  padding-left: 3rem;
+}
+
+.comments-section .__replies .reply-comment:nth-child(1) {
+  border-left: 1px solid #8c92b25a;
+}
+
+.comments-section .__replies .reply-comment .--replying-to {
+  font-weight: bold;
+  color: #ad1fea;
+}
+
+.comments-section .__replies .reply-comment .__content {
+  padding-bottom: 1.5rem;
+  border-bottom: none;
   font-weight: normal;
   font-size: 13px;
   line-height: 19px;

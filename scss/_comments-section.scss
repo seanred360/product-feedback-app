@@ -13,7 +13,8 @@
     color: $blueGrey2;
   }
 
-  .comment {
+  .comment,
+  .reply-comment {
     .__user {
       .--user-image {
         width: 40px;
@@ -56,11 +57,33 @@
 
     .__content {
       padding-bottom: 1.5rem;
-      border-bottom: 1px solid #8c92b25a;
       font-weight: normal;
       font-size: 13px;
       line-height: 19px;
       color: $darkGrey;
+    }
+  }
+
+  .__replies {
+    .reply-comment {
+      padding-left: 3rem;
+      &:nth-child(1) {
+        border-left: 1px solid #8c92b25a;
+      }
+
+      .--replying-to {
+        font-weight: bold;
+        color: $purple;
+      }
+
+      .__content {
+        padding-bottom: 1.5rem;
+        border-bottom: none;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 19px;
+        color: $darkGrey;
+      }
     }
   }
 }
