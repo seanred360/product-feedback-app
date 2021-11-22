@@ -5,7 +5,7 @@ const MobileMenu = ({ isOpen }) => {
   const items = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
 
   return (
-    <React.Fragment>
+    <>
       <div className={`fade-overlay ${isOpen ? `--open` : ``}`}></div>
       <div className={`mobile-menu-container ${isOpen ? `--open` : ``}`}>
         <div className="__mobile-menu">
@@ -38,7 +38,7 @@ const MobileMenu = ({ isOpen }) => {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </>
   );
 };
 

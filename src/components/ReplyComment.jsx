@@ -15,7 +15,6 @@ const ReplyComment = ({ reply }) => {
           className="--user-image"
           src={process.env.PUBLIC_URL + userImage}
           alt="user"
-          className="--user-image"
         />
         <div className="--user-text">
           <span className="--user-name">{userName}</span>

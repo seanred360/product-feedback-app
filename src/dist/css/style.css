@@ -645,7 +645,7 @@ input.form-control:focus {
   color: #3a4374;
 }
 
-.feedback-detail {
+.feedback-detail-page {
   padding: 2.125rem 1.5rem;
   background: #f2f4ff;
 }
@@ -817,5 +817,43 @@ input.form-control:focus {
   font-size: 13px;
   line-height: 19px;
   color: #647196;
+}
+
+.new-feedback-page {
+  padding: 2.125rem 1.5rem;
+  background: #f2f4ff;
+}
+
+.new-feedback-page .__top-group {
+  margin-bottom: 55px;
+}
+
+.new-feedback-page .create-new-feedback {
+  position: relative;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.new-feedback-page .create-new-feedback .__plus-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(128.88% 128.88% at 103.9% -10.39%, #e84d70 0%, #a337f6 53.09%, #28a7ed 100%);
+  font-weight: bold;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.new-feedback-page .create-new-feedback .__header {
+  font-weight: bold;
+  font-size: 1.125rem;
+  letter-spacing: -0.25px;
+  color: #3a4374;
 }
 /*# sourceMappingURL=style.css.map */

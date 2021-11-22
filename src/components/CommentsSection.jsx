@@ -1,4 +1,3 @@
-import { react } from "@babel/types";
 import React from "react";
 import AddComment from "./AddComment";
 import Comment from "./Comment";

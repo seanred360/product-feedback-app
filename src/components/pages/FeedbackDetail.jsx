@@ -16,7 +16,7 @@ class FeedbackDetail extends Component {
     }
 
     return (
-      <div className="feedback-detail">
+      <div className="feedback-detail-page">
         <div className="__top-group flex flex-ai-c flex-jc-sb">
           <BackButton />
           <EditFeedbackButton />

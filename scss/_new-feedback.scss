@@ -1,0 +1,42 @@
+.new-feedback-page {
+  padding: 2.125rem 1.5rem;
+  background: $grey;
+
+  .__top-group {
+    margin-bottom: 55px;
+  }
+
+  .create-new-feedback {
+    position: relative;
+    padding: 1.5rem;
+    background: $white;
+    border-radius: 10px;
+
+    .__plus-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: -20px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: radial-gradient(
+        128.88% 128.88% at 103.9% -10.39%,
+        #e84d70 0%,
+        #a337f6 53.09%,
+        #28a7ed 100%
+      );
+      font-weight: bold;
+      font-size: 20px;
+      color: $white;
+    }
+
+    .__header {
+      font-weight: bold;
+      @include font-size(18);
+      letter-spacing: -0.25px;
+      color: $blueGrey2;
+    }
+  }
+}

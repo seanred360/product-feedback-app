@@ -1,8 +1,15 @@
 import React from "react";
+import { useHistory } from "react-router";
 
 const AddFeedbackButton = () => {
+  let history = useHistory();
+
+  function handleClick() {
+    history.push("/new-feedback");
+  }
+
   return (
-    <button className="all-buttons --purple-button add-feedback-button">
+    <button className="all-buttons --purple-button add-feedback-button" onClick={handleClick}>
       + Add Feedback
     </button>
   );
