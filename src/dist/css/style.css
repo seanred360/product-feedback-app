@@ -141,11 +141,15 @@ Link:focus, Link:hover, Link:visited, Link:link, Link:active {
   background: #7c91f9;
 }
 
-.all-buttons.--blue-grey-button {
-  background: #4661e6;
+.all-buttons.--dark-blue-button {
+  background: #3a4374;
 }
 
-.all-buttons.--blue-grey-button:hover {
+.all-buttons.--blue-grey2-button {
+  background: #3A4374;
+}
+
+.all-buttons.--blue-grey2-button:hover {
   background: #656ea3;
 }
 
@@ -159,7 +163,6 @@ Link:focus, Link:hover, Link:visited, Link:link, Link:active {
 
 .all-buttons.--back-button {
   display: flex;
-  justify-content: center;
   align-items: center;
   background: none;
   color: #647196;
@@ -855,5 +858,49 @@ input.form-control:focus {
   font-size: 1.125rem;
   letter-spacing: -0.25px;
   color: #3a4374;
+}
+
+.new-feedback-page .create-new-feedback form .__title {
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 19px;
+  letter-spacing: -0.180556px;
+  color: #3a4374;
+}
+
+.new-feedback-page .create-new-feedback form .__instructions {
+  font-size: 13px;
+  line-height: 19px;
+  color: #647196;
+}
+
+.new-feedback-page .create-new-feedback form #__feedback-title-input,
+.new-feedback-page .create-new-feedback form #__feedback-category {
+  width: 279px;
+  height: 48px;
+  padding: 14px 16px;
+  background: #f7f8fd;
+  border: none;
+  border-radius: 5px;
+}
+
+.new-feedback-page .create-new-feedback form .__feedback-detail-input {
+  width: 279px;
+  height: 120px;
+  background: #f7f8fd;
+  border: none;
+  border-radius: 5px;
+}
+
+.new-feedback-page .create-new-feedback .__buttons {
+  flex-direction: column;
+}
+
+.new-feedback-page .create-new-feedback .__buttons :first-child {
+  margin-bottom: 16px;
+}
+
+.new-feedback-page .create-new-feedback .__buttons button {
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */

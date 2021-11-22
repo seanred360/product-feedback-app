@@ -26,8 +26,12 @@
     }
   }
 
-  &.--blue-grey-button {
-    background: $blueGrey;
+  &.--dark-blue-button {
+    background: #3a4374;
+  }
+
+  &.--blue-grey2-button {
+    background: #3A4374;;
 
     &:hover {
       background: #656ea3;
@@ -44,7 +48,6 @@
 
   &.--back-button {
     display: flex;
-    justify-content: center;
     align-items: center;
     background: none;
     color: $darkGrey;

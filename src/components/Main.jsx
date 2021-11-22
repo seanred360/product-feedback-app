@@ -28,7 +28,7 @@ const Main = () => {
       });
   }, []);
 
-  if (!isLoaded) return <Spinner />;
+  if (!isLoaded && !error && !currentUser) return <Spinner />;
   return (
     <Switch>
       {/* The Switch decides which component to show based on the current URL.*/}

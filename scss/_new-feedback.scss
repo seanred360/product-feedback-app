@@ -38,5 +38,50 @@
       letter-spacing: -0.25px;
       color: $blueGrey2;
     }
+
+    form {
+      .__title {
+        font-weight: bold;
+        font-size: 13px;
+        line-height: 19px;
+        letter-spacing: -0.180556px;
+        color: #3a4374;
+      }
+
+      .__instructions {
+        font-size: 13px;
+        line-height: 19px;
+        color: #647196;
+      }
+
+      #__feedback-title-input,
+      #__feedback-category {
+        width: 279px;
+        height: 48px;
+        padding: 14px 16px;
+        background: #f7f8fd;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .__feedback-detail-input {
+        width: 279px;
+        height: 120px;
+        background: #f7f8fd;
+        border: none;
+        border-radius: 5px;
+      }
+    }
+
+    .__buttons {
+      flex-direction: column;
+
+      :first-child {
+        margin-bottom: 16px;
+      }
+      button {
+        width: 100%;
+      }
+    }
   }
 }
