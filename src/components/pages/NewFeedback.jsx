@@ -1,8 +1,10 @@
 import React from "react";
+import { useLocation } from "react-router";
 import BackButton from "../common/BackButton";
 
 const NewFeedback = () => {
   const items = ["Feature", "UI", "US", "Enhancement", "Bug"];
+  const location = useLocation();
 
   return (
     <div className="new-feedback-page">
@@ -11,7 +13,11 @@ const NewFeedback = () => {
       </div>
       <div className="create-new-feedback">
         <div className="__plus-circle">+</div>
-        <h1 className="__header">Create New Feedback</h1>
+        <h1 className="__header">
+          {location.pathname == `/edit-feedback`
+            ? `Editing${" insert feedback name here"}`
+            : `Create New Feedback`}
+        </h1>
 
         <form id="__feedback-title" className="__feedback-title">
           <label className="__title" htmlFor="__feedback-title">
@@ -68,8 +74,22 @@ const NewFeedback = () => {
         </form>
 
         <div className="__buttons flex flex-jc-c flex-ai-c">
-          <button className="all-buttons --purple-button">Add Feedback</button>
+          <button className="all-buttons --purple-button">
+            {location.pathname == "/edit-feedback"
+              ? "Save Changes"
+              : "Add Feedback"}
+          </button>
           <button className="all-buttons --blue-grey2-button">Cancel</button>
+          <button
+            className="all-buttons --red-button"
+            style={
+              location.pathname == "/edit-feedback"
+                ? { visibility: "visible" }
+                : { visibility: "hidden" }
+            }
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Switch, Route } from "react-router-dom";
+import Spinner from "./common/Spinner";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
 import FeedbackDetail from "./pages/FeedbackDetail";
 import NewFeedback from "./pages/NewFeedback";
-import Spinner from "./common/Spinner";
 
-const Main = () => {
+const Routes = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState(null);
   const [currentUser, setCurrentUser] = useState({});
@@ -34,6 +34,7 @@ const Main = () => {
       {/* The Switch decides which component to show based on the current URL.*/}
       <Route exact path="/not-found" component={NotFound}></Route>
       <Route exact path="/new-feedback" component={NewFeedback}></Route>
+      <Route exact path="/edit-feedback" component={NewFeedback}></Route>
       <Route
         exact
         path="/feedback-detail"
@@ -56,4 +57,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default Routes;

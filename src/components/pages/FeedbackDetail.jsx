@@ -4,6 +4,8 @@ import EditFeedbackButton from "../EditFeedbackButton";
 import SuggestionBox from "../SuggestionBox";
 import _ from "lodash";
 import CommentsSection from "../CommentsSection";
+import { useHistory } from "react-router-dom";
+ 
 
 class FeedbackDetail extends Component {
   render() {

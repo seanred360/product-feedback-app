@@ -5,12 +5,11 @@ import { GoChevronLeft } from "react-icons/go";
 const BackButton = () => {
   const history = useHistory();
 
-  const goBack = () => {
-    history.goBack();
-  };
-
   return (
-    <button className="all-buttons --back-button" onClick={goBack}>
+    <button
+      className="all-buttons --back-button"
+      onClick={() => history.goBack()}
+    >
       <GoChevronLeft />
       Go Back
     </button>

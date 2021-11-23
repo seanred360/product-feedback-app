@@ -1,10 +1,10 @@
-import Main from "./components/Main";
+import Routes from "./components/Routes";
 
 const App = () => {
   return (
     <>
       <div className="App">
-        <Main />
+        <Routes />
       </div>
     </>
   );
