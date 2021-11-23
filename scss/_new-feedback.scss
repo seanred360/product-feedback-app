@@ -82,7 +82,7 @@
     .__buttons {
       flex-direction: column;
 
-      :first-child {
+      :not(:last-child) {
         margin-bottom: 16px;
       }
       button {

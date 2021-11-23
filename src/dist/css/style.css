@@ -903,7 +903,7 @@ input.form-control:focus {
   flex-direction: column;
 }
 
-.new-feedback-page .create-new-feedback .__buttons :first-child {
+.new-feedback-page .create-new-feedback .__buttons :not(:last-child) {
   margin-bottom: 16px;
 }
 

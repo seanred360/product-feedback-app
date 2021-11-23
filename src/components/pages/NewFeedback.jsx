@@ -84,8 +84,8 @@ const NewFeedback = () => {
             className="all-buttons --red-button"
             style={
               location.pathname == "/edit-feedback"
-                ? { visibility: "visible" }
-                : { visibility: "hidden" }
+                ? { display: "block" }
+                : { display: "none" }
             }
           >
             Delete
