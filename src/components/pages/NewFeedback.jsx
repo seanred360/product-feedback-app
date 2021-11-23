@@ -21,7 +21,12 @@ const NewFeedback = () => {
           <span className="__instructions">
             Add a short, descriptive headline
           </span>
-          <input id="__feedback-title-input" type="text" />
+          <textarea
+            name="__feedback-title-input"
+            id="__feedback-title-input"
+            cols="30"
+            rows="10"
+          />
         </form>
 
         <form>
@@ -54,7 +59,12 @@ const NewFeedback = () => {
             Include any specific comments on what should be improved, added,
             etc.
           </span>
-          <input className="__feedback-detail-input" type="text" />
+          <textarea
+            name="__feedback-detail-input"
+            id="__feedback-detail-input"
+            cols="30"
+            rows="10"
+          />
         </form>
 
         <div className="__buttons flex flex-jc-c flex-ai-c">

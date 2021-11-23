@@ -1,5 +1,5 @@
 .new-feedback-page {
-  padding: 2.125rem 1.5rem;
+  padding: 34px 24px;
   background: $grey;
 
   .__top-group {
@@ -8,16 +8,24 @@
 
   .create-new-feedback {
     position: relative;
-    padding: 1.5rem;
+    padding: 24px;
     background: $white;
     border-radius: 10px;
+
+    form {
+      font-size: 13px;
+      margin-bottom: 24px;
+      &:last-of-type {
+        margin-bottom: 40px;
+      }
+    }
 
     .__plus-circle {
       display: flex;
       align-items: center;
       justify-content: center;
       position: absolute;
-      top: -20px;
+      top: -21px;
       width: 40px;
       height: 40px;
       border-radius: 50%;
@@ -34,7 +42,7 @@
 
     .__header {
       font-weight: bold;
-      @include font-size(18);
+      font-size: 18px;
       letter-spacing: -0.25px;
       color: $blueGrey2;
     }
@@ -42,15 +50,10 @@
     form {
       .__title {
         font-weight: bold;
-        font-size: 13px;
-        line-height: 19px;
-        letter-spacing: -0.180556px;
         color: #3a4374;
       }
 
       .__instructions {
-        font-size: 13px;
-        line-height: 19px;
         color: #647196;
       }
 
@@ -62,14 +65,17 @@
         background: #f7f8fd;
         border: none;
         border-radius: 5px;
+        resize: none;
       }
 
-      .__feedback-detail-input {
+      #__feedback-detail-input {
         width: 279px;
         height: 120px;
+        padding: 14px 16px;
         background: #f7f8fd;
         border: none;
         border-radius: 5px;
+        resize: none;
       }
     }
 

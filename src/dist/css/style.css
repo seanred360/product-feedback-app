@@ -823,7 +823,7 @@ input.form-control:focus {
 }
 
 .new-feedback-page {
-  padding: 2.125rem 1.5rem;
+  padding: 34px 24px;
   background: #f2f4ff;
 }
 
@@ -833,9 +833,18 @@ input.form-control:focus {
 
 .new-feedback-page .create-new-feedback {
   position: relative;
-  padding: 1.5rem;
+  padding: 24px;
   background: #ffffff;
   border-radius: 10px;
+}
+
+.new-feedback-page .create-new-feedback form {
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+
+.new-feedback-page .create-new-feedback form:last-of-type {
+  margin-bottom: 40px;
 }
 
 .new-feedback-page .create-new-feedback .__plus-circle {
@@ -843,7 +852,7 @@ input.form-control:focus {
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: -20px;
+  top: -21px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -855,22 +864,17 @@ input.form-control:focus {
 
 .new-feedback-page .create-new-feedback .__header {
   font-weight: bold;
-  font-size: 1.125rem;
+  font-size: 18px;
   letter-spacing: -0.25px;
   color: #3a4374;
 }
 
 .new-feedback-page .create-new-feedback form .__title {
   font-weight: bold;
-  font-size: 13px;
-  line-height: 19px;
-  letter-spacing: -0.180556px;
   color: #3a4374;
 }
 
 .new-feedback-page .create-new-feedback form .__instructions {
-  font-size: 13px;
-  line-height: 19px;
   color: #647196;
 }
 
@@ -882,14 +886,17 @@ input.form-control:focus {
   background: #f7f8fd;
   border: none;
   border-radius: 5px;
+  resize: none;
 }
 
-.new-feedback-page .create-new-feedback form .__feedback-detail-input {
+.new-feedback-page .create-new-feedback form #__feedback-detail-input {
   width: 279px;
   height: 120px;
+  padding: 14px 16px;
   background: #f7f8fd;
   border: none;
   border-radius: 5px;
+  resize: none;
 }
 
 .new-feedback-page .create-new-feedback .__buttons {
