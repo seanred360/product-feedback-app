@@ -16,7 +16,7 @@ const MobileMenu = ({ isOpen }) => {
           </div>
           <div className="--menu-bottom">
             <span className="--menu-bottom-title">Roadmap</span>
-            <a href="javascript(void);" className="--menu-bottom-view">
+            <a href="/road-map" className="--menu-bottom-view">
               View
             </a>
 

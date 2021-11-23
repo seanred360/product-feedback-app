@@ -113,6 +113,23 @@ Link:focus, Link:hover, Link:visited, Link:link, Link:active {
   text-decoration: none;
 }
 
+.--counter-comments {
+  display: flex;
+}
+
+.--counter-comments svg {
+  font-size: 18px;
+  fill: #cdd2ee;
+}
+
+.--counter-comments .--counter-count {
+  margin-left: 9px;
+  font-weight: bold;
+  font-size: 13px;
+  text-align: center;
+  color: #3a4374;
+}
+
 .all-buttons {
   width: 134px;
   height: 40px;
@@ -146,7 +163,7 @@ Link:focus, Link:hover, Link:visited, Link:link, Link:active {
 }
 
 .all-buttons.--blue-grey2-button {
-  background: #3A4374;
+  background: #3a4374;
 }
 
 .all-buttons.--blue-grey2-button:hover {
@@ -169,11 +186,26 @@ Link:focus, Link:hover, Link:visited, Link:link, Link:active {
 }
 
 .all-buttons.--back-button svg {
-  margin-right: 1rem;
+  margin-right: 15px;
 }
 
 .all-buttons.--back-button:hover {
   text-decoration: underline;
+}
+
+.--button-category {
+  display: inline-block;
+  height: 30px;
+  margin-right: 8px;
+  padding: 5px 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 19px;
+  color: #4661e6;
+  background: #f2f4ff;
+  border-radius: 10px;
+  border: none;
 }
 
 .nav-bar__container {
@@ -619,7 +651,7 @@ input.form-control:focus {
   color: #647196;
 }
 
-.suggestion-box .category-button {
+.suggestion-box .--button-category {
   margin: 9px 0;
 }
 
@@ -628,24 +660,6 @@ input.form-control:focus {
   justify-content: space-between;
   align-items: center;
   margin: 9px 0;
-}
-
-.suggestion-box .__bottom .comments-counter {
-  display: flex;
-}
-
-.suggestion-box .__bottom .comments-counter .comments-icon {
-  fill: #cdd2ee;
-}
-
-.suggestion-box .__bottom .comments-counter .comments-count {
-  margin-left: 4px;
-  font-weight: bold;
-  font-size: 0.8125rem;
-  line-height: 1.1875rem;
-  text-align: center;
-  letter-spacing: -0.180556px;
-  color: #3a4374;
 }
 
 .feedback-detail-page {
@@ -909,5 +923,131 @@ input.form-control:focus {
 
 .new-feedback-page .create-new-feedback .__buttons button {
   width: 100%;
+}
+
+.roadmap .__nav-top {
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  padding: 24px 26px;
+  background: #3a4374;
+  height: 100px;
+}
+
+.roadmap .__nav-top .__left {
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.roadmap .__nav-top .__left .--back-button {
+  height: auto;
+  padding: 0;
+  color: #ffffff;
+}
+
+.roadmap .__nav-top .__left h1 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.roadmap .__nav-top .__right {
+  margin-left: auto;
+}
+
+.roadmap .__nav-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 55px;
+  border-bottom: 1px solid #abb0c7;
+}
+
+.roadmap .__nav-bottom button {
+  width: 100%;
+  border: none;
+  background: #f2f4ff;
+  font-weight: bold;
+  font-size: 13px;
+  color: #abb0c7;
+  padding-top: 4.5px;
+  border-bottom: 4.5px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.roadmap .__nav-bottom button.--active {
+  width: 100%;
+  color: #3a4374;
+  border-bottom: 4.5px solid #ad1fea;
+}
+
+.roadmap .__container {
+  padding: 24px;
+  background: #f2f4ff;
+}
+
+.roadmap .__container .__header {
+  margin-bottom: 16px;
+}
+
+.roadmap .__container .__header .__header-name {
+  margin: 0;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 26px;
+  color: #3a4374;
+}
+
+.roadmap .__container .__header .__header-description {
+  font-size: 13px;
+  color: #647196;
+}
+
+.roadmap .__container .__roadmap-content-box {
+  margin-bottom: 16px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 10px;
+  border-top: 5px solid #ad1fea;
+  text-align: left;
+}
+
+.roadmap .__container .__roadmap-content-box .__content-category {
+  font-size: 13px;
+  color: #647196;
+  margin-bottom: 16px;
+}
+
+.roadmap .__container .__roadmap-content-box .__content-category::marker {
+  color: #ad1fea;
+}
+
+.roadmap .__container .__roadmap-content-box .__content-name {
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 19px;
+  color: #3a4374;
+}
+
+.roadmap .__container .__roadmap-content-box .__content-description {
+  font-size: 13px;
+  line-height: 19px;
+  color: #647196;
+}
+
+.roadmap .__container .__roadmap-content-box .--button-category {
+  margin-bottom: 16px;
+}
+
+.roadmap .__container .__roadmap-content-box .__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.roadmap .__container .__roadmap-content-box .__bottom .--counter-comments svg {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,130 @@
+@import "variables";
+
+.roadmap {
+  .__nav-top {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    padding: 24px 26px;
+    background: $blueGrey2;
+    height: 100px;
+
+    .__left {
+      margin-right: auto;
+      margin-top: auto;
+      margin-bottom: auto;
+
+      .--back-button {
+        height: auto;
+        padding: 0;
+        color: $white;
+      }
+
+      h1 {
+        margin: 0;
+        font-weight: bold;
+        font-size: 18px;
+        color: $white;
+      }
+    }
+    .__right {
+      margin-left: auto;
+    }
+  }
+
+  .__nav-bottom {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 55px;
+    border-bottom: 1px solid#abb0c7;
+
+    button {
+      width: 100%;
+      border: none;
+      background: $grey;
+      font-weight: bold;
+      font-size: 13px;
+      color: #abb0c7;
+      padding-top: 4.5px;
+      border-bottom: 4.5px solid transparent;
+      transition: all 0.3s ease;
+
+      &.--active {
+        width: 100%;
+        color: $blueGrey2;
+        border-bottom: 4.5px solid $purple;
+      }
+    }
+  }
+
+  .__container {
+    padding: 24px;
+    background: $grey;
+
+    .__header {
+      margin-bottom: 16px;
+
+      .__header-name {
+        margin: 0;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 26px;
+        color: $blueGrey2;
+      }
+
+      .__header-description {
+        font-size: 13px;
+        color: $darkGrey;
+      }
+    }
+
+    .__roadmap-content-box {
+      margin-bottom: 16px;
+      padding: 24px;
+      background: $white;
+      border-radius: 10px;
+      border-top: 5px solid $purple;
+      text-align: left;
+
+      .__content-category {
+        font-size: 13px;
+        color: $darkGrey;
+        margin-bottom: 16px;
+
+        &::marker {
+          color: $purple;
+        }
+      }
+
+      .__content-name {
+        font-weight: bold;
+        font-size: 13px;
+        line-height: 19px;
+        color: $blueGrey2;
+      }
+
+      .__content-description {
+        font-size: 13px;
+        line-height: 19px;
+        color: $darkGrey;
+      }
+
+      .--button-category {
+        margin-bottom: 16px;
+      }
+
+      .__bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .--counter-comments {
+          svg {
+            margin-top: auto;
+            margin-bottom: auto;
+          }
+        }
+      }
+    }
+  }
+}

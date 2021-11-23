@@ -8,7 +8,6 @@
   @include line-height(19);
   color: $grey;
   border: none;
-  //padding: 1rem 0.625rem;
 
   &.--purple-button {
     background: $purple;
@@ -31,7 +30,7 @@
   }
 
   &.--blue-grey2-button {
-    background: #3A4374;;
+    background: #3a4374;
 
     &:hover {
       background: #656ea3;
@@ -53,10 +52,25 @@
     color: $darkGrey;
 
     svg {
-      margin-right: 1rem;
+      margin-right: 15px;
     }
     &:hover {
       text-decoration: underline;
     }
   }
+}
+
+.--button-category {
+  display: inline-block;
+  height: 30px;
+  margin-right: 8px;
+  padding: 5px 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 19px;
+  color: $blue;
+  background: $grey;
+  border-radius: 10px;
+  border: none;
 }

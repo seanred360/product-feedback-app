@@ -15,14 +15,14 @@ class HomePage extends Component {
 
     if (productRequests.length <= 0)
       return (
-        <React.Fragment>
+        <>
           <Menu />
           <SuggestionsEmpty />
-        </React.Fragment>
+        </>
       );
 
     return (
-      <React.Fragment>
+      <>
         <Menu />
         <div className="home-page">
           {productRequests.map((product) => (
@@ -37,7 +37,7 @@ class HomePage extends Component {
             />
           ))}
         </div>
-      </React.Fragment>
+      </>
     );
   }
 }

@@ -14,7 +14,7 @@ const NewFeedback = () => {
       <div className="create-new-feedback">
         <div className="__plus-circle">+</div>
         <h1 className="__header">
-          {location.pathname == `/edit-feedback`
+          {location.pathname === `/edit-feedback`
             ? `Editing${" insert feedback name here"}`
             : `Create New Feedback`}
         </h1>
@@ -75,7 +75,7 @@ const NewFeedback = () => {
 
         <div className="__buttons flex flex-jc-c flex-ai-c">
           <button className="all-buttons --purple-button">
-            {location.pathname == "/edit-feedback"
+            {location.pathname === "/edit-feedback"
               ? "Save Changes"
               : "Add Feedback"}
           </button>
@@ -83,7 +83,7 @@ const NewFeedback = () => {
           <button
             className="all-buttons --red-button"
             style={
-              location.pathname == "/edit-feedback"
+              location.pathname === "/edit-feedback"
                 ? { display: "block" }
                 : { display: "none" }
             }

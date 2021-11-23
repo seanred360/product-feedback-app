@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
 import FeedbackDetail from "./pages/FeedbackDetail";
 import NewFeedback from "./pages/NewFeedback";
+import RoadMap from "./pages/RoadMap";
 
 const Routes = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -35,6 +36,7 @@ const Routes = () => {
       <Route exact path="/not-found" component={NotFound}></Route>
       <Route exact path="/new-feedback" component={NewFeedback}></Route>
       <Route exact path="/edit-feedback" component={NewFeedback}></Route>
+      <Route exact path="/road-map" component={RoadMap}></Route>
       <Route
         exact
         path="/feedback-detail"
