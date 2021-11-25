@@ -1,9 +1,9 @@
 import React from "react";
-import CategoryButton from "../components/common/CategoryButton";
-import UpVote from "../components/common/UpVote";
+import CategoryButton from "./common/CategoryButton";
+import UpVote from "./common/UpVote";
 import CommentsCounter from "./common/CommentsCounter";
 
-const SuggestionBox = ({
+const ProductRequest = ({
   title,
   description,
   category,
@@ -12,7 +12,7 @@ const SuggestionBox = ({
   onClickEvent,
 }) => {
   return (
-    <div className="suggestion-box" onClick={onClickEvent}>
+    <div className="product-request" onClick={onClickEvent}>
       <h1 className="__title">{title}</h1>
       <p className="__description">{description}</p>
       <CategoryButton itemName={category} />
@@ -24,4 +24,4 @@ const SuggestionBox = ({
   );
 };
 
-export default SuggestionBox;
+export default ProductRequest;

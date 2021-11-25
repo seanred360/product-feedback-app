@@ -1,9 +1,9 @@
 import React from "react";
 import AddFeedbackButton from "./AddFeedbackButton";
 
-const SuggestionsEmpty = () => {
+const ProductRequestEmpty = () => {
   return (
-    <div className="suggestions-empty">
+    <div className="product-request-empty">
       <div className="__inner-container flex flex-ai-c flex-jc-c">
         <div className="__not-found-image">
           <img
@@ -25,4 +25,4 @@ const SuggestionsEmpty = () => {
   );
 };
 
-export default SuggestionsEmpty;
+export default ProductRequestEmpty;

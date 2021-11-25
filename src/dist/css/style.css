@@ -583,44 +583,6 @@ input.form-control:focus {
   font-size: 1rem;
 }
 
-.suggestions-empty {
-  border-radius: 10px;
-  background: #f2f4ff;
-  padding: 1.5rem;
-}
-
-.suggestions-empty .__inner-container {
-  margin-top: 1rem;
-  padding: 76px 1.5rem;
-  flex-direction: column;
-  background: #ffffff;
-  border-radius: 10px;
-}
-
-.suggestions-empty .__not-found-image {
-  width: 102px;
-  height: 108px;
-  margin-bottom: 39px;
-}
-
-.suggestions-empty .__header {
-  font-weight: bold;
-  font-size: 1.125rem;
-  text-align: center;
-  letter-spacing: -0.25px;
-  color: #3a4374;
-}
-
-.suggestions-empty p {
-  margin-top: 0.875rem;
-  margin-bottom: 1.5rem;
-  font-weight: normal;
-  font-size: 0.8125rem;
-  line-height: 1.1875rem;
-  text-align: center;
-  color: darkGrey;
-}
-
 .home-page {
   display: flex;
   flex-direction: column;
@@ -628,7 +590,7 @@ input.form-control:focus {
   background: #f2f4ff;
 }
 
-.suggestion-box {
+.product-request {
   margin: 1rem 0;
   padding: 1.5rem;
   background: #ffffff;
@@ -637,7 +599,7 @@ input.form-control:focus {
   line-height: 1.1875rem;
 }
 
-.suggestion-box .__title {
+.product-request .__title {
   margin: 9px 0;
   font-weight: bold;
   font-size: 0.8125rem;
@@ -645,21 +607,59 @@ input.form-control:focus {
   color: #3a4374;
 }
 
-.suggestion-box .__description {
+.product-request .__description {
   margin: 9px 0;
   font-size: 0.8125rem;
   color: #647196;
 }
 
-.suggestion-box .--button-category {
+.product-request .--button-category {
   margin: 9px 0;
 }
 
-.suggestion-box .__bottom {
+.product-request .__bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 9px 0;
+}
+
+.product-request-empty {
+  border-radius: 10px;
+  background: #f2f4ff;
+  padding: 1.5rem;
+}
+
+.product-request-empty .__inner-container {
+  margin-top: 1rem;
+  padding: 76px 1.5rem;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.product-request-empty .__not-found-image {
+  width: 102px;
+  height: 108px;
+  margin-bottom: 39px;
+}
+
+.product-request-empty .__header {
+  font-weight: bold;
+  font-size: 1.125rem;
+  text-align: center;
+  letter-spacing: -0.25px;
+  color: #3a4374;
+}
+
+.product-request-empty p {
+  margin-top: 0.875rem;
+  margin-bottom: 1.5rem;
+  font-weight: normal;
+  font-size: 0.8125rem;
+  line-height: 1.1875rem;
+  text-align: center;
+  color: darkGrey;
 }
 
 .feedback-detail-page {

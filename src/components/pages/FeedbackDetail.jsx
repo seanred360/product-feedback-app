@@ -1,41 +1,41 @@
-import React, { Component } from "react";
+import { useContext } from "react";
+import _ from "lodash";
 import BackButton from "../common/BackButton";
 import EditFeedbackButton from "../EditFeedbackButton";
-import SuggestionBox from "../SuggestionBox";
-import _ from "lodash";
+import SuggestionBox from "../ProductRequest";
 import CommentsSection from "../CommentsSection";
- 
+import { ProductRequestContext } from "../../custom-hooks/Contexts";
+import { useHistory } from "react-router";
 
-class FeedbackDetail extends Component {
-  render() {
-    const { selectedRequest } = this.props;
-    const commentsCount = _.size(selectedRequest["comments"]);
+const FeedbackDetail = () => {
+  const history = useHistory();
+  const { selectedProductRequest } = useContext(ProductRequestContext);
+  const commentsCount = _.size(selectedProductRequest["comments"]);
 
-    if (!selectedRequest) {
-      this.props.history.push("/not-found");
-      return null;
-    }
-
-    return (
-      <div className="feedback-detail-page">
-        <div className="__top-group flex flex-ai-c flex-jc-sb">
-          <BackButton />
-          <EditFeedbackButton />
-        </div>
-        <SuggestionBox
-          title={selectedRequest["title"]}
-          description={selectedRequest["description"]}
-          category={selectedRequest["category"]}
-          upvotes={selectedRequest["upvotes"]}
-          commentsCount={commentsCount}
-        />
-        <CommentsSection
-          commentsCount={commentsCount}
-          comments={selectedRequest["comments"]}
-        />
-      </div>
-    );
+  if (!selectedProductRequest) {
+    history.push("/not-found");
+    return null;
   }
-}
+
+  return (
+    <div className="feedback-detail-page">
+      <div className="__top-group flex flex-ai-c flex-jc-sb">
+        <BackButton />
+        <EditFeedbackButton />
+      </div>
+      <SuggestionBox
+        title={selectedProductRequest["title"]}
+        description={selectedProductRequest["description"]}
+        category={selectedProductRequest["category"]}
+        upvotes={selectedProductRequest["upvotes"]}
+        commentsCount={commentsCount}
+      />
+      <CommentsSection
+        commentsCount={commentsCount}
+        comments={selectedProductRequest["comments"]}
+      />
+    </div>
+  );
+};
 
 export default FeedbackDetail;
