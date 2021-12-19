@@ -70,6 +70,7 @@
         font-size: 18px;
         line-height: 26px;
         color: $blueGrey2;
+        text-transform: capitalize;
       }
 
       .__header-description {
@@ -86,7 +87,7 @@
       border-top: 5px solid $purple;
       text-align: left;
 
-      .__content-category {
+      .__content-status {
         font-size: 13px;
         color: $darkGrey;
         margin-bottom: 16px;

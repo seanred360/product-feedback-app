@@ -22,6 +22,7 @@ const App = () => {
   }, [response]);
 
   if (loading) return <Spinner />;
+  if (error) return <h1>ERROR</h1>;
   return (
     <div className="App">
       <BrowserRouter>

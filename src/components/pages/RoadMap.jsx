@@ -1,10 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Backbutton from "../common/BackButton";
 import AddFeedbackButton from "../AddFeedbackButton";
 import RoadMapContentBox from "../RoadMapContentBox";
+import { DataContext } from "../../custom-hooks/Contexts";
+import _ from "lodash";
 
 const RoadMap = () => {
-  const [activeButton, setActiveButton] = useState(1);
+  const data = useContext(DataContext);
+  const productRequests = data["productRequests"];
+
+  const productsPlanned = _.filter(
+    productRequests,
+    (product) => product.status === "planned"
+  );
+  const productsInProgress = _.filter(
+    productRequests,
+    (product) => product.status === "in-progress"
+  );
+  const productsLive = _.filter(
+    productRequests,
+    (product) => product.status === "live"
+  );
+
+  const [activeStatus, setActiveStatus] = useState("in-progress");
+  const [activeStatusArray, setActiveStatusArray] =
+    useState(productsInProgress);
+
+  const onClick = (activeStatus, activeStatusArray) => {
+    setActiveStatus(activeStatus);
+    setActiveStatusArray(activeStatusArray);
+  };
 
   return (
     <div className="roadmap">
@@ -19,35 +44,37 @@ const RoadMap = () => {
       </div>
       <div className="__nav-bottom">
         <button
-          className={activeButton === 0 ? "--active" : ""}
-          onClick={() => setActiveButton(0)}
+          className={activeStatus === "planned" ? "--active" : ""}
+          onClick={() => onClick("planned", productsPlanned)}
         >
-          Planned ({2})
+          Planned ({productsPlanned.length})
         </button>
         <button
-          className={activeButton === 1 ? "--active" : ""}
-          onClick={() => setActiveButton(1)}
+          className={activeStatus === "in-progress" ? "--active" : ""}
+          onClick={() => onClick("in-progress", productsInProgress)}
         >
-          In-Progress ({3})
+          In-Progress ({productsInProgress.length})
         </button>
         <button
-          className={activeButton === 2 ? "--active" : ""}
-          onClick={() => setActiveButton(2)}
+          className={activeStatus === "live" ? "--active" : ""}
+          onClick={() => onClick("live", productsLive)}
         >
-          Live ({1})
+          Live ({productsLive.length})
         </button>
       </div>
 
       <div className="__container">
         <div className="__header">
-          <h2 className="__header-name">In-Progress ({3})</h2>
+          <h2 className="__header-name">
+            {activeStatus} ({activeStatusArray.length})
+          </h2>
           <span className="__header-description">
             Features currently being developed
           </span>
         </div>
-        <RoadMapContentBox />
-        <RoadMapContentBox />
-        <RoadMapContentBox />
+        {activeStatusArray.map((product) => (
+          <RoadMapContentBox key={product["title"]} content={product} />
+        ))}
       </div>
     </div>
   );

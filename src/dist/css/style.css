@@ -997,6 +997,7 @@ input.form-control:focus {
   font-size: 18px;
   line-height: 26px;
   color: #3a4374;
+  text-transform: capitalize;
 }
 
 .roadmap .__container .__header .__header-description {
@@ -1013,13 +1014,13 @@ input.form-control:focus {
   text-align: left;
 }
 
-.roadmap .__container .__roadmap-content-box .__content-category {
+.roadmap .__container .__roadmap-content-box .__content-status {
   font-size: 13px;
   color: #647196;
   margin-bottom: 16px;
 }
 
-.roadmap .__container .__roadmap-content-box .__content-category::marker {
+.roadmap .__container .__roadmap-content-box .__content-status::marker {
   color: #ad1fea;
 }
 

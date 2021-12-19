@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import _ from "lodash";
 import SuggestionsEmpty from "../ProductRequestEmpty";
 import SuggestionBox from "../ProductRequest";
-import { FaProductHunt } from "react-icons/fa";
 import {
   DataContext,
   ProductRequestContext,

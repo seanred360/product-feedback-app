@@ -2,20 +2,21 @@ import React from "react";
 import CategoryButton from "./common/CategoryButton";
 import UpVote from "./common/UpVote";
 import CommentsCounter from "./common/CommentsCounter";
+import _ from 'lodash';
 
-const RoadMapContentBox = () => {
+const RoadMapContentBox = ({content}) => {
   return (
     <div className="__roadmap-content-box">
-      <li className="__content-category">In Progress</li>
+      <li className="__content-status">{content["status"]}</li>
 
-      <span className="__content-name">One-click portfolio generation</span>
+      <span className="__content-name">{content["title"]}</span>
       <p className="__content-description">
-        Add ability to create professional looking portfolio from profile.
+        {content["description"]}
       </p>
       <CategoryButton itemName={"Feature"} />
       <div className="__bottom">
-        <UpVote upvotes={62} />
-        <CommentsCounter commentsCount={1} />
+        <UpVote upvotes={content["upvotes"]} />
+        <CommentsCounter commentsCount={_.size(content["comments"])} />
       </div>
     </div>
   );
