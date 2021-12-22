@@ -6,8 +6,7 @@ import { DataContext } from "../../custom-hooks/Contexts";
 import _ from "lodash";
 
 const RoadMap = () => {
-  const { data } = useContext(DataContext);
-  const productRequests = data["productRequests"];
+  const { productRequests } = useContext(DataContext);
 
   const productsPlanned = _.filter(
     productRequests,
@@ -30,7 +29,7 @@ const RoadMap = () => {
     setActiveStatusArray(activeStatusArray);
   };
 
-  if (!data) return <h1>null data</h1>;
+  if (!productRequests) return <h1>null data</h1>;
   return (
     <div className="roadmap">
       <div className="__nav-top">

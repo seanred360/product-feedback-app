@@ -5,7 +5,9 @@ import Spinner from "../components/common/Spinner";
 export const DataContext = createContext(null);
 
 export const DataContextProvider = ({ children }) => {
-  const [data, setData] = useState({});
+  // const [data, setData] = useState({});
+  const [currentUser, setCurrentUser] = useState({});
+  const [productRequests, setProductRequests] = useState({});
   const [filteredProducts, setFilteredProducts] = useState({});
   const [selectedProduct, setSelectedProduct] = useState({});
 
@@ -16,7 +18,8 @@ export const DataContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (response !== null) {
-      setData(response);
+      setCurrentUser(response["currentUser"]);
+      setProductRequests(response["productRequests"]);
       setFilteredProducts(response["productRequests"]);
     }
   }, [response]);
@@ -26,8 +29,10 @@ export const DataContextProvider = ({ children }) => {
   return (
     <DataContext.Provider
       value={{
-        data,
-        setData,
+        currentUser,
+        setCurrentUser,
+        productRequests,
+        setProductRequests,
         filteredProducts,
         setFilteredProducts,
         selectedProduct,
@@ -38,15 +43,3 @@ export const DataContextProvider = ({ children }) => {
     </DataContext.Provider>
   );
 };
-
-// export const SelectedProductContextProvider = ({ children }) => {
-//   const [selectedProduct, setSelectedProduct] = useState({});
-
-//   return (
-//     <SelectedProductContext.Provider
-//       value={{ selectedProduct, setSelectedProduct }}
-//     >
-//       {children}
-//     </SelectedProductContext.Provider>
-//   );
-// };

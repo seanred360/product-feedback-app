@@ -3,13 +3,13 @@ import { DataContext } from "../../custom-hooks/Contexts";
 import _ from "lodash";
 
 const CategoryButton = ({ itemName }) => {
-  const { data, setFilteredProducts } = useContext(DataContext);
+  const { productRequests, setFilteredProducts } = useContext(DataContext);
   const handleClick = (filterCategory) => {
-    if (filterCategory === "all") setFilteredProducts(data["productRequests"]);
+    if (filterCategory === "all") setFilteredProducts(productRequests);
     else {
       setFilteredProducts(
         _.filter(
-          data["productRequests"],
+          productRequests,
           (product) => product.category === filterCategory
         )
       );
