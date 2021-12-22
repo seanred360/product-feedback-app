@@ -3,7 +3,7 @@ import AddFeedbackButton from "./AddFeedbackButton";
 import DropDownBox from "./common/DropDownBox";
 
 const NavBar2 = () => {
-  const items = [
+  const filterCategories = [
     "Most Upvotes",
     "Least Upvotes",
     "Most Comments",
@@ -14,7 +14,7 @@ const NavBar2 = () => {
     <div className="nav-bar2__container">
       <div className="nav-bar2 flex flex-jc-sb flex-ai-c">
         <div className="__left-content flex">
-          <DropDownBox dropdownItems={items} />
+          <DropDownBox dropdownItems={filterCategories} />
         </div>
         <AddFeedbackButton />
       </div>
