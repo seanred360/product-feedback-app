@@ -11,7 +11,7 @@ const MobileMenu = ({ isOpen }) => {
         <div className="__mobile-menu">
           <div className="--menu-top">
             {items.map((item) => (
-              <CategoryButton key={item} item={item} />
+              <CategoryButton key={item} itemName={item} />
             ))}
           </div>
           <div className="--menu-bottom">

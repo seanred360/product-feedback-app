@@ -4,15 +4,15 @@ import BackButton from "../common/BackButton";
 import EditFeedbackButton from "../EditFeedbackButton";
 import SuggestionBox from "../ProductRequest";
 import CommentsSection from "../CommentsSection";
-import { ProductRequestContext } from "../../custom-hooks/Contexts";
+import { DataContext } from "../../custom-hooks/Contexts";
 import { useHistory } from "react-router";
 
 const FeedbackDetail = () => {
   const history = useHistory();
-  const { selectedProductRequest } = useContext(ProductRequestContext);
-  const commentsCount = _.size(selectedProductRequest["comments"]);
+  const { selectedProduct } = useContext(DataContext);
+  const commentsCount = _.size(selectedProduct["comments"]);
 
-  if (!selectedProductRequest) {
+  if (!selectedProduct) {
     history.push("/not-found");
     return null;
   }
@@ -24,15 +24,15 @@ const FeedbackDetail = () => {
         <EditFeedbackButton />
       </div>
       <SuggestionBox
-        title={selectedProductRequest["title"]}
-        description={selectedProductRequest["description"]}
-        category={selectedProductRequest["category"]}
-        upvotes={selectedProductRequest["upvotes"]}
+        title={selectedProduct["title"]}
+        description={selectedProduct["description"]}
+        category={selectedProduct["category"]}
+        upvotes={selectedProduct["upvotes"]}
         commentsCount={commentsCount}
       />
       <CommentsSection
         commentsCount={commentsCount}
-        comments={selectedProductRequest["comments"]}
+        comments={selectedProduct["comments"]}
       />
     </div>
   );

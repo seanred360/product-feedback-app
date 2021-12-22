@@ -6,7 +6,7 @@ import { DataContext } from "../../custom-hooks/Contexts";
 import _ from "lodash";
 
 const RoadMap = () => {
-  const data = useContext(DataContext);
+  const { data } = useContext(DataContext);
   const productRequests = data["productRequests"];
 
   const productsPlanned = _.filter(
@@ -21,16 +21,16 @@ const RoadMap = () => {
     productRequests,
     (product) => product.status === "live"
   );
-
   const [activeStatus, setActiveStatus] = useState("in-progress");
   const [activeStatusArray, setActiveStatusArray] =
     useState(productsInProgress);
 
-  const onClick = (activeStatus, activeStatusArray) => {
+  const handleClick = (activeStatus, activeStatusArray) => {
     setActiveStatus(activeStatus);
     setActiveStatusArray(activeStatusArray);
   };
 
+  if (!data) return <h1>null data</h1>;
   return (
     <div className="roadmap">
       <div className="__nav-top">
@@ -45,19 +45,19 @@ const RoadMap = () => {
       <div className="__nav-bottom">
         <button
           className={activeStatus === "planned" ? "--active" : ""}
-          onClick={() => onClick("planned", productsPlanned)}
+          onClick={() => handleClick("planned", productsPlanned)}
         >
           Planned ({productsPlanned.length})
         </button>
         <button
           className={activeStatus === "in-progress" ? "--active" : ""}
-          onClick={() => onClick("in-progress", productsInProgress)}
+          onClick={() => handleClick("in-progress", productsInProgress)}
         >
           In-Progress ({productsInProgress.length})
         </button>
         <button
           className={activeStatus === "live" ? "--active" : ""}
-          onClick={() => onClick("live", productsLive)}
+          onClick={() => handleClick("live", productsLive)}
         >
           Live ({productsLive.length})
         </button>

@@ -3,16 +3,15 @@ import CategoryButton from "./common/CategoryButton";
 import UpVote from "./common/UpVote";
 import CommentsCounter from "./common/CommentsCounter";
 import _ from "lodash";
-import { ProductRequestContext } from "../custom-hooks/Contexts";
+import { DataContext } from "../custom-hooks/Contexts";
 import { useHistory } from "react-router";
 
 const RoadMapContentBox = ({ content }) => {
-  const { setSelectedProductRequest } = useContext(ProductRequestContext);
+  const { setSelectedProduct } = useContext(DataContext);
   const history = useHistory();
 
-  const handleClick = (product) => {
-    console.log("click");
-    setSelectedProductRequest(product);
+  const handleClick = (content) => {
+    setSelectedProduct(content);
     history.push("/feedback-detail");
   };
 
