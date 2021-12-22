@@ -4,10 +4,16 @@ import { BiCheck } from "react-icons/bi";
 import { DataContext } from "../../custom-hooks/Contexts";
 import _ from "lodash";
 
-const DropDownBox = ({ dropdownItems }) => {
+const DropDownBox = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { productRequests, setFilteredProducts } = useContext(DataContext);
   const reorderedProductRequests = productRequests;
+  const filterCategories = [
+    "Most Upvotes",
+    "Least Upvotes",
+    "Most Comments",
+    "Least Comments",
+  ];
 
   const handleClick = (sortCategory) => {
     if (sortCategory.toLowerCase() === "most upvotes") sortByMostUpvotes();
@@ -62,7 +68,7 @@ const DropDownBox = ({ dropdownItems }) => {
         className="dropdown-menu"
         style={{ display: isOpen ? "block" : "none" }}
       >
-        {dropdownItems.map((item) => (
+        {filterCategories.map((item) => (
           <li key={item}>
             <button
               className="dropdown-item flex flex-jc-sb"
