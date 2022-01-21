@@ -9,6 +9,10 @@
   color: $grey;
   border: none;
 
+  &:disabled {
+    opacity: 0.2;
+  }
+
   &.--purple-button {
     background: $purple;
 

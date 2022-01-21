@@ -16,7 +16,7 @@ const HomePage = () => {
         {filteredProducts.map((product) => (
           <ProductRequest
             product={product}
-            key={product["title"]}
+            key={product["_id"]}
             title={product["title"]}
             description={product["description"]}
             category={product["category"]}

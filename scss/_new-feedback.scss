@@ -6,19 +6,11 @@
     margin-bottom: 55px;
   }
 
-  .create-new-feedback {
+  .feedback-window {
     position: relative;
     padding: 24px;
     background: $white;
     border-radius: 10px;
-
-    form {
-      font-size: 13px;
-      margin-bottom: 24px;
-      &:last-of-type {
-        margin-bottom: 40px;
-      }
-    }
 
     .__plus-circle {
       display: flex;
@@ -48,34 +40,20 @@
     }
 
     form {
-      .__title {
+      font-size: 13px;
+      line-height: 19px;
+      margin-bottom: 24px;
+      &:last-of-type {
+        margin-bottom: 40px;
+      }
+
+      label {
         font-weight: bold;
         color: #3a4374;
       }
 
       .__instructions {
         color: #647196;
-      }
-
-      #__feedback-title-input,
-      #__feedback-category {
-        width: 279px;
-        height: 48px;
-        padding: 14px 16px;
-        background: #f7f8fd;
-        border: none;
-        border-radius: 5px;
-        resize: none;
-      }
-
-      #__feedback-detail-input {
-        width: 279px;
-        height: 120px;
-        padding: 14px 16px;
-        background: #f7f8fd;
-        border: none;
-        border-radius: 5px;
-        resize: none;
       }
     }
 

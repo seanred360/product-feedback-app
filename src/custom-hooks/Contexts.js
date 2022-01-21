@@ -13,14 +13,14 @@ export const DataContextProvider = ({ children }) => {
 
   const { response, loading, error } = useAxios({
     method: "get",
-    url: "data.json",
+    url: "https://product-feedback-rest-api.herokuapp.com/productrequests",
   });
 
   useEffect(() => {
     if (response !== null) {
-      setCurrentUser(response["currentUser"]);
-      setProductRequests(response["productRequests"]);
-      setFilteredProducts(response["productRequests"]);
+      // setCurrentUser(response["currentUser"]);
+      setProductRequests(response);
+      setFilteredProducts(response);
     }
   }, [response]);
 
