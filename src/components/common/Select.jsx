@@ -1,4 +1,12 @@
-const Select = ({ name, label, instructions, onChange, items, error }) => {
+const Select = ({
+  name,
+  label,
+  instructions,
+  onChange,
+  items,
+  value,
+  error,
+}) => {
   return (
     <div>
       <label htmlFor={name}>{label}</label>
@@ -8,6 +16,7 @@ const Select = ({ name, label, instructions, onChange, items, error }) => {
         name={name}
         id={name}
         className={error ? "--error" : ""}
+        value={value}
         onChange={onChange}
       >
         {items.map((item) => (

@@ -9,7 +9,7 @@ export const DataContextProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState({});
   const [productRequests, setProductRequests] = useState({});
   const [filteredProducts, setFilteredProducts] = useState({});
-  const [selectedProduct, setSelectedProduct] = useState({});
+  const [selectedProduct, setSelectedProduct] = useState();
 
   const { response, loading, error } = useAxios({
     method: "get",

@@ -2,6 +2,7 @@ const TextInput = ({
   name,
   label,
   instructions,
+  value,
   autoFocus,
   onChange,
   error,
@@ -16,6 +17,7 @@ const TextInput = ({
         id={name}
         name={name}
         type="text"
+        value={value}
         autoFocus={autoFocus}
         onChange={onChange}
       />

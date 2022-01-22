@@ -18,7 +18,7 @@ const ProductRequest = ({
 
   const handleClick = () => {
     setSelectedProduct(product);
-    history.push("/feedback-detail");
+    history.push(`/${product._id}`);
   };
 
   return (
