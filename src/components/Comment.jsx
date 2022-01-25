@@ -12,7 +12,7 @@ const Comment = ({ userImage, userName, userAlias, content, replies }) => {
         />
         <div className="--user-text">
           <span className="--user-name">{userName}</span>
-          <span className="--user-alias">{userAlias}</span>
+          <span className="--user-alias">{userAlias && userAlias}</span>
         </div>
         <button className="--reply-button all-buttons">Reply</button>
       </div>

@@ -11,7 +11,7 @@ const CommentsSection = ({ commentsCount, comments }) => {
           {comments &&
             comments.map((comment) => (
               <Comment
-                key={comment["content"]}
+                key={comment["content"] + "1231312"}
                 userImage={comment["user"]["image"]}
                 userName={comment["user"]["name"]}
                 userAlias={comment["user"]["username"]}

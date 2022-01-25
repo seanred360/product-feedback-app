@@ -1,8 +1,12 @@
 const TextInput = ({
   name,
   label,
+  type,
   instructions,
+  defaultValue,
   value,
+  required,
+  placeholder,
   autoFocus,
   onChange,
   error,
@@ -16,11 +20,15 @@ const TextInput = ({
         className={error ? "--error" : ""}
         id={name}
         name={name}
-        type="text"
+        type={type ? type : "text"}
+        defaultValue={defaultValue}
         value={value}
+        required={required}
+        placeholder={placeholder}
         autoFocus={autoFocus}
         onChange={onChange}
       />
+      {error && <span>{error}</span>}
     </div>
   );
 };
