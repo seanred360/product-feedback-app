@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useHistory, useRouteMatch, useLocation } from "react-router-dom";
 import axios from "axios";
 import Joi from "joi-browser";
 import BackButton from "../common/BackButton";
@@ -7,10 +6,11 @@ import TextInput from "../common/TextInput";
 import Select from "../common/Select";
 import TextArea from "../common/TextArea";
 import { ToastContainer, toast } from "react-toastify";
+import { useHistory, useLocation, useRouteMatch } from "react-router-dom";
 
-const NewFeedback = () => {
-  const location = useLocation();
+const EditFeedbackPage = () => {
   const history = useHistory();
+  const location = useLocation();
   const match = useRouteMatch();
   const [formData, setFormData] = useState({
     title: "",
@@ -52,90 +52,54 @@ const NewFeedback = () => {
     data[input.name] = input.value;
 
     setFormData(data);
-    setError(error);
+    setError(errors);
   };
 
   const handleDelete = (e) => {
-    e.preventDefault();
-
     axios
       .delete(
-        `https://product-feedback-rest-api.herokuapp.com/productrequests/${match.params.id}`,
-        {
-          title: formData.title,
-          category: formData.category,
-          upvotes: 0,
-          status: "suggeston",
-          description: formData.description,
-          comments: [],
-        }
+        `https://product-feedback-rest-api.herokuapp.com/productrequests/${match.params.id}`
       )
       .then(function (response) {
         console.log(response);
-        toast.success("Delete successful!");
+        toast.success("Feedback deleted successfully!");
         history.push("/");
       })
       .catch(function (error) {
         console.log(error);
-        toast.error("400 Bad Request Error");
+        toast.error("Failed to delete feedback");
       });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const errors = validate();
-    setError(error || {});
+    setError(errors || {});
     if (errors) {
       toast.error("Please fill in the required fields.");
       return;
     }
-
-    if (location.pathname === "/new") {
-      axios
-        .post(
-          `https://product-feedback-rest-api.herokuapp.com/productrequests`,
-          {
-            title: formData.title,
-            category: formData.category,
-            upvotes: 0,
-            status: "suggeston",
-            description: formData.description,
-            comments: [],
-          }
-        )
-        .then(function (response) {
-          console.log(response);
-          toast.success("Thanks for your feedback!");
-          history.push("/");
-        })
-        .catch(function (error) {
-          console.log(error);
-          toast.error("400 Bad Request Error");
-        });
-    } else {
-      axios
-        .patch(
-          `https://product-feedback-rest-api.herokuapp.com/productrequests/${match.params.id}`,
-          {
-            title: formData.title,
-            category: formData.category,
-            upvotes: 0,
-            status: "suggeston",
-            description: formData.description,
-            comments: [],
-          }
-        )
-        .then(function (response) {
-          console.log(response);
-          toast.success("Edit feedback successful!");
-          history.push("/");
-        })
-        .catch(function (error) {
-          console.log(error);
-          toast.error("400 Bad Request Error");
-        });
-    }
+    axios
+      .patch(
+        `https://product-feedback-rest-api.herokuapp.com/productrequests/${location.selectedProduct._id}`,
+        {
+          title: formData.title,
+          category: formData.category,
+          // upvotes: location.selectedProduct.upvotes,
+          // status: location.selectedProduct.status,
+          description: formData.description,
+          // comments: location.selectedProduct.comments,
+        }
+      )
+      .then(function (response) {
+        console.log(response);
+        toast.success("Edit feedback successful!");
+        history.push("/");
+      })
+      .catch(function (error) {
+        console.log(error);
+        toast.error("Failed to edit feedback");
+      });
   };
 
   return (
@@ -146,9 +110,7 @@ const NewFeedback = () => {
       </div>
       <div className="feedback-window">
         <div className="__plus-circle">+</div>
-        <h1 className="__header">
-          {location.pathname === `/new` ? `Create New Feedback` : `Editing`}
-        </h1>
+        <h1 className="__header">{`Editing ${location.selectedProduct.title}`}</h1>
         <form onSubmit={handleSubmit}>
           <TextInput
             name={"title"}
@@ -184,7 +146,7 @@ const NewFeedback = () => {
               type="submit"
               disabled={validate()}
             >
-              {location.pathname === "/new" ? "Add Feedback" : "Save Changes"}
+              Save Changes
             </button>
             <button
               className="all-buttons --blue-grey2-button"
@@ -197,11 +159,6 @@ const NewFeedback = () => {
               className="all-buttons --red-button"
               type="button"
               onClick={handleDelete}
-              style={
-                location.pathname === "/new"
-                  ? { display: "none" }
-                  : { display: "block" }
-              }
             >
               Delete
             </button>
@@ -212,4 +169,4 @@ const NewFeedback = () => {
   );
 };
 
-export default NewFeedback;
+export default EditFeedbackPage;

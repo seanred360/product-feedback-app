@@ -3,6 +3,7 @@ import _ from "lodash";
 import ProductRequestEmpty from "../ProductRequestEmpty";
 import ProductRequest from "../ProductRequest";
 import { DataContext } from "../../custom-hooks/Contexts";
+import Menu from "../Menu";
 
 const HomePage = () => {
   const { filteredProducts } = useContext(DataContext);
@@ -12,6 +13,7 @@ const HomePage = () => {
   }
   return (
     <>
+      <Menu />
       <div className="home-page">
         {filteredProducts.map((product) => (
           <ProductRequest

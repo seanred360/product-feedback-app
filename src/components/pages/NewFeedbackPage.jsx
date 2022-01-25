@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 import Joi from "joi-browser";
 import BackButton from "../common/BackButton";
@@ -7,22 +7,30 @@ import TextInput from "../common/TextInput";
 import Select from "../common/Select";
 import TextArea from "../common/TextArea";
 import { ToastContainer, toast } from "react-toastify";
-import { useHistory } from "react-router-dom";
+import { useAuth } from "../../custom-hooks/AuthContext";
 
-const EditFeedback = () => {
-  const location = useLocation();
+const NewFeedbackPage = () => {
+  const { currentUser } = useAuth();
   const history = useHistory();
   const [formData, setFormData] = useState({
+    author: currentUser.email,
     title: "",
     category: "Feature",
+    upvotes: 0,
+    status: "suggestion",
     description: "",
+    comments: [],
   });
   const [error, setError] = useState({});
 
   const schema = {
+    author: Joi.string().required(),
     title: Joi.string().required().label("Feedback Title"),
     category: Joi.string().required().label("Feedback Category"),
+    upvotes: Joi.number().integer(),
+    status: Joi.string(),
     description: Joi.string().required().label("Feedback Description"),
+    comments: Joi.array(),
   };
 
   const validate = () => {
@@ -42,9 +50,6 @@ const EditFeedback = () => {
     return errors ? errors.details[0].message : null;
   };
 
-  const successToast = () => toast.success("Thanks for your feedback!");
-  const errorToast = () => toast.error("Please fill in the required fields.");
-
   const handleChange = (input) => {
     const errors = { ...error };
     const errorMessage = validateProperty(input);
@@ -55,64 +60,37 @@ const EditFeedback = () => {
     data[input.name] = input.value;
 
     setFormData(data);
-    setError(errors);
+    setError(error);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const errors = validate();
-    setError(errors || {});
+    setError(error || {});
     if (errors) {
-      errorToast();
+      toast.error("Please fill in the required fields.");
       return;
     }
-
-    if (location.pathname === "/:id/edit") {
-      axios
-        .patch(
-          `https://product-feedback-rest-api.herokuapp.com/productrequests/${location.selectedProduct._id}`,
-          {
-            title: formData.title,
-            category: formData.category,
-            upvotes: 0,
-            status: "suggeston",
-            description: formData.description,
-            comments: [],
-          }
-        )
-        .then(function (response) {
-          console.log(response);
-          successToast();
-          history.push("/");
-        })
-        .catch(function (error) {
-          console.log(error);
-          errorToast();
-        });
-    } else {
-      axios
-        .post(
-          `https://product-feedback-rest-api.herokuapp.com/productrequests`,
-          {
-            title: formData.title,
-            category: formData.category,
-            upvotes: 0,
-            status: "suggeston",
-            description: formData.description,
-            comments: [],
-          }
-        )
-        .then(function (response) {
-          console.log(response);
-          successToast();
-          history.push("/");
-        })
-        .catch(function (error) {
-          console.log(error);
-          errorToast();
-        });
-    }
+    axios
+      .post(`https://product-feedback-rest-api.herokuapp.com/productrequests`, {
+        author: formData.author,
+        title: formData.title,
+        category: formData.category,
+        upvotes: 0,
+        status: "suggeston",
+        description: formData.description,
+        comments: [],
+      })
+      .then(function (response) {
+        console.log(response);
+        toast.success("Thanks for your feedback!");
+        history.push("/");
+      })
+      .catch(function (error) {
+        console.log(error);
+        toast.error("400 Bad Request Error");
+      });
   };
 
   return (
@@ -123,11 +101,7 @@ const EditFeedback = () => {
       </div>
       <div className="feedback-window">
         <div className="__plus-circle">+</div>
-        <h1 className="__header">
-          {location.pathname === `/new`
-            ? `Create New Feedback`
-            : `Editing${" insert feedback name here"}`}
-        </h1>
+        <h1 className="__header">Create New Feedback</h1>
         <form onSubmit={handleSubmit}>
           <TextInput
             name={"title"}
@@ -163,7 +137,7 @@ const EditFeedback = () => {
               type="submit"
               disabled={validate()}
             >
-              {location.pathname === "/new" ? "Add Feedback" : "Save Changes"}
+              Add Feedback
             </button>
             <button
               className="all-buttons --blue-grey2-button"
@@ -172,17 +146,6 @@ const EditFeedback = () => {
             >
               Cancel
             </button>
-            <button
-              className="all-buttons --red-button"
-              type="button"
-              style={
-                location.pathname === "/new"
-                  ? { display: "block" }
-                  : { display: "block" }
-              }
-            >
-              Delete
-            </button>
           </div>
         </form>
       </div>
@@ -190,4 +153,4 @@ const EditFeedback = () => {
   );
 };
 
-export default EditFeedback;
+export default NewFeedbackPage;
