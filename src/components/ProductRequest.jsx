@@ -27,7 +27,7 @@ const ProductRequest = ({
       <p className="__description">{description}</p>
       <CategoryButton itemName={category} />
       <div className="__bottom">
-        <UpVote upvotes={upvotes} />
+        <UpVote upvotes={upvotes} product={product} />
         <CommentsCounter commentsCount={commentsCount} />
       </div>
     </div>
