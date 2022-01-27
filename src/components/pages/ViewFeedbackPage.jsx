@@ -3,12 +3,12 @@ import { useLocation } from "react-router";
 import _ from "lodash";
 import BackButton from "../common/BackButton";
 import EditFeedbackButton from "../EditFeedbackButton";
-import SuggestionBox from "../ProductRequest";
+import ProductRequest from "../ProductRequest";
 import CommentsSection from "../CommentsSection";
 import useAxios from "../../custom-hooks/useAxios";
 import Spinner from "../common/Spinner";
 
-const ViewFeedback = () => {
+const ViewFeedbackPage = () => {
   const location = useLocation();
   const [selectedProduct, setSelectedProduct] = useState();
   const { response, loading, error } = useAxios({
@@ -22,7 +22,7 @@ const ViewFeedback = () => {
   }, [response]);
 
   if (loading) return <Spinner />;
-  if (error) return <h1>ERROR</h1>;
+  if (error) return <strong>{error.message}</strong>;
   const commentsCount = _.size(selectedProduct["comments"]);
 
   if (loading) return <Spinner />;
@@ -32,8 +32,9 @@ const ViewFeedback = () => {
         <BackButton />
         <EditFeedbackButton selectedProduct={selectedProduct} />
       </div>
-      <SuggestionBox
+      <ProductRequest
         title={selectedProduct["title"]}
+        product={selectedProduct}
         description={selectedProduct["description"]}
         category={selectedProduct["category"]}
         upvotes={selectedProduct["upvotes"]}
@@ -41,10 +42,10 @@ const ViewFeedback = () => {
       />
       <CommentsSection
         commentsCount={commentsCount}
-        comments={selectedProduct["comments"]}
+        targetFeedback={selectedProduct}
       />
     </div>
   );
 };
 
-export default ViewFeedback;
+export default ViewFeedbackPage;

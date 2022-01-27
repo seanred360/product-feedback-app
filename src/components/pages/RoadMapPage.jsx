@@ -5,7 +5,7 @@ import RoadMapContentBox from "../RoadMapContentBox";
 import { DataContext } from "../../custom-hooks/Contexts";
 import _ from "lodash";
 
-const RoadMap = () => {
+const RoadMapPage = () => {
   const { productRequests } = useContext(DataContext);
 
   const productsPlanned = _.filter(
@@ -79,4 +79,4 @@ const RoadMap = () => {
   );
 };
 
-export default RoadMap;
+export default RoadMapPage;

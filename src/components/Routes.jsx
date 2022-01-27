@@ -1,9 +1,9 @@
 import { Switch, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import NotFound from "./pages/NotFound";
-import ViewFeedback from "./pages/ViewFeedback";
+import NotFoundPage from "./pages/NotFoundPage";
+import ViewFeedbackPage from "./pages/ViewFeedbackPage";
 import NewFeedbackPage from "./pages/NewFeedbackPage";
-import RoadMap from "./pages/RoadMap";
+import RoadMapPage from "./pages/RoadMapPage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import PrivateRoute from "./common/PrivateRoute";
@@ -21,12 +21,9 @@ const Routes = () => {
       <Route path="/forgot-password" component={ForgotPasswordPage} />
       <Route path="/sign-up" component={SignupPage} />
       <Route path="/log-in" component={LoginPage} />
-      <Route path="/not-found" component={NotFound} />
-      <Route
-        path="/:id"
-        render={(props) => <ViewFeedback {...props} />}
-      ></Route>
-      <Route exact path="/road-map" component={RoadMap}></Route>
+      <Route path="/not-found" component={NotFoundPage} />
+      <Route path="/:id" render={(props) => <ViewFeedbackPage {...props} />} />
+      <Route exact path="/road-map" component={RoadMapPage} />
     </Switch>
   );
 };

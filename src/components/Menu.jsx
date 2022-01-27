@@ -1,16 +1,20 @@
 import React, { useState } from "react";
-import NavBar from "./common/NavBar";
-import MobileMenu from "./MobileMenu";
-import NavBar2 from "./NavBar2";
+import Logo from "./common/Logo";
+import MobileSlideOut from "./MobileSlideOut";
+import ToolBar from "./ToolBar";
 
-const Menu = () => {
+const Menu = ({ dataToSort, setData }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="menu">
-      <NavBar onOpen={() => setIsOpen(!isOpen)} />
-      <MobileMenu isOpen={isOpen} />
-      <NavBar2 />
+      <Logo onOpen={() => setIsOpen(!isOpen)} />
+      <ToolBar dataToSort={dataToSort} setData={setData} />
+      <MobileSlideOut
+        isOpen={isOpen}
+        dataToSort={dataToSort}
+        setData={setData}
+      />
     </div>
   );
 };

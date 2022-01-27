@@ -1,7 +1,7 @@
 import React from "react";
 import HamburgerButton from "./HamburgerButton";
 
-const NavBar = ({ onOpen }) => {
+const Logo = ({ onOpen }) => {
   return (
     <div className="nav-bar__container">
       <nav className="nav-bar flex flex-jc-sb flex-ai-c">
@@ -15,4 +15,4 @@ const NavBar = ({ onOpen }) => {
   );
 };
 
-export default NavBar;
+export default Logo;
