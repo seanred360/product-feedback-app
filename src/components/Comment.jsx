@@ -1,5 +1,5 @@
 import React from "react";
-import ReplyComment from "./ReplyComment";
+// import ReplyComment from "./ReplyComment";
 
 const Comment = ({ userImage, userName, userAlias, content, replies }) => {
   return (
@@ -14,15 +14,15 @@ const Comment = ({ userImage, userName, userAlias, content, replies }) => {
           <span className="--user-name">{userName}</span>
           <span className="--user-alias">{userAlias && userAlias}</span>
         </div>
-        <button className="--reply-button all-buttons">Reply</button>
+        {/* <button className="--reply-button all-buttons">Reply</button> */}
       </div>
       <p className="__content">{content}</p>
-      <div className="__replies">
+      {/* <div className="__replies">
         {replies &&
           replies.map((reply) => (
             <ReplyComment key={reply["content"]} reply={reply} />
           ))}
-      </div>
+      </div> */}
     </div>
   );
 };

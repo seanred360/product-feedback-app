@@ -1,13 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import { BiCheck } from "react-icons/bi";
-import { DataContext } from "../../custom-hooks/Contexts";
 import _ from "lodash";
 
-const DropDownBox = () => {
+const DropDownBox = ({ dataToSort, setData }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { productRequests, setFilteredProducts } = useContext(DataContext);
-  const reorderedProductRequests = productRequests;
+  const reorderedProductRequests = dataToSort;
   const filterCategories = [
     "Most Upvotes",
     "Least Upvotes",
@@ -26,25 +24,25 @@ const DropDownBox = () => {
     reorderedProductRequests.sort((a, b) => {
       return b.upvotes - a.upvotes;
     });
-    setFilteredProducts([...reorderedProductRequests]); // must use spread operator or React won't re render
+    setData([...reorderedProductRequests]); // must use spread operator or React won't re render
   };
   const sortByLeastUpvotes = () => {
     reorderedProductRequests.sort((a, b) => {
       return a.upvotes - b.upvotes;
     });
-    setFilteredProducts([...reorderedProductRequests]); // must use spread operator or React won't re render
+    setData([...reorderedProductRequests]); // must use spread operator or React won't re render
   };
   const sortByMostComments = () => {
     reorderedProductRequests.sort((a, b) => {
       return _.size(b.comments) - _.size(a.comments);
     });
-    setFilteredProducts([...reorderedProductRequests]); // must use spread operator or React won't re render
+    setData([...reorderedProductRequests]); // must use spread operator or React won't re render
   };
   const sortByLeastComments = () => {
     reorderedProductRequests.sort((a, b) => {
       return _.size(a.comments) - _.size(b.comments);
     });
-    setFilteredProducts([...reorderedProductRequests]); // must use spread operator or React won't re render
+    setData([...reorderedProductRequests]); // must use spread operator or React won't re render
   };
 
   return (

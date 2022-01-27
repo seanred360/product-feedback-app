@@ -1,18 +1,10 @@
-import React, { useContext } from "react";
-import { DataContext } from "../../custom-hooks/Contexts";
 import _ from "lodash";
 
-const CategoryButton = ({ itemName }) => {
-  const { productRequests, setFilteredProducts } = useContext(DataContext);
+const CategoryButton = ({ itemName, dataToSort, setData }) => {
   const handleClick = (filterCategory) => {
-    if (filterCategory === "all") setFilteredProducts(productRequests);
+    if (filterCategory === "all") setData(dataToSort);
     else {
-      setFilteredProducts(
-        _.filter(
-          productRequests,
-          (product) => product.category === filterCategory
-        )
-      );
+      setData(_.filter(dataToSort, (data) => data.category === filterCategory));
     }
   };
 

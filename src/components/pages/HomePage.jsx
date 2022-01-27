@@ -1,31 +1,30 @@
-import React, { useContext } from "react";
-import _ from "lodash";
-import ProductRequestEmpty from "../ProductRequestEmpty";
-import ProductRequest from "../ProductRequest";
-import { DataContext } from "../../custom-hooks/Contexts";
+import { useEffect, useState } from "react";
+import useAxios from "../../custom-hooks/useAxios";
 import Menu from "../Menu";
+import Feed from "../Feed";
+import Spinner from "../common/Spinner";
 
 const HomePage = () => {
-  const { filteredProducts } = useContext(DataContext);
+  const [productRequests, setProductRequests] = useState();
 
-  if (!filteredProducts || _.isEmpty(filteredProducts)) {
-    return <ProductRequestEmpty />;
-  }
+  const { response, loading, error } = useAxios({
+    method: "get",
+    url: "https://product-feedback-rest-api.herokuapp.com/productrequests",
+  });
+
+  useEffect(() => {
+    if (response !== null) {
+      setProductRequests(response);
+    }
+  }, [response]);
+
+  if (loading) return <Spinner />;
+  if (error) return <strong>{error.message}</strong>;
   return (
     <>
-      <Menu />
+      <Menu dataToSort={productRequests} setData={setProductRequests} />
       <div className="home-page">
-        {filteredProducts.map((product) => (
-          <ProductRequest
-            product={product}
-            key={product["_id"]}
-            title={product["title"]}
-            description={product["description"]}
-            category={product["category"]}
-            upvotes={product["upvotes"]}
-            commentsCount={_.size(product["comments"])}
-          />
-        ))}
+        <Feed productRequests={productRequests} />
       </div>
     </>
   );

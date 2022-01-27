@@ -1,9 +1,7 @@
-import React, { useContext } from "react";
 import CategoryButton from "./common/CategoryButton";
 import UpVote from "./common/UpVote";
 import CommentsCounter from "./common/CommentsCounter";
 import { useHistory } from "react-router";
-import { DataContext } from "../custom-hooks/Contexts";
 
 const ProductRequest = ({
   product,
@@ -14,10 +12,8 @@ const ProductRequest = ({
   commentsCount,
 }) => {
   const history = useHistory();
-  const { setSelectedProduct } = useContext(DataContext);
 
   const handleClick = () => {
-    setSelectedProduct(product);
     history.push(`/${product._id}`);
   };
 
@@ -27,7 +23,7 @@ const ProductRequest = ({
       <p className="__description">{description}</p>
       <CategoryButton itemName={category} />
       <div className="__bottom">
-        <UpVote upvotes={upvotes} product={product} />
+        <UpVote upvotes={upvotes.length} product={product} />
         <CommentsCounter commentsCount={commentsCount} />
       </div>
     </div>

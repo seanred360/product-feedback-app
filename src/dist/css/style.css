@@ -307,6 +307,7 @@ Link:focus, Link:hover, Link:visited, Link:link, Link:active {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  border: none;
   border-radius: 0.625rem;
   font-weight: bold;
   font-size: 0.8125rem;

@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
-import useAxios from "../custom-hooks/useAxios";
 import { v4 as uuidv4 } from "uuid";
 import { auth } from "../components/firebase";
 import { useHistory, useRouteMatch } from "react-router-dom";
@@ -8,29 +7,13 @@ import { toast } from "react-toastify";
 import Joi from "joi-browser";
 import TextArea from "./common/TextArea";
 
-const AddComment = () => {
+const AddComment = ({ targetFeedback }) => {
   const history = useHistory();
   const match = useRouteMatch();
-  const [selectedFeedback, setSelectedFeedback] = useState();
   const [error, setError] = useState();
   const [formData, setFormData] = useState({
     content: "",
-    user: { image: "", name: "", email: "" },
-    replies: [
-      { content: "", replyingTo: "", user: { image: "", name: "", email: "" } },
-    ],
   });
-
-  const { response } = useAxios({
-    method: "get",
-    url: `https://product-feedback-rest-api.herokuapp.com/productrequests/${match.params.id}`,
-  });
-
-  useEffect(() => {
-    if (response !== null) {
-      setSelectedFeedback(response);
-    }
-  }, [response]);
 
   const validateProperty = ({ name, value }) => {
     const obj = { [name]: value };
@@ -52,9 +35,10 @@ const AddComment = () => {
     setFormData(data);
     setError(errors);
   };
-  const handlePostComment = (e) => {
-    console.log(selectedFeedback.comments);
-    const updatedComments = [...selectedFeedback.comments];
+
+  const handlePostComment = () => {
+    console.log(targetFeedback.comments);
+    const updatedComments = [...targetFeedback.comments];
     updatedComments.push({
       content: formData.content,
       id: uuidv4(),
@@ -86,12 +70,7 @@ const AddComment = () => {
   return (
     <div className="add-comment">
       <h2 className="__header">Add Comment</h2>
-      <form onSubmit={handlePostComment}>
-        {/* <input
-          name="comment"
-          type="text"
-          placeholder="Type your comment here"
-        /> */}
+      <form>
         <TextArea
           name="comment"
           type="text"

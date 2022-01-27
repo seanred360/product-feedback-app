@@ -1,17 +1,19 @@
-import React from "react";
+import { useState } from "react/";
 import AddComment from "./AddComment";
 import Comment from "./Comment";
 
-const CommentsSection = ({ commentsCount, comments }) => {
+const CommentsSection = ({ commentsCount, targetFeedback }) => {
+  const comments = targetFeedback.comments;
+
   return (
-    <React.Fragment>
+    <>
       <div className="comments-section">
         <div className="comments">
           <h1 className="comments-count">{commentsCount} Comments</h1>
           {comments &&
             comments.map((comment) => (
               <Comment
-                key={comment["content"] + "1231312"}
+                key={comment["id"]}
                 userImage={comment["user"]["image"]}
                 userName={comment["user"]["name"]}
                 userAlias={comment["user"]["username"]}
@@ -21,8 +23,8 @@ const CommentsSection = ({ commentsCount, comments }) => {
             ))}
         </div>
       </div>
-      <AddComment />
-    </React.Fragment>
+      <AddComment targetFeedback={targetFeedback} />
+    </>
   );
 };
 
