@@ -1,7 +1,7 @@
 import React from "react";
-import AddFeedbackButton from "./AddFeedbackButton";
+import PostFeedbackButton from "./PostFeedbackButton";
 
-const ProductRequestEmpty = () => {
+const RenderFeedbackEmpty = () => {
   return (
     <div className="product-request-empty">
       <div className="__inner-container flex flex-ai-c flex-jc-c">
@@ -19,10 +19,10 @@ const ProductRequestEmpty = () => {
           Got a suggestion? Found a bug that needs to be squashed? We love
           hearing about new ideas to improve our app.
         </p>
-        <AddFeedbackButton />
+        <PostFeedbackButton />
       </div>
     </div>
   );
 };
 
-export default ProductRequestEmpty;
+export default RenderFeedbackEmpty;

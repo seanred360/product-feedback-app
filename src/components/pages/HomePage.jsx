@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import useAxios from "../../custom-hooks/useAxios";
 import Menu from "../Menu";
-import Feed from "../Feed";
+import RenderAllFeedback from "../RenderAllFeedback";
 import Spinner from "../common/Spinner";
 
 const HomePage = () => {
-  const [productRequests, setProductRequests] = useState();
+  const [feedbackPosts, setFeedbackPosts] = useState();
 
   const { response, loading, error } = useAxios({
     method: "get",
-    url: "https://product-feedback-rest-api.herokuapp.com/productrequests",
+    url: process.env.REACT_APP_MONGO_URL,
   });
 
   useEffect(() => {
     if (response !== null) {
-      setProductRequests(response);
+      setFeedbackPosts(response);
     }
   }, [response]);
 
@@ -22,9 +22,9 @@ const HomePage = () => {
   if (error) return <strong>{error.message}</strong>;
   return (
     <>
-      <Menu dataToSort={productRequests} setData={setProductRequests} />
+      <Menu dataToSort={feedbackPosts} setData={setFeedbackPosts} />
       <div className="home-page">
-        <Feed productRequests={productRequests} />
+        <RenderAllFeedback feedbackPosts={feedbackPosts} />
       </div>
     </>
   );
