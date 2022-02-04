@@ -625,7 +625,7 @@ textarea {
   background: #f2f4ff;
 }
 
-.product-request {
+.feedback {
   margin: 1rem 0;
   padding: 1.5rem;
   background: #ffffff;
@@ -634,7 +634,7 @@ textarea {
   line-height: 1.1875rem;
 }
 
-.product-request .__title {
+.feedback .__title {
   margin: 9px 0;
   font-weight: bold;
   font-size: 0.8125rem;
@@ -642,30 +642,30 @@ textarea {
   color: #3a4374;
 }
 
-.product-request .__description {
+.feedback .__description {
   margin: 9px 0;
   font-size: 0.8125rem;
   color: #647196;
 }
 
-.product-request .--button-category {
+.feedback .--button-category {
   margin: 9px 0;
 }
 
-.product-request .__bottom {
+.feedback .__bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin: 9px 0;
 }
 
-.product-request-empty {
+.feedback-empty {
   border-radius: 10px;
   background: #f2f4ff;
   padding: 1.5rem;
 }
 
-.product-request-empty .__inner-container {
+.feedback-empty .__inner-container {
   margin-top: 1rem;
   padding: 76px 1.5rem;
   flex-direction: column;
@@ -673,13 +673,13 @@ textarea {
   border-radius: 10px;
 }
 
-.product-request-empty .__not-found-image {
+.feedback-empty .__not-found-image {
   width: 102px;
   height: 108px;
   margin-bottom: 39px;
 }
 
-.product-request-empty .__header {
+.feedback-empty .__header {
   font-weight: bold;
   font-size: 1.125rem;
   text-align: center;
@@ -687,7 +687,7 @@ textarea {
   color: #3a4374;
 }
 
-.product-request-empty p {
+.feedback-empty p {
   margin-top: 0.875rem;
   margin-bottom: 1.5rem;
   font-weight: normal;
@@ -697,7 +697,9 @@ textarea {
   color: darkGrey;
 }
 
-.feedback-detail-page {
+.view-feedback-page,
+.post-feedback-page,
+.edit-feedback-page {
   padding: 2.125rem 1.5rem;
   background: #f2f4ff;
 }
@@ -871,23 +873,27 @@ textarea {
   color: #647196;
 }
 
-.new-feedback-page {
+.post-feedback-page,
+.edit-feedback-page {
   padding: 34px 24px;
   background: #f2f4ff;
 }
 
-.new-feedback-page .__top-group {
+.post-feedback-page .__top-group,
+.edit-feedback-page .__top-group {
   margin-bottom: 55px;
 }
 
-.new-feedback-page .feedback-window {
+.post-feedback-page .feedback-window,
+.edit-feedback-page .feedback-window {
   position: relative;
   padding: 24px;
   background: #ffffff;
   border-radius: 10px;
 }
 
-.new-feedback-page .feedback-window .__plus-circle {
+.post-feedback-page .feedback-window .__plus-circle,
+.edit-feedback-page .feedback-window .__plus-circle {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -902,41 +908,49 @@ textarea {
   color: #ffffff;
 }
 
-.new-feedback-page .feedback-window .__header {
+.post-feedback-page .feedback-window .__header,
+.edit-feedback-page .feedback-window .__header {
   font-weight: bold;
   font-size: 18px;
   letter-spacing: -0.25px;
   color: #3a4374;
 }
 
-.new-feedback-page .feedback-window form {
+.post-feedback-page .feedback-window form,
+.edit-feedback-page .feedback-window form {
   font-size: 13px;
   line-height: 19px;
   margin-bottom: 24px;
 }
 
-.new-feedback-page .feedback-window form:last-of-type {
+.post-feedback-page .feedback-window form:last-of-type,
+.edit-feedback-page .feedback-window form:last-of-type {
   margin-bottom: 40px;
 }
 
-.new-feedback-page .feedback-window form label {
+.post-feedback-page .feedback-window form label,
+.edit-feedback-page .feedback-window form label {
   font-weight: bold;
   color: #3a4374;
 }
 
-.new-feedback-page .feedback-window form .__instructions {
+.post-feedback-page .feedback-window form .__instructions,
+.edit-feedback-page .feedback-window form .__instructions {
   color: #647196;
 }
 
-.new-feedback-page .feedback-window .__buttons {
+.post-feedback-page .feedback-window .__buttons,
+.edit-feedback-page .feedback-window .__buttons {
   flex-direction: column;
 }
 
-.new-feedback-page .feedback-window .__buttons :not(:last-child) {
+.post-feedback-page .feedback-window .__buttons :not(:last-child),
+.edit-feedback-page .feedback-window .__buttons :not(:last-child) {
   margin-bottom: 16px;
 }
 
-.new-feedback-page .feedback-window .__buttons button {
+.post-feedback-page .feedback-window .__buttons button,
+.edit-feedback-page .feedback-window .__buttons button {
   width: 100%;
 }
 

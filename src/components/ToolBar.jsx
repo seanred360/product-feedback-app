@@ -1,5 +1,5 @@
 import React from "react";
-import AddFeedbackButton from "./AddFeedbackButton";
+import AddFeedbackButton from "./PostFeedbackButton";
 import DropDownBox from "./common/DropDownBox";
 
 const ToolBar = ({ dataToSort, setData }) => {

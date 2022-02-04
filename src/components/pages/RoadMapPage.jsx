@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import Backbutton from "../common/BackButton";
-import AddFeedbackButton from "../AddFeedbackButton";
+import PostFeedbackButton from "../PostFeedbackButton";
 import RoadMapContentBox from "../RoadMapContentBox";
 import { DataContext } from "../../custom-hooks/Contexts";
 import _ from "lodash";
@@ -38,7 +38,7 @@ const RoadMapPage = () => {
           <h1>Roadmap</h1>
         </div>
         <div className="__right">
-          <AddFeedbackButton />
+          <PostFeedbackButton />
         </div>
       </div>
       <div className="__nav-bottom">
