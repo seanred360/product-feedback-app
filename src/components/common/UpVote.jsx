@@ -4,30 +4,24 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import { auth } from "../firebase";
 
-const UpVote = ({ upvotes, product }) => {
-  const [upvotesState, setUpvotesState] = useState(upvotes);
+const UpVote = ({ upvotesCount, feedback }) => {
+  const [upvotesState, SetUpvotesState] = useState(upvotesCount);
 
   const handleClick = (e) => {
     e.stopPropagation();
-    if (product.upvotes.includes(auth.email)) return;
-    let updatedUpvotes = [...product.upvotes];
-    updatedUpvotes.push(auth.currentUser.email);
-
-    axios
-      .patch(
-        `https://product-feedback-rest-api.herokuapp.com/productrequests/${product._id}`,
-        {
-          upvotes: updatedUpvotes,
-        }
-      )
-      .then(function (response) {
-        console.log(response);
-        setUpvotesState(upvotesState + 1);
-        toast.success("Up vote successful!");
-      })
-      .catch(function (error) {
-        toast.error("Failed to up vote");
-      });
+    try {
+      axios
+        .patch(`${process.env.REACT_APP_MONGO_URL}/upvote/${feedback._id}`, [
+          auth.currentUser.email,
+        ])
+        .then(function (response) {
+          console.log(response);
+          SetUpvotesState(upvotesState + 1);
+          toast.success("Up vote successful!");
+        });
+    } catch (error) {
+      toast.error("Failed to up vote");
+    }
   };
 
   return (
