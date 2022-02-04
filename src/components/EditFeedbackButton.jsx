@@ -1,6 +1,6 @@
 import { useHistory, useLocation } from "react-router-dom";
 
-const EditFeedbackButton = ({ selectedProduct }) => {
+const EditFeedbackButton = ({ selectedFeedback }) => {
   const history = useHistory();
   const location = useLocation();
 
@@ -9,8 +9,8 @@ const EditFeedbackButton = ({ selectedProduct }) => {
       className="all-buttons --blue-button"
       onClick={() =>
         history.push({
-          pathname: `${location.pathname}/edit`,
-          selectedProduct: selectedProduct,
+          pathname: `/edit${location.pathname}`,
+          selectedFeedback: selectedFeedback,
         })
       }
     >

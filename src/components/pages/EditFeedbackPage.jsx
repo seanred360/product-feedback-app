@@ -6,16 +6,15 @@ import TextInput from "../common/TextInput";
 import Select from "../common/Select";
 import TextArea from "../common/TextArea";
 import { ToastContainer, toast } from "react-toastify";
-import { useHistory, useLocation, useRouteMatch } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 
 const EditFeedbackPage = () => {
   const history = useHistory();
   const location = useLocation();
-  const match = useRouteMatch();
   const [formData, setFormData] = useState({
-    title: "",
-    category: "Feature",
-    description: "",
+    title: location.selectedFeedback.title,
+    category: location.selectedFeedback.category,
+    description: location.selectedFeedback.description,
   });
   const [error, setError] = useState({});
 
@@ -58,15 +57,13 @@ const EditFeedbackPage = () => {
   const handleDelete = (e) => {
     axios
       .delete(
-        `https://product-feedback-rest-api.herokuapp.com/productrequests/${match.params.id}`
+        `${process.env.REACT_APP_MONGO_URL}/${location.selectedFeedback._id}`
       )
       .then(function (response) {
-        console.log(response);
         toast.success("Feedback deleted successfully!");
         history.push("/");
       })
       .catch(function (error) {
-        console.log(error);
         toast.error("Failed to delete feedback");
       });
   };
@@ -81,14 +78,11 @@ const EditFeedbackPage = () => {
     }
     axios
       .patch(
-        `https://product-feedback-rest-api.herokuapp.com/productrequests/${location.selectedProduct._id}`,
+        `${process.env.REACT_APP_MONGO_URL}/edit/${location.selectedFeedback.slug}`,
         {
           title: formData.title,
           category: formData.category,
-          // upvotes: location.selectedProduct.upvotes,
-          // status: location.selectedProduct.status,
           description: formData.description,
-          // comments: location.selectedProduct.comments,
         }
       )
       .then(function (response) {
@@ -102,19 +96,25 @@ const EditFeedbackPage = () => {
       });
   };
 
+  if (!location.selectedFeedback) {
+    history.push("/");
+    return null;
+  }
+
   return (
-    <div className="new-feedback-page">
+    <div className="edit-feedback-page">
       <ToastContainer />
       <div className="__top-group flex flex-ai-c flex-jc-sb">
         <BackButton />
       </div>
       <div className="feedback-window">
         <div className="__plus-circle">+</div>
-        <h1 className="__header">{`Editing ${location.selectedProduct.title}`}</h1>
+        <h1 className="__header">{`Editing Feedback`}</h1>
         <form onSubmit={handleSubmit}>
           <TextInput
             name={"title"}
             label={"Feedback Title"}
+            defaultValue={location.selectedFeedback.title}
             instructions={"Add a short, descriptive headline"}
             autoFocus={true}
             onChange={(e) => handleChange(e.target)}
@@ -123,6 +123,7 @@ const EditFeedbackPage = () => {
           <Select
             name={"category"}
             label={"Category"}
+            defaultValue={location.selectedFeedback.category}
             instructions={"Choose a category for your feedback"}
             items={["Feature", "UI", "UX", "Enhancement", "Bug"]}
             onChange={(e) => handleChange(e.target)}
@@ -131,6 +132,7 @@ const EditFeedbackPage = () => {
           <TextArea
             name={"description"}
             label={"Feedback Description"}
+            defaultValue={location.selectedFeedback.description}
             instructions={
               "Include any specific comments on what should be improved, added,etc."
             }

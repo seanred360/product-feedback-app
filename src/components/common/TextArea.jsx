@@ -4,6 +4,7 @@ const TextArea = ({
   instructions,
   autoFocus,
   value,
+  defaultValue,
   onChange,
   cols,
   rows,
@@ -22,6 +23,7 @@ const TextArea = ({
         rows={rows}
         autoFocus={autoFocus}
         value={value}
+        defaultValue={defaultValue}
         onChange={onChange}
       />
     </div>
