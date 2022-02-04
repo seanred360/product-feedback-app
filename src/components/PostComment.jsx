@@ -1,23 +1,26 @@
 import { useState } from "react";
 import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
-import { auth } from "../components/firebase";
+import { auth } from "./firebase";
 import { useHistory, useRouteMatch } from "react-router-dom";
 import { toast } from "react-toastify";
 import Joi from "joi-browser";
 import TextArea from "./common/TextArea";
 
-const AddComment = ({ targetFeedback }) => {
+const PostComment = ({ targetFeedback }) => {
   const history = useHistory();
   const match = useRouteMatch();
   const [error, setError] = useState();
   const [formData, setFormData] = useState({
     content: "",
+    user: {
+      image: auth.currentUser.photoURL,
+      name: auth.currentUser.displayName,
+      email: auth.currentUser.email,
+    },
   });
 
   const validateProperty = ({ name, value }) => {
     const obj = { [name]: value };
-    console.log(obj);
     const propertySchema = { [name]: Joi.string().required() };
     const { errors } = Joi.validate(obj, propertySchema);
     return errors ? errors.details[0].message : null;
@@ -37,32 +40,19 @@ const AddComment = ({ targetFeedback }) => {
   };
 
   const handlePostComment = () => {
-    console.log(targetFeedback.comments);
-    const updatedComments = [...targetFeedback.comments];
-    updatedComments.push({
-      content: formData.content,
-      id: uuidv4(),
-      user: {
-        image: auth.currentUser.photoURL,
-        name: auth.currentUser.displayName,
-        email: auth.currentUser.email,
-      },
-    });
-    console.log(updatedComments);
     axios
       .patch(
-        `https://product-feedback-rest-api.herokuapp.com/productrequests/${match.params.id}`,
+        `${process.env.REACT_APP_MONGO_URL}/postcomment/${match.params.slug}`,
         {
-          comments: updatedComments,
+          content: formData.content,
+          user: formData.user,
         }
       )
       .then(function (response) {
-        console.log(response);
         toast.success("Post comment successful!");
         history.go();
       })
       .catch(function (error) {
-        console.log(error);
         toast.error("Failed to post comment");
       });
   };
@@ -94,4 +84,4 @@ const AddComment = ({ targetFeedback }) => {
   );
 };
 
-export default AddComment;
+export default PostComment;
