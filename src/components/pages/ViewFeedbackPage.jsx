@@ -3,46 +3,46 @@ import { useLocation } from "react-router";
 import _ from "lodash";
 import BackButton from "../common/BackButton";
 import EditFeedbackButton from "../EditFeedbackButton";
-import ProductRequest from "../ProductRequest";
-import CommentsSection from "../CommentsSection";
+import RenderFeedback from "../RenderFeedback";
+import CommentsSection from "../RenderCommentsSection";
 import useAxios from "../../custom-hooks/useAxios";
 import Spinner from "../common/Spinner";
 
 const ViewFeedbackPage = () => {
   const location = useLocation();
-  const [selectedProduct, setSelectedProduct] = useState();
+  const [selectedFeedback, setSelectedFeedback] = useState();
   const { response, loading, error } = useAxios({
     method: "get",
-    url: `https://product-feedback-rest-api.herokuapp.com/productrequests${location.pathname}`,
+    url: `${process.env.REACT_APP_MONGO_URL}/${location.pathname}`,
   });
   useEffect(() => {
     if (response !== null) {
-      setSelectedProduct(response);
+      setSelectedFeedback(response);
     }
   }, [response]);
 
   if (loading) return <Spinner />;
   if (error) return <strong>{error.message}</strong>;
-  const commentsCount = _.size(selectedProduct["comments"]);
+  const commentsCount = _.size(selectedFeedback.comments);
 
   if (loading) return <Spinner />;
   return (
-    <div className="feedback-detail-page">
+    <div className="view-feedback-page">
       <div className="__top-group flex flex-ai-c flex-jc-sb">
         <BackButton />
-        <EditFeedbackButton selectedProduct={selectedProduct} />
+        <EditFeedbackButton selectedFeedback={selectedFeedback} />
       </div>
-      <ProductRequest
-        title={selectedProduct["title"]}
-        product={selectedProduct}
-        description={selectedProduct["description"]}
-        category={selectedProduct["category"]}
-        upvotes={selectedProduct["upvotes"]}
+      <RenderFeedback
+        title={selectedFeedback["title"]}
+        feedback={selectedFeedback}
+        description={selectedFeedback["description"]}
+        category={selectedFeedback["category"]}
+        upvotes={selectedFeedback["upvotes"]}
         commentsCount={commentsCount}
       />
       <CommentsSection
         commentsCount={commentsCount}
-        targetFeedback={selectedProduct}
+        targetFeedback={selectedFeedback}
       />
     </div>
   );
