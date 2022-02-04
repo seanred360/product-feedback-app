@@ -9,28 +9,20 @@ import TextArea from "../common/TextArea";
 import { ToastContainer, toast } from "react-toastify";
 import { useAuth } from "../../custom-hooks/AuthContext";
 
-const NewFeedbackPage = () => {
+const PostFeedbackPage = () => {
   const { currentUser } = useAuth();
   const history = useHistory();
   const [formData, setFormData] = useState({
-    author: currentUser.email,
     title: "",
     category: "Feature",
-    upvotes: 0,
-    status: "suggestion",
     description: "",
-    comments: [],
   });
   const [error, setError] = useState({});
 
   const schema = {
-    author: Joi.string().required(),
     title: Joi.string().required().label("Feedback Title"),
     category: Joi.string().required().label("Feedback Category"),
-    upvotes: Joi.number().integer(),
-    status: Joi.string(),
     description: Joi.string().required().label("Feedback Description"),
-    comments: Joi.array(),
   };
 
   const validate = () => {
@@ -73,28 +65,23 @@ const NewFeedbackPage = () => {
       return;
     }
     axios
-      .post(`https://product-feedback-rest-api.herokuapp.com/productrequests`, {
-        author: formData.author,
+      .post(process.env.REACT_APP_MONGO_URL, {
         title: formData.title,
+        author: currentUser.email,
         category: formData.category,
-        upvotes: 0,
-        status: "suggeston",
         description: formData.description,
-        comments: [],
       })
       .then(function (response) {
-        console.log(response);
         toast.success("Thanks for your feedback!");
         history.push("/");
       })
       .catch(function (error) {
-        console.log(error);
         toast.error("400 Bad Request Error");
       });
   };
 
   return (
-    <div className="new-feedback-page">
+    <div className="post-feedback-page">
       <ToastContainer />
       <div className="__top-group flex flex-ai-c flex-jc-sb">
         <BackButton />
@@ -153,4 +140,4 @@ const NewFeedbackPage = () => {
   );
 };
 
-export default NewFeedbackPage;
+export default PostFeedbackPage;
