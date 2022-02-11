@@ -8,13 +8,14 @@ const Menu = ({ dataToSort, setData }) => {
 
   return (
     <div className="menu">
-      <Logo onOpen={() => setIsOpen(!isOpen)} />
-      <ToolBar dataToSort={dataToSort} setData={setData} />
+      <Logo onOpen={() => setIsOpen(!isOpen)} isOpen={isOpen} />
       <MobileSlideOut
         isOpen={isOpen}
+        setIsOpen={setIsOpen}
         dataToSort={dataToSort}
         setData={setData}
       />
+      <ToolBar dataToSort={dataToSort} setData={setData} />
     </div>
   );
 };

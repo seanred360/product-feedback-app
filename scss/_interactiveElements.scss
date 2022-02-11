@@ -83,7 +83,7 @@
       cursor: pointer;
     }
 
-    .--sort-by {
+    .--sort-btn {
       font-weight: 400;
 
       .chevron {
@@ -91,7 +91,7 @@
       }
     }
 
-    .--most-upvotes {
+    .--sort-text {
       margin-left: 5px;
       font-weight: bold;
     }
@@ -111,6 +111,7 @@
     text-align: left;
     cursor: pointer;
     background: $white;
+    transition: all 0.3s ease;
 
     & :first-child button {
       border-top-right-radius: 10px;
@@ -158,7 +159,8 @@
         color: transparent;
       }
 
-      &:focus {
+      &.--selected {
+        color: $purple;
         svg.check {
           color: $purple;
         }

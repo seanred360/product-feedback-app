@@ -2,11 +2,15 @@ import React, { useState } from "react";
 import { GoChevronDown, GoChevronUp } from "react-icons/go";
 import { BiCheck } from "react-icons/bi";
 import _ from "lodash";
+import { DateTime } from "luxon";
 
 const DropDownBox = ({ dataToSort, setData }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentFilter, setCurrentFilter] = useState("Newest");
   const reorderedProductRequests = dataToSort;
   const filterCategories = [
+    "Newest",
+    "Oldest",
     "Most Upvotes",
     "Least Upvotes",
     "Most Comments",
@@ -14,21 +18,37 @@ const DropDownBox = ({ dataToSort, setData }) => {
   ];
 
   const handleClick = (sortCategory) => {
+    if (sortCategory.toLowerCase() === "newest") sortByNewest();
+    if (sortCategory.toLowerCase() === "oldest") sortByOldest();
     if (sortCategory.toLowerCase() === "most upvotes") sortByMostUpvotes();
     if (sortCategory.toLowerCase() === "least upvotes") sortByLeastUpvotes();
     if (sortCategory.toLowerCase() === "most comments") sortByMostComments();
     if (sortCategory.toLowerCase() === "least comments") sortByLeastComments();
+    setIsOpen(false);
+    setCurrentFilter(sortCategory);
   };
 
+  const sortByNewest = () => {
+    reorderedProductRequests.sort((a, b) => {
+      return new DateTime.fromISO(b.date) - new DateTime.fromISO(a.date);
+    });
+    setData([...reorderedProductRequests]); // must use spread operator or React won't re render
+  };
+  const sortByOldest = () => {
+    reorderedProductRequests.sort((a, b) => {
+      return new DateTime.fromISO(a.date) - new DateTime.fromISO(b.date);
+    });
+    setData([...reorderedProductRequests]); // must use spread operator or React won't re render
+  };
   const sortByMostUpvotes = () => {
     reorderedProductRequests.sort((a, b) => {
-      return b.upvotes - a.upvotes;
+      return b.upvotes.length - a.upvotes.length;
     });
     setData([...reorderedProductRequests]); // must use spread operator or React won't re render
   };
   const sortByLeastUpvotes = () => {
     reorderedProductRequests.sort((a, b) => {
-      return a.upvotes - b.upvotes;
+      return a.upvotes.length - b.upvotes.length;
     });
     setData([...reorderedProductRequests]); // must use spread operator or React won't re render
   };
@@ -49,13 +69,13 @@ const DropDownBox = ({ dataToSort, setData }) => {
     <div className="dropdown">
       <button
         className="dropdown-toggle"
-        aria-label="Sort by : Most Upvotes"
+        aria-label="Sort"
         onClick={() => {
           setIsOpen(!isOpen);
         }}
       >
-        <span className="--sort-by flex flex-ai-c">
-          Sort by : <span className="--most-upvotes"> Most Upvotes</span>
+        <span className="--sort-btn flex flex-ai-c">
+          Sort by : <span className="--sort-text"> {currentFilter}</span>
           <div className="chevron">
             <GoChevronDown style={{ display: isOpen ? "none" : "block" }} />
             <GoChevronUp style={{ display: isOpen ? "block" : "none" }} />
@@ -64,12 +84,19 @@ const DropDownBox = ({ dataToSort, setData }) => {
       </button>
       <ul
         className="dropdown-menu"
-        style={{ display: isOpen ? "block" : "none" }}
+        style={{
+          display: isOpen ? "block" : "none",
+          width: isOpen ? "255px" : "none",
+        }}
       >
         {filterCategories.map((item) => (
           <li key={item}>
             <button
-              className="dropdown-item flex flex-jc-sb"
+              className={
+                currentFilter === item
+                  ? "dropdown-item flex flex-jc-sb --selected"
+                  : "dropdown-item flex flex-jc-sb"
+              }
               aria-label={item}
               onClick={() => handleClick(item)}
             >

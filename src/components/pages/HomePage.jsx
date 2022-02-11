@@ -6,6 +6,7 @@ import Spinner from "../common/Spinner";
 
 const HomePage = () => {
   const [feedbackPosts, setFeedbackPosts] = useState();
+  const [filteredFeedback, setFilteredFeedback] = useState();
 
   const { response, loading, error } = useAxios({
     method: "get",
@@ -15,6 +16,7 @@ const HomePage = () => {
   useEffect(() => {
     if (response !== null) {
       setFeedbackPosts(response);
+      setFilteredFeedback(response);
     }
   }, [response]);
 
@@ -22,9 +24,9 @@ const HomePage = () => {
   if (error) return <strong>{error.message}</strong>;
   return (
     <>
-      <Menu dataToSort={feedbackPosts} setData={setFeedbackPosts} />
+      <Menu dataToSort={feedbackPosts} setData={setFilteredFeedback} />
       <div className="home-page">
-        <RenderAllFeedback feedbackPosts={feedbackPosts} />
+        <RenderAllFeedback feedbackPosts={filteredFeedback} />
       </div>
     </>
   );
