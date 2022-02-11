@@ -1,6 +1,17 @@
 import { Link } from "react-router-dom";
+import _ from "lodash";
 
-const RoadMapOverview = () => {
+const RoadMapOverview = ({ feedback }) => {
+  const getFeedbackPlanned = () => {
+    return _.filter(feedback, (feedback) => feedback.status === "planned");
+  };
+  const getFeedbackInProgress = () => {
+    return _.filter(feedback, (feedback) => feedback.status === "in-progress");
+  };
+  const getFeedbackLive = () => {
+    return _.filter(feedback, (feedback) => feedback.status === "live");
+  };
+
   return (
     <div className="--menu-bottom">
       <span className="--menu-bottom-title">Roadmap</span>
@@ -11,15 +22,16 @@ const RoadMapOverview = () => {
         <li>
           <span className="--dot -peach"></span>
           Planned
-          <span className="--number">2</span>
+          <span className="--number">{getFeedbackPlanned().length}</span>
         </li>
         <li>
           <span className="--dot -purple"></span>
-          In-Progress <span className="--number">3</span>
+          In-Progress{" "}
+          <span className="--number">{getFeedbackInProgress().length}</span>
         </li>
         <li>
           <span className="--dot -light-blue"></span>
-          Live <span className="--number">1</span>
+          Live <span className="--number">{getFeedbackLive().length}</span>
         </li>
       </ul>
     </div>

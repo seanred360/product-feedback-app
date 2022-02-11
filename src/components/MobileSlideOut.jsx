@@ -1,15 +1,19 @@
 import React from "react";
-import CategorySelectButtons from "./CategorySelectButtons";
+import CategorySelectButtons from "./RenderCategoryButtons";
 import RoadMapOverview from "./RoadMapOverview";
 
-const MobileSlideOut = ({ isOpen, dataToSort, setData }) => {
+const MobileSlideOut = ({ setIsOpen, isOpen, dataToSort, setData }) => {
   return (
     <>
-      <div className={`fade-overlay ${isOpen ? `--open` : ``}`}></div>
+      <div className={`fade-overlay ${isOpen ? `--open` : ``}`} />
       <div className={`mobile-menu-container ${isOpen ? `--open` : ``}`}>
         <div className="__mobile-menu">
-          <CategorySelectButtons dataToSort={dataToSort} setData={setData} />
-          <RoadMapOverview />
+          <CategorySelectButtons
+            dataToSort={dataToSort}
+            setData={setData}
+            setIsOpen={setIsOpen}
+          />
+          <RoadMapOverview feedback={dataToSort}/>
         </div>
       </div>
     </>
