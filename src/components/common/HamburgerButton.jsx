@@ -1,15 +1,11 @@
-import React, { useState } from "react";
-
-const HamburgerButton = ({ onOpen }) => {
-  const [open, setOpen] = useState(false);
+const HamburgerButton = ({ onOpen, isOpen }) => {
   const openMenu = () => {
-    setOpen(!open);
     onOpen();
   };
 
   return (
     <div
-      className={open ? "hamburger-button open" : "hamburger-button"}
+      className={isOpen ? "hamburger-button open" : "hamburger-button"}
       onClick={openMenu}
     >
       <svg width="35" height="35" viewBox="0 0 100 100">
