@@ -4,20 +4,24 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import { auth } from "../firebase";
 
-const UpVote = ({ upvotesCount, feedback }) => {
-  const [upvotesState, SetUpvotesState] = useState(upvotesCount);
+const UpVote = ({ feedback }) => {
+  const [upvotesState, setUpvotesState] = useState(feedback.upvotes);
+  const [hasUpvoted, setHasUpvoted] = useState(
+    upvotesState.includes(auth.currentUser.email)
+  );
 
   const handleClick = (e) => {
     e.stopPropagation();
     try {
       axios
-        .patch(`${process.env.REACT_APP_MONGO_URL}/upvote/${feedback._id}`, [
-          auth.currentUser.email,
-        ])
+        .patch(
+          `${process.env.REACT_APP_MONGO_URL}/postupvote/${feedback._id}`,
+          [auth.currentUser.email]
+        )
         .then(function (response) {
-          console.log(response);
-          SetUpvotesState(upvotesState + 1);
+          setUpvotesState([...upvotesState, auth.currentUser.email]);
           toast.success("Up vote successful!");
+          setHasUpvoted(true);
         });
     } catch (error) {
       toast.error("Failed to up vote");
@@ -30,9 +34,10 @@ const UpVote = ({ upvotesCount, feedback }) => {
       onClick={handleClick}
       style={{ cursor: "pointer" }}
       aria-hidden="true"
+      disabled={hasUpvoted ? true : false}
     >
       <GoChevronUp />
-      <span className="__quantity">{upvotesState}</span>
+      <span className="__quantity">{upvotesState.length}</span>
     </button>
   );
 };

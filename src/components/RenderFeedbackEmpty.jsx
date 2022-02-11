@@ -3,7 +3,7 @@ import PostFeedbackButton from "./PostFeedbackButton";
 
 const RenderFeedbackEmpty = () => {
   return (
-    <div className="product-request-empty">
+    <div className="feedback-empty">
       <div className="__inner-container flex flex-ai-c flex-jc-c">
         <div className="__not-found-image">
           <img

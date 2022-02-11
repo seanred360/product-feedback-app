@@ -8,7 +8,6 @@ const RenderFeedback = ({
   title,
   description,
   category,
-  upvotes,
   commentsCount,
 }) => {
   const history = useHistory();
@@ -22,7 +21,7 @@ const RenderFeedback = ({
       <p className="__description">{description}</p>
       <CategoryButton itemName={category} />
       <div className="__bottom">
-        <UpVote upvotesCount={upvotes.length} feedback={feedback} />
+        <UpVote feedback={feedback} />
         <CommentsCounter commentsCount={commentsCount} />
       </div>
     </div>

@@ -1,6 +1,6 @@
 @import "variables";
 
-.roadmap {
+.road-map-page {
   .__nav-top {
     display: grid;
     grid-template-columns: auto auto;
@@ -79,7 +79,7 @@
       }
     }
 
-    .__roadmap-content-box {
+    .__roadmap-feedback-box {
       margin-bottom: 16px;
       padding: 24px;
       background: $white;
@@ -87,7 +87,7 @@
       border-top: 5px solid $purple;
       text-align: left;
 
-      .__content-status {
+      .__feedback-status {
         font-size: 13px;
         color: $darkGrey;
         margin-bottom: 16px;
@@ -97,14 +97,14 @@
         }
       }
 
-      .__content-name {
+      .__feedback-name {
         font-weight: bold;
         font-size: 13px;
         line-height: 19px;
         color: $blueGrey2;
       }
 
-      .__content-description {
+      .__feedback-description {
         font-size: 13px;
         line-height: 19px;
         color: $darkGrey;

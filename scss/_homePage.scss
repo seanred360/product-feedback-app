@@ -1,5 +1,6 @@
 .home-page {
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
   padding: 1.5rem;
   background: $grey;

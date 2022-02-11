@@ -1,37 +1,47 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Backbutton from "../common/BackButton";
 import PostFeedbackButton from "../PostFeedbackButton";
 import RoadMapContentBox from "../RoadMapContentBox";
-import { DataContext } from "../../custom-hooks/Contexts";
+import Spinner from "../common/Spinner";
 import _ from "lodash";
+import useAxios from "../../custom-hooks/useAxios";
 
 const RoadMapPage = () => {
-  const { productRequests } = useContext(DataContext);
-
-  const productsPlanned = _.filter(
-    productRequests,
-    (product) => product.status === "planned"
-  );
-  const productsInProgress = _.filter(
-    productRequests,
-    (product) => product.status === "in-progress"
-  );
-  const productsLive = _.filter(
-    productRequests,
-    (product) => product.status === "live"
-  );
+  const [feedback, setFeedback] = useState();
   const [activeStatus, setActiveStatus] = useState("in-progress");
-  const [activeStatusArray, setActiveStatusArray] =
-    useState(productsInProgress);
+  const [activeStatusArray, setActiveStatusArray] = useState();
+
+  const { response, loading, error } = useAxios({
+    method: "get",
+    url: process.env.REACT_APP_MONGO_URL,
+  });
+
+  useEffect(() => {
+    if (response !== null) {
+      setFeedback(response);
+      setActiveStatusArray(_.filter(response, (res) => res.status === "in-progress"));
+    }
+  }, [response]);
+
+  const getFeedbackPlanned = () => {
+    return _.filter(feedback, (feedback) => feedback.status === "planned");
+  };
+  const getFeedbackInProgress = () => {
+    return _.filter(feedback, (feedback) => feedback.status === "in-progress");
+  };
+  const getFeedbackLive = () => {
+    return _.filter(feedback, (feedback) => feedback.status === "live");
+  };
 
   const handleClick = (activeStatus, activeStatusArray) => {
     setActiveStatus(activeStatus);
     setActiveStatusArray(activeStatusArray);
   };
 
-  if (!productRequests) return <h1>null data</h1>;
+  if (loading) return <Spinner />;
+  if (error) return <h1>null data</h1>;
   return (
-    <div className="roadmap">
+    <div className="road-map-page">
       <div className="__nav-top">
         <div className="__left">
           <Backbutton />
@@ -44,21 +54,21 @@ const RoadMapPage = () => {
       <div className="__nav-bottom">
         <button
           className={activeStatus === "planned" ? "--active" : ""}
-          onClick={() => handleClick("planned", productsPlanned)}
+          onClick={() => handleClick("planned", getFeedbackPlanned())}
         >
-          Planned ({productsPlanned.length})
+          Planned ({getFeedbackPlanned().length})
         </button>
         <button
           className={activeStatus === "in-progress" ? "--active" : ""}
-          onClick={() => handleClick("in-progress", productsInProgress)}
+          onClick={() => handleClick("in-progress", getFeedbackInProgress())}
         >
-          In-Progress ({productsInProgress.length})
+          In-Progress ({getFeedbackInProgress().length})
         </button>
         <button
           className={activeStatus === "live" ? "--active" : ""}
-          onClick={() => handleClick("live", productsLive)}
+          onClick={() => handleClick("live", getFeedbackLive())}
         >
-          Live ({productsLive.length})
+          Live ({getFeedbackLive().length})
         </button>
       </div>
 
@@ -71,8 +81,8 @@ const RoadMapPage = () => {
             Features currently being developed
           </span>
         </div>
-        {activeStatusArray.map((product) => (
-          <RoadMapContentBox key={product["title"]} content={product} />
+        {activeStatusArray.map((feedback) => (
+          <RoadMapContentBox key={feedback._id} feedback={feedback} />
         ))}
       </div>
     </div>

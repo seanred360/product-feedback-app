@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
-import _ from "lodash";
 import BackButton from "../common/BackButton";
 import EditFeedbackButton from "../EditFeedbackButton";
 import RenderFeedback from "../RenderFeedback";
@@ -23,9 +22,6 @@ const ViewFeedbackPage = () => {
 
   if (loading) return <Spinner />;
   if (error) return <strong>{error.message}</strong>;
-  const commentsCount = _.size(selectedFeedback.comments);
-
-  if (loading) return <Spinner />;
   return (
     <div className="view-feedback-page">
       <div className="__top-group flex flex-ai-c flex-jc-sb">
@@ -33,15 +29,15 @@ const ViewFeedbackPage = () => {
         <EditFeedbackButton selectedFeedback={selectedFeedback} />
       </div>
       <RenderFeedback
-        title={selectedFeedback["title"]}
+        title={selectedFeedback.title}
         feedback={selectedFeedback}
-        description={selectedFeedback["description"]}
-        category={selectedFeedback["category"]}
-        upvotes={selectedFeedback["upvotes"]}
-        commentsCount={commentsCount}
+        description={selectedFeedback.description}
+        category={selectedFeedback.category}
+        upvotes={selectedFeedback.upvotes}
+        commentsCount={selectedFeedback.comments.length}
       />
       <CommentsSection
-        commentsCount={commentsCount}
+        commentsCount={selectedFeedback.comments.length}
         targetFeedback={selectedFeedback}
       />
     </div>

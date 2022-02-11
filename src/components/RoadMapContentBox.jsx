@@ -1,30 +1,26 @@
-import React, { useContext } from "react";
 import CategoryButton from "./common/CategoryButton";
 import UpVote from "./common/UpVote";
 import CommentsCounter from "./common/CommentsCounter";
-import _ from "lodash";
-import { DataContext } from "../custom-hooks/Contexts";
 import { useHistory } from "react-router";
 
-const RoadMapContentBox = ({ content }) => {
-  const { setSelectedProduct } = useContext(DataContext);
+const RoadMapContentBox = ({ feedback }) => {
   const history = useHistory();
 
-  const handleClick = (content) => {
-    setSelectedProduct(content);
-    history.push("/feedback-detail");
-  };
-
   return (
-    <div className="__roadmap-content-box" onClick={() => handleClick(content)}>
-      <li className="__content-status">{content["status"]}</li>
+    <div
+      className="__roadmap-feedback-box"
+      onClick={() => history.push(`/${feedback.slug}`)}
+    >
+      <li className="__feedback-status">
+        {feedback.status.replace(/(^\w|\s\w|\-\w)/g, (m) => m.toUpperCase())}
+      </li>
 
-      <span className="__content-name">{content["title"]}</span>
-      <p className="__content-description">{content["description"]}</p>
+      <span className="__feedback-name">{feedback.title}</span>
+      <p className="__feedback-description">{feedback.description}</p>
       <CategoryButton itemName={"Feature"} />
       <div className="__bottom">
-        <UpVote upvotes={content["upvotes"]} />
-        <CommentsCounter commentsCount={_.size(content["comments"])} />
+        <UpVote feedback={feedback} />
+        <CommentsCounter commentsCount={feedback.comments.length} />
       </div>
     </div>
   );

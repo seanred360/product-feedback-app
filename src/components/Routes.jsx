@@ -15,6 +15,7 @@ const Routes = () => {
   return (
     <Switch>
       <PrivateRoute exact path="/" component={HomePage} />
+      <Route path="/road-map" component={RoadMapPage} />
       <PrivateRoute path="/update-profile" component={UpdateProfilePage} />
       <PrivateRoute path="/new" component={PostFeedbackPage} />
       <PrivateRoute path="/edit/:slug" component={EditFeedbackPage} />
@@ -26,7 +27,6 @@ const Routes = () => {
         path="/:slug"
         render={(props) => <ViewFeedbackPage {...props} />}
       />
-      <Route exact path="/road-map" component={RoadMapPage} />
     </Switch>
   );
 };
