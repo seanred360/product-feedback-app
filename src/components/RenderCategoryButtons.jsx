@@ -4,7 +4,7 @@ const RenderCategoryButtons = ({ setIsOpen, dataToSort, setData }) => {
   const items = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
 
   return (
-    <div className="--menu-top">
+    <div className="category-buttons">
       {items.map((item) => (
         <CategoryButton
           key={item}

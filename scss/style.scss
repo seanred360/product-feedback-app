@@ -1,12 +1,12 @@
 @import "variables";
-@import "mixins";
+@import "./common/mixins";
 @import "globals";
 @import "buttons";
 @import "navbar";
 @import "navbar2";
 @import "interactiveElements";
 @import "formElements";
-@import "mobileMenu";
+@import "MobileSlideOut";
 @import "HomePage";
 @import "Feedback";
 @import "FeedbackEmpty";
@@ -14,3 +14,4 @@
 @import "CommentsSection";
 @import "PostFeedbackPage";
 @import "RoadMapPage";
+@import "./common/RenderUser";

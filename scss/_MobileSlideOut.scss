@@ -9,7 +9,7 @@
   }
 }
 
-.mobile-menu-container {
+.slide-out-container {
   position: absolute;
   width: 271px;
   height: 100vh;
@@ -22,7 +22,7 @@
     right: 0;
   }
 
-  .__mobile-menu {
+  .mobile-slide-out {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -31,7 +31,26 @@
     margin: 1.5rem;
     border-radius: 10px;
 
-    .--menu-top {
+    .account-menu {
+      width: 223px;
+      height: 178px;
+      padding: 24px 24px;
+      background: $white;
+      border-radius: 10px;
+
+      .__bottom {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        button {
+          margin-right: 10px;
+        }
+      }
+    }
+
+    .category-buttons{
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -40,6 +59,10 @@
       padding: 1.5rem 1.5rem;
       background: $white;
       border-radius: 10px;
+
+      .category-button {
+        margin-bottom: 8px;
+      }
     }
 
     .--menu-bottom {

@@ -10,7 +10,7 @@ const CategoryButton = ({ setIsOpen, itemName, dataToSort, setData }) => {
   };
 
   return (
-    <div className="--button-category" onClick={() => handleClick(itemName)}>
+    <div className="category-button" onClick={() => handleClick(itemName)}>
       <span className="__item-name">{itemName}</span>
     </div>
   );

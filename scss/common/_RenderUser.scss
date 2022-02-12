@@ -1,0 +1,30 @@
+.user {
+    display: flex;
+    margin-bottom: 24px;
+
+    .--user-image {
+      width: 40px;
+      height: 40px;
+      margin-right: 16px;
+      border-radius: 50%;
+    }
+    .__right {
+      display: flex;
+      flex-direction: column;
+
+      .--email {
+        font-weight: bold;
+        font-size: 13px;
+        line-height: 19px;
+        letter-spacing: -0.180556px;
+        color: $blueGrey2;
+      }
+
+      .--display-name {
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 19px;
+        color: $darkGrey;
+      }
+    }
+  }

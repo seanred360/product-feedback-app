@@ -12,7 +12,7 @@ const RoadMapContentBox = ({ feedback }) => {
       onClick={() => history.push(`/${feedback.slug}`)}
     >
       <li className="__feedback-status">
-        {feedback.status.replace(/(^\w|\s\w|\-\w)/g, (m) => m.toUpperCase())}
+        {feedback.status.replace(/(^\w|\s\w|-\w)/g, (m) => m.toUpperCase())}
       </li>
 
       <span className="__feedback-name">{feedback.title}</span>

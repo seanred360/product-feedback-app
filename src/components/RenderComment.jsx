@@ -26,16 +26,11 @@ const RenderComment = ({ id, userImage, userName, content, replies }) => {
       </div>
       <p className="__content">{content}</p>
       <div style={toggleReply ? { display: "unset" } : { display: "none" }}>
-        <PostReply
-          targetComment={id}
-          replyingTo={userName}
-        />
+        <PostReply targetComment={id} replyingTo={userName} />
       </div>
       <div className="__replies">
         {replies &&
-          replies.map((reply) => (
-            <RenderReply key={reply._id} reply={reply} />
-          ))}
+          replies.map((reply) => <RenderReply key={reply._id} reply={reply} />)}
       </div>
     </div>
   );

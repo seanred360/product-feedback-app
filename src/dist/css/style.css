@@ -357,7 +357,7 @@ Link:focus, Link:hover, Link:visited, Link:link, Link:active {
 .category-button {
   display: inline-block;
   height: 1.875rem;
-  margin-right: 0.5rem;
+  margin-right: 8px;
   padding: 5px 1rem;
   text-align: center;
   color: #4661e6;
@@ -528,7 +528,7 @@ textarea {
   background: rgba(0, 0, 0, 0.5);
 }
 
-.mobile-menu-container {
+.slide-out-container {
   position: absolute;
   width: 271px;
   height: 100vh;
@@ -538,11 +538,11 @@ textarea {
   transition: all 0.3s ease;
 }
 
-.mobile-menu-container.--open {
+.slide-out-container.--open {
   right: 0;
 }
 
-.mobile-menu-container .__mobile-menu {
+.slide-out-container .mobile-slide-out {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
@@ -552,7 +552,26 @@ textarea {
   border-radius: 10px;
 }
 
-.mobile-menu-container .__mobile-menu .--menu-top {
+.slide-out-container .mobile-slide-out .account-menu {
+  width: 223px;
+  height: 178px;
+  padding: 24px 24px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.slide-out-container .mobile-slide-out .account-menu .__bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.slide-out-container .mobile-slide-out .account-menu .__bottom button {
+  margin-right: 10px;
+}
+
+.slide-out-container .mobile-slide-out .category-buttons {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -563,7 +582,11 @@ textarea {
   border-radius: 10px;
 }
 
-.mobile-menu-container .__mobile-menu .--menu-bottom {
+.slide-out-container .mobile-slide-out .category-buttons .category-button {
+  margin-bottom: 8px;
+}
+
+.slide-out-container .mobile-slide-out .--menu-bottom {
   width: 223px;
   height: 178px;
   padding: 1.5rem 1.5rem;
@@ -571,7 +594,7 @@ textarea {
   border-radius: 10px;
 }
 
-.mobile-menu-container .__mobile-menu .--menu-bottom .--menu-bottom-title {
+.slide-out-container .mobile-slide-out .--menu-bottom .--menu-bottom-title {
   font-weight: bold;
   font-size: 1.125rem;
   line-height: 1.625rem;
@@ -579,7 +602,7 @@ textarea {
   color: #3a4374;
 }
 
-.mobile-menu-container .__mobile-menu .--menu-bottom .--menu-bottom-view {
+.slide-out-container .mobile-slide-out .--menu-bottom .--menu-bottom-view {
   float: right;
   font-weight: 600;
   font-size: 0.8125rem;
@@ -587,18 +610,18 @@ textarea {
   color: #4661e6;
 }
 
-.mobile-menu-container .__mobile-menu .--menu-bottom ul {
+.slide-out-container .mobile-slide-out .--menu-bottom ul {
   padding: 0;
   margin: 1.5rem 0;
   text-align: left;
 }
 
-.mobile-menu-container .__mobile-menu .--menu-bottom ul li {
+.slide-out-container .mobile-slide-out .--menu-bottom ul li {
   font-size: 1rem;
   color: #647196;
 }
 
-.mobile-menu-container .__mobile-menu .--menu-bottom ul li .--dot {
+.slide-out-container .mobile-slide-out .--menu-bottom ul li .--dot {
   display: inline-block;
   width: 0.5rem;
   height: 0.5rem;
@@ -607,19 +630,19 @@ textarea {
   border-radius: 50%;
 }
 
-.mobile-menu-container .__mobile-menu .--menu-bottom ul li .--dot.-peach {
+.slide-out-container .mobile-slide-out .--menu-bottom ul li .--dot.-peach {
   background-color: #f49f85;
 }
 
-.mobile-menu-container .__mobile-menu .--menu-bottom ul li .--dot.-purple {
+.slide-out-container .mobile-slide-out .--menu-bottom ul li .--dot.-purple {
   background-color: #ad1fea;
 }
 
-.mobile-menu-container .__mobile-menu .--menu-bottom ul li .--dot.-light-blue {
+.slide-out-container .mobile-slide-out .--menu-bottom ul li .--dot.-light-blue {
   background-color: #62bcfa;
 }
 
-.mobile-menu-container .__mobile-menu .--menu-bottom ul li .--number {
+.slide-out-container .mobile-slide-out .--menu-bottom ul li .--number {
   float: right;
   font-weight: bold;
   font-size: 1rem;
@@ -1087,5 +1110,37 @@ textarea {
 .road-map-page .__container .__roadmap-feedback-box .__bottom .--counter-comments svg {
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.user {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.user .--user-image {
+  width: 40px;
+  height: 40px;
+  margin-right: 16px;
+  border-radius: 50%;
+}
+
+.user .__right {
+  display: flex;
+  flex-direction: column;
+}
+
+.user .__right .--email {
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 19px;
+  letter-spacing: -0.180556px;
+  color: #3a4374;
+}
+
+.user .__right .--display-name {
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 19px;
+  color: #647196;
 }
 /*# sourceMappingURL=style.css.map */
