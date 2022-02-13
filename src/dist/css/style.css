@@ -357,7 +357,7 @@ Link:focus, Link:hover, Link:visited, Link:link, Link:active {
 .category-button {
   display: inline-block;
   height: 1.875rem;
-  margin-right: 8px;
+  margin-right: 0.5rem;
   padding: 5px 1rem;
   text-align: center;
   color: #4661e6;
@@ -1142,5 +1142,192 @@ textarea {
   font-size: 13px;
   line-height: 19px;
   color: #647196;
+}
+
+.account-page {
+  padding: 34px 24px;
+  background: #f2f4ff;
+}
+
+.account-page .__top-group {
+  margin-bottom: 55px;
+}
+
+.account-page .window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 24px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.account-page .window .__user-image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.account-page .window .__user-image-container .--user-image,
+.account-page .window .__user-image-container .spinner-container {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 24px;
+  border-radius: 50%;
+}
+
+.account-page .window .__user-image-container .--user-image {
+  border: 1px solid #ad1fea;
+}
+
+.account-page .window .__user-image-container .--edit-photo {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.account-page .__account-details {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.account-page .__account-details ul {
+  margin: 0;
+  padding: 0;
+}
+
+.account-page .__account-details ul .--info-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  margin: 0;
+  border: none;
+  border-bottom: 1px solid #e1e3ea;
+  text-align: left;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-family: "Jost", sans-serif;
+  font-size: 1rem;
+  color: #647196;
+  background: #ffffff;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+@media (max-width: 767px) {
+  .account-page .__account-details ul .--info-item {
+    cursor: default;
+  }
+}
+
+.account-page .__account-details ul .--info-item:hover {
+  color: #ad1fea;
+  background: #f7f8fd;
+}
+
+.account-page .__account-details ul .--info-item:focus {
+  background: #cdd2ee;
+}
+
+.account-page .__account-details ul .--info-item svg.check {
+  transform: scale(1.3);
+  color: transparent;
+}
+
+.account-page .__account-details ul .--info-item.--selected {
+  color: #ad1fea;
+}
+
+.account-page .__account-details ul .--info-item.--selected svg.check {
+  color: #ad1fea;
+}
+
+.account-page .__account-details ul .--info-item .__left {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+}
+
+.account-page .__account-details ul .--info-item .__left .--info-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: purple;
+}
+
+.account-page .__account-details ul .--info-item .__left .--info-value {
+  font-size: 24px;
+  font-weight: 400;
+  color: #647196;
+}
+
+.Spinner {
+  height: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  justify-content: center;
+  animation-name: fadeIn;
+  animation-duration: 1200ms;
+  animation-fill-mode: forwards;
+}
+
+.Spinner .spinner-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  background: #ad1fea;
+  border-radius: 3.125rem;
+  margin: 0.1875rem;
+  animation-duration: 2000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+.Spinner .spinner-dot:nth-child(1) {
+  animation-name: explode;
+  animation-delay: 0;
+}
+
+.Spinner .spinner-dot:nth-child(2) {
+  animation-name: explode;
+  animation-delay: 250ms;
+}
+
+.Spinner .spinner-dot:nth-child(3) {
+  animation-name: explode;
+  animation-delay: 500ms;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
 }
 /*# sourceMappingURL=style.css.map */

@@ -10,12 +10,14 @@ import PrivateRoute from "./common/PrivateRoute";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import UpdateProfilePage from "./pages/UpdateProfilePage";
 import EditFeedbackPage from "./pages/EditFeedbackPage";
+import AccountPage from "./pages/AccountPage";
 
 const Routes = () => {
   return (
     <Switch>
       <PrivateRoute exact path="/" component={HomePage} />
       <Route path="/road-map" component={RoadMapPage} />
+      <PrivateRoute path="/account" component={AccountPage} />
       <PrivateRoute path="/update-profile" component={UpdateProfilePage} />
       <PrivateRoute path="/new" component={PostFeedbackPage} />
       <PrivateRoute path="/edit/:slug" component={EditFeedbackPage} />

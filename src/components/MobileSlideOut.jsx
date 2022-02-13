@@ -22,10 +22,10 @@ const MobileSlideOut = ({ setIsOpen, isOpen, dataToSort, setData }) => {
       await logout();
       history.push("/");
     } catch {
-      setError("Failed to sign in");
+      setError("Failed to logout");
     }
     setLoading(false);
-  }; 
+  };
 
   return (
     <>
@@ -39,7 +39,10 @@ const MobileSlideOut = ({ setIsOpen, isOpen, dataToSort, setData }) => {
               email={email}
             />
             <div className="__bottom">
-              <button className="--settings all-buttons --blue-button">
+              <button
+                className="--settings all-buttons --blue-button"
+                onClick={() => history.push("/account")}
+              >
                 Settings
               </button>
               <button
