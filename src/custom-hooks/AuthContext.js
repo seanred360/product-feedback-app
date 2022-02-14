@@ -30,6 +30,10 @@ const AuthProvider = ({ children }) => {
     auth.signOut();
   }
 
+  function updateEmail(newEmail) {
+    return auth.updateEmail(newEmail);
+  }
+
   function resetPassword(email) {
     return auth.sendPasswordResetEmail(email);
   }
@@ -43,7 +47,7 @@ const AuthProvider = ({ children }) => {
   }
 
   function updateDisplayName(displayName) {
-    return auth.currentUser.updateDisplayName(displayName);
+    return auth.currentUser.updateProfile(displayName);
   }
 
   function randomizeAvatarPhoto(photoUrl) {

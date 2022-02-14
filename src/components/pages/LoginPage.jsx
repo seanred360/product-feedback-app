@@ -2,6 +2,7 @@ import TextInput from "../common/TextInput";
 import { useAuth } from "../../custom-hooks/AuthContext";
 import { useState } from "react/cjs/react.development";
 import { Link, useHistory } from "react-router-dom";
+import BackButton from "../common/BackButton";
 
 const LoginPage = () => {
   const { login } = useAuth();
@@ -26,42 +27,58 @@ const LoginPage = () => {
       setError("");
       setLoading(true);
       await login(formData.email, formData.password);
-      history.push("/");
+      if (history.location.reauthenticate) history.push("/account");
+      else history.push("/");
     } catch {
       setError("Failed to sign in");
     }
-    setLoading(false);
+    // setLoading(false);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <TextInput
-        name={"email"}
-        label={"Log In"}
-        type={"email"}
-        instructions={""}
-        autoFocus={true}
-        onChange={(e) => handleChange(e.target)}
-        error={error}
-      />
-      <TextInput
-        name={"password"}
-        label={"password"}
-        type={"password"}
-        instructions={""}
-        onChange={(e) => handleChange(e.target)}
-        error={error}
-      />
-      <button type="submit" disabled={loading}>
-        Log In
-      </button>
-      <div>
-        <Link to="/forgot-password">Forgot Password?</Link>
-      </div>
-      <div>
-        Need an account? <Link to="/sign-up">Sign Up</Link>
-      </div>
-    </form>
+    <div className="login-page">
+      {history.location.reauthenticate ? (
+        <div className="__top-group flex flex-ai-c flex-jc-sb">
+          <BackButton />
+        </div>
+      ) : null}
+      <form onSubmit={handleSubmit}>
+        <h1>Login</h1>
+        <TextInput
+          name={"email"}
+          label={"email"}
+          type={"email"}
+          instructions={""}
+          autoFocus={true}
+          onChange={(e) => handleChange(e.target)}
+          placeholder="&#xf0e0;"
+          error={error}
+        />
+        <TextInput
+          name={"password"}
+          label={"password"}
+          type={"password"}
+          instructions={""}
+          onChange={(e) => handleChange(e.target)}
+          placeholder="&#xf084;"
+          error={error}
+        />
+        <div className="__forgot-password">
+          <Link to="/forgot-password">Forgot Password?</Link>
+        </div>
+        <button
+          className="all-buttons --gradiant-button"
+          type="submit"
+          disabled={loading}
+        >
+          Log In
+        </button>
+        <br />
+        <div>
+          Need an account? <Link to="/sign-up">Sign Up</Link>
+        </div>
+      </form>
+    </div>
   );
 };
 

@@ -8,7 +8,7 @@ const BackButton = () => {
   return (
     <button
       className="all-buttons --back-button"
-      onClick={() => history.goBack()}
+      onClick={() => history.push("/")}
     >
       <GoChevronLeft />
       Go Back
