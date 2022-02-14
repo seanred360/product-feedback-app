@@ -41,7 +41,9 @@ const MobileSlideOut = ({ setIsOpen, isOpen, dataToSort, setData }) => {
             <div className="__bottom">
               <button
                 className="--settings all-buttons --blue-button"
-                onClick={() => history.push("/account")}
+                onClick={() =>
+                  history.push({ pathname: "/log-in", reauthenticate: true })
+                }
               >
                 Settings
               </button>

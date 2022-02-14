@@ -1,6 +1,6 @@
 import BackButton from "../common/BackButton";
 import { auth } from "../firebase";
-import { FaEdit, FaChevronRight } from "react-icons/fa";
+import { FaEdit } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import Spinner from "../common/Spinner";
@@ -54,21 +54,31 @@ const AccountPage = () => {
       <div className="__account-details">
         <ul>
           <li>
-            <button className="--info-item">
+            <button
+              className="--info-item"
+              onClick={() => {
+                history.push("/edit-account");
+              }}
+            >
               <div className="__left">
                 <span className="--info-name">DISPLAY NAME</span>
                 <span className="--info-value">{displayName}</span>
               </div>
-              <FaChevronRight />
+              <FaEdit />
             </button>
           </li>
           <li>
-            <button className="--info-item">
+            <button
+              className="--info-item"
+              onClick={() => {
+                history.push("/edit-account-email");
+              }}
+            >
               <div className="__left">
                 <span className="--info-name">EMAIL</span>
                 <span className="--info-value">{email}</span>
               </div>
-              <FaChevronRight />
+              <FaEdit />
             </button>
           </li>
           <li>
@@ -80,7 +90,7 @@ const AccountPage = () => {
                 <span className="--info-name">PASSWORD</span>
                 <span className="--info-value">********</span>
               </div>
-              <FaChevronRight />
+              <FaEdit />
             </button>
           </li>
         </ul>

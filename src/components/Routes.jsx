@@ -11,6 +11,8 @@ import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import UpdateProfilePage from "./pages/UpdateProfilePage";
 import EditFeedbackPage from "./pages/EditFeedbackPage";
 import AccountPage from "./pages/AccountPage";
+import EditAccountPage from "./pages/EditAccountPage";
+import EditAccountEmailPage from "./pages/EditAccountEmailPage";
 
 const Routes = () => {
   return (
@@ -18,6 +20,11 @@ const Routes = () => {
       <PrivateRoute exact path="/" component={HomePage} />
       <Route path="/road-map" component={RoadMapPage} />
       <PrivateRoute path="/account" component={AccountPage} />
+      <PrivateRoute
+        path="/edit-account-email"
+        component={EditAccountEmailPage}
+      />
+      <PrivateRoute path="/edit-account" component={EditAccountPage} />
       <PrivateRoute path="/update-profile" component={UpdateProfilePage} />
       <PrivateRoute path="/new" component={PostFeedbackPage} />
       <PrivateRoute path="/edit/:slug" component={EditFeedbackPage} />
