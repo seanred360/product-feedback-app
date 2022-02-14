@@ -402,7 +402,6 @@ textarea {
   width: 279px;
   height: 48px;
   margin-top: 16px;
-  margin-bottom: 24px;
   padding: 14px 16px;
   background-color: #f7f8fd;
   border: none;
@@ -1221,6 +1220,13 @@ textarea {
   color: #3a4374;
 }
 
+.post-feedback-page .feedback-window form label::before,
+.edit-feedback-page .feedback-window form label::before {
+  display: block;
+  content: "";
+  margin-top: 24px;
+}
+
 .post-feedback-page .feedback-window form .__instructions,
 .edit-feedback-page .feedback-window form .__instructions {
   color: #647196;
@@ -1229,6 +1235,7 @@ textarea {
 .post-feedback-page .feedback-window .__buttons,
 .edit-feedback-page .feedback-window .__buttons {
   flex-direction: column;
+  margin-top: 16px;
 }
 
 .post-feedback-page .feedback-window .__buttons :not(:last-child),
@@ -1517,5 +1524,59 @@ textarea {
 .password-page .submit-success svg {
   font-size: 100px;
   color: limegreen;
+}
+
+.signup-page {
+  height: 100%;
+  padding: 34px 24px;
+  background: #f2f4ff;
+}
+
+.signup-page form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 24px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.signup-page form h1 {
+  font-size: 32px;
+}
+
+.signup-page form label {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.signup-page form label::before {
+  display: block;
+  content: "";
+  margin-top: 24px;
+}
+
+.signup-page form input {
+  text-indent: 24px;
+}
+
+.signup-page form input::placeholder {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  text-indent: 0px;
+}
+
+.signup-page form input#name, .signup-page form input#email, .signup-page form input#password, .signup-page form input#passwordConfirm {
+  margin-bottom: 0;
+}
+
+.signup-page form .--gradiant-button {
+  margin: 24px 0;
 }
 /*# sourceMappingURL=style.css.map */

@@ -51,6 +51,12 @@
       label {
         font-weight: bold;
         color: #3a4374;
+
+        &::before {
+          display: block;
+          content: "";
+          margin-top: 24px;
+        }
       }
 
       .__instructions {
@@ -60,6 +66,7 @@
 
     .__buttons {
       flex-direction: column;
+      margin-top: 16px;
 
       :not(:last-child) {
         margin-bottom: 16px;
