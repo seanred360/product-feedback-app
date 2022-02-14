@@ -7,11 +7,11 @@ import RoadMapPage from "./pages/RoadMapPage";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import PrivateRoute from "./common/PrivateRoute";
-import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 import UpdateProfilePage from "./pages/UpdateProfilePage";
 import EditFeedbackPage from "./pages/EditFeedbackPage";
 import AccountPage from "./pages/AccountPage";
-import EditAccountPage from "./pages/EditAccountPage";
+import EditAccountNamePage from "./pages/EditAccountNamePage";
 import EditAccountEmailPage from "./pages/EditAccountEmailPage";
 
 const Routes = () => {
@@ -24,11 +24,11 @@ const Routes = () => {
         path="/edit-account-email"
         component={EditAccountEmailPage}
       />
-      <PrivateRoute path="/edit-account" component={EditAccountPage} />
+      <PrivateRoute path="/edit-account" component={EditAccountNamePage} />
       <PrivateRoute path="/update-profile" component={UpdateProfilePage} />
       <PrivateRoute path="/new" component={PostFeedbackPage} />
       <PrivateRoute path="/edit/:slug" component={EditFeedbackPage} />
-      <Route path="/forgot-password" component={ForgotPasswordPage} />
+      <Route path="/reset-password" component={ResetPasswordPage} />
       <Route path="/sign-up" component={SignupPage} />
       <Route path="/log-in" component={LoginPage} />
       <Route path="/not-found" component={NotFoundPage} />

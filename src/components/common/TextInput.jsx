@@ -10,6 +10,7 @@ const TextInput = ({
   autoFocus,
   onChange,
   error,
+  message,
 }) => {
   return (
     <div className="form-group">
@@ -28,7 +29,8 @@ const TextInput = ({
         autoFocus={autoFocus}
         onChange={onChange}
       />
-      {error && <span>{error}</span>}
+      {error && <span className="--error">{error}</span>}
+      {message && <span className="--message">{message}</span>}
     </div>
   );
 };

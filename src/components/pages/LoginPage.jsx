@@ -29,10 +29,11 @@ const LoginPage = () => {
       await login(formData.email, formData.password);
       if (history.location.reauthenticate) history.push("/account");
       else history.push("/");
-    } catch {
-      setError("Failed to sign in");
+    } catch (err) {
+      console.log(err);
+      setError("The email or password is incorrect");
+      setLoading(false);
     }
-    // setLoading(false);
   };
 
   return (
@@ -64,7 +65,13 @@ const LoginPage = () => {
           error={error}
         />
         <div className="__forgot-password">
-          <Link to="/forgot-password">Forgot Password?</Link>
+          {history.location.reauthenticate ? (
+            <Link to={{ pathname: "/reset-password", reauthenticate: true }}>
+              Forgot Password?
+            </Link>
+          ) : (
+            <Link to={{ pathname: "/reset-password" }}>Forgot Password?</Link>
+          )}
         </div>
         <button
           className="all-buttons --gradiant-button"

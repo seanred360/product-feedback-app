@@ -2,13 +2,12 @@ import { useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import BackButton from "../common/BackButton";
 import TextInput from "../common/TextInput";
-import { ToastContainer, toast } from "react-toastify";
 import Joi from "joi-browser";
 import { auth } from "../firebase";
 import { useAuth } from "../../custom-hooks/AuthContext";
 import Spinner from "../common/Spinner";
 
-const EditAccount = () => {
+const EditAccountNamePage = () => {
   const { displayName } = auth.currentUser;
   const { updateDisplayName } = useAuth();
   const history = useHistory();
@@ -96,4 +95,4 @@ const EditAccount = () => {
   );
 };
 
-export default EditAccount;
+export default EditAccountNamePage;

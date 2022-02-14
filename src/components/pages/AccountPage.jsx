@@ -84,7 +84,12 @@ const AccountPage = () => {
           <li>
             <button
               className="--info-item"
-              onClick={() => history.push("/forgot-password")}
+              onClick={() =>
+                history.push({
+                  pathname: "/reset-password",
+                  reauthenticate: true,
+                })
+              }
             >
               <div className="__left">
                 <span className="--info-name">PASSWORD</span>

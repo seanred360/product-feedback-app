@@ -1409,6 +1409,12 @@ textarea {
   font-weight: 400;
 }
 
+.login-page form label::before {
+  display: block;
+  content: "";
+  margin-top: 24px;
+}
+
 .login-page form input {
   text-indent: 24px;
 }
@@ -1419,7 +1425,7 @@ textarea {
   text-indent: 0px;
 }
 
-.login-page form input#password {
+.login-page form input#password, .login-page form input#email {
   margin-bottom: 0;
 }
 
@@ -1442,5 +1448,74 @@ textarea {
 
 .login-page form .__buttons .--purple-button {
   margin-right: 10px;
+}
+
+.password-page {
+  height: 100vh;
+  padding: 34px 24px;
+  background: #f2f4ff;
+}
+
+.password-page .__top-group {
+  margin-bottom: 55px;
+}
+
+.password-page form,
+.password-page .submit-success {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 24px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.password-page form h1,
+.password-page .submit-success h1 {
+  font-size: 32px;
+}
+
+.password-page form label,
+.password-page .submit-success label {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.password-page form input,
+.password-page .submit-success input {
+  text-indent: 24px;
+}
+
+.password-page form input::placeholder,
+.password-page .submit-success input::placeholder {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  text-indent: 0px;
+}
+
+.password-page form #email,
+.password-page .submit-success #email {
+  margin-bottom: 0;
+}
+
+.password-page form .--message,
+.password-page .submit-success .--message {
+  color: green;
+}
+
+.password-page form .--gradiant-button,
+.password-page .submit-success .--gradiant-button {
+  margin: 24px 0;
+}
+
+.password-page .submit-success svg {
+  font-size: 100px;
+  color: limegreen;
 }
 /*# sourceMappingURL=style.css.map */
