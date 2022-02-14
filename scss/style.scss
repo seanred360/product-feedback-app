@@ -2,18 +2,22 @@
 @import "./common/mixins";
 @import "globals";
 @import "buttons";
-@import "navbar";
-@import "navbar2";
 @import "interactiveElements";
 @import "formElements";
+@import "./common/RenderUser";
+@import "./common//Spinner";
+
+@import "navbar";
+@import "navbar2";
 @import "MobileSlideOut";
-@import "HomePage";
 @import "Feedback";
 @import "FeedbackEmpty";
-@import "ViewFeedbackPage";
 @import "CommentsSection";
-@import "PostFeedbackPage";
-@import "RoadMapPage";
-@import "./common/RenderUser";
-@import "AccountPage";
-@import "./common//Spinner";
+
+@import "./pages/HomePage";
+@import "./pages/EditAccountPage";
+@import "./pages/AccountPage";
+@import "./pages/PostFeedbackPage";
+@import "./pages/ViewFeedbackPage";
+@import "./pages/RoadMapPage";
+@import "./pages/LoginPage";
