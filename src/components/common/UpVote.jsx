@@ -3,15 +3,19 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import { auth } from "../firebase";
+import Spinner from "./Spinner";
 
 const UpVote = ({ feedback }) => {
   const [upvotesState, setUpvotesState] = useState(feedback.upvotes);
   const [hasUpvoted, setHasUpvoted] = useState(
     upvotesState.includes(auth.currentUser.email)
   );
+  const [loading, setLoading] = useState(false);
 
   const handleClick = (e) => {
     e.stopPropagation();
+    setLoading(true);
+
     try {
       axios
         .patch(
@@ -22,12 +26,15 @@ const UpVote = ({ feedback }) => {
           setUpvotesState([...upvotesState, auth.currentUser.email]);
           toast.success("Up vote successful!");
           setHasUpvoted(true);
+          setLoading(false);
         });
     } catch (error) {
       toast.error("Failed to up vote");
+      setLoading(false);
     }
   };
 
+  if (loading) return <Spinner />;
   return (
     <button
       className="up-vote"
