@@ -67,7 +67,7 @@ const PostFeedbackPage = () => {
     axios
       .post(process.env.REACT_APP_MONGO_URL, {
         title: formData.title,
-        author: currentUser.email,
+        author: currentUser.uid,
         category: formData.category,
         description: formData.description,
       })

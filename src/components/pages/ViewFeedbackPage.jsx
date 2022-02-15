@@ -6,6 +6,7 @@ import RenderFeedback from "../RenderFeedback";
 import CommentsSection from "../RenderCommentsSection";
 import useAxios from "../../custom-hooks/useAxios";
 import Spinner from "../common/Spinner";
+import { auth } from "../firebase";
 
 const ViewFeedbackPage = () => {
   const location = useLocation();
@@ -14,6 +15,7 @@ const ViewFeedbackPage = () => {
     method: "get",
     url: `${process.env.REACT_APP_MONGO_URL}/${location.pathname}`,
   });
+
   useEffect(() => {
     if (response !== null) {
       setSelectedFeedback(response);
@@ -33,7 +35,9 @@ const ViewFeedbackPage = () => {
     <div className="view-feedback-page">
       <div className="__top-group flex flex-ai-c flex-jc-sb">
         <BackButton />
-        <EditFeedbackButton selectedFeedback={selectedFeedback} />
+        {auth.currentUser.uid === selectedFeedback.author && (
+          <EditFeedbackButton selectedFeedback={selectedFeedback} />
+        )}
       </div>
       <RenderFeedback
         title={selectedFeedback.title}

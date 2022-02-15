@@ -20,10 +20,10 @@ const UpVote = ({ feedback }) => {
       axios
         .patch(
           `${process.env.REACT_APP_MONGO_URL}/postupvote/${feedback._id}`,
-          [auth.currentUser.email]
+          [auth.currentUser.uid]
         )
         .then(function (response) {
-          setUpvotesState([...upvotesState, auth.currentUser.email]);
+          setUpvotesState([...upvotesState, auth.currentUser.uid]);
           toast.success("Up vote successful!");
           setHasUpvoted(true);
           setLoading(false);
