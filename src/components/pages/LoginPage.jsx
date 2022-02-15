@@ -24,14 +24,17 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const displayName = auth.currentUser.displayName;
 
     try {
       setError("");
       setLoading(true);
       await toast.promise(login(formData.email, formData.password), {
         pending: "Logging you in",
-        success: `${displayName ? `Welcome ${displayName}` : `Welcome`}`,
+        success: `${
+          auth.currentUser.displayName
+            ? `Welcome ${auth.currentUser.displayName}`
+            : `Welcome`
+        }`,
         error: "Failed to login",
       });
       if (history.location.reauthenticate) history.push("/account");
