@@ -15,9 +15,13 @@ textarea {
     outline: 1px solid $blue;
   }
 
-  &.--error {
+  .--error {
     border: 1px solid red;
   }
+}
+
+.--error-message {
+  color: red;
 }
 
 select {

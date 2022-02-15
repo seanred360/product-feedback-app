@@ -1,11 +1,12 @@
-import TextInput from "../common/TextInput";
-import { useAuth } from "../../custom-hooks/AuthContext";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Joi from "joi-browser";
+import TextInput from "../common/TextInput";
+import { toast } from "react-toastify";
+import Spinner from "../common/Spinner";
+import { auth } from "../firebase";
 
 const Signup = () => {
-  const { signup } = useAuth();
   const [error, setError] = useState({});
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -30,7 +31,6 @@ const Signup = () => {
 
     const errors = {};
     for (let item of error.details) errors[item.path[0]] = item.message;
-    console.log(errors);
     return errors;
   };
 
@@ -60,19 +60,45 @@ const Signup = () => {
     setError(errors || {});
     if (errors) return;
 
-    if (formData.password !== formData.passwordConfirm)
+    if (formData.password !== formData.passwordConfirm) {
       return setError({ ...errors, passwordConfirm: "Passwords do not match" });
-
-    try {
-      setLoading(true);
-      await signup(formData.name, formData.email, formData.password);
-      history.push("/");
-    } catch (err) {
-      console.log(err);
-      setLoading(false);
     }
+
+    setLoading(true);
+    await toast
+      .promise(
+        auth
+          .createUserWithEmailAndPassword(formData.email, formData.password)
+          .then((res) => {
+            const user = auth.currentUser;
+            return user.updateProfile({
+              displayName: formData.name,
+              photoURL: `https://avatars.dicebear.com/api/avataaars/${Date.now()}.svg`,
+            });
+          }),
+        {
+          pending: "Creating your account",
+          success: `Welcome ${formData.name}`,
+          error: "Failed to create your account",
+        }
+      )
+      .then(() => {
+        history.push("/");
+      })
+      .catch((err) => {
+        setError({ ...error, email: "Email is already in use" });
+        setLoading(false);
+      });
   };
 
+  if (loading)
+    return (
+      <div
+        style={{ height: "100vh", display: "flex", justifyContent: "center" }}
+      >
+        <Spinner />
+      </div>
+    );
   return (
     <div className="signup-page">
       <form onSubmit={handleSubmit}>
@@ -83,6 +109,7 @@ const Signup = () => {
           type={"text"}
           instructions={"Other users will see this in your comments and posts"}
           autoFocus={true}
+          defaultValue={formData.name && formData.name}
           onChange={(e) => handleChange(e.target)}
           error={error.hasOwnProperty("name") && error["name"]}
         />
@@ -90,6 +117,7 @@ const Signup = () => {
           name={"email"}
           label={"email"}
           type={"email"}
+          defaultValue={formData.email && formData.email}
           instructions={"Your email is hidden from other users"}
           onChange={(e) => handleChange(e.target)}
           error={error.hasOwnProperty("email") && error["email"]}
@@ -98,6 +126,7 @@ const Signup = () => {
           name={"password"}
           label={"password"}
           type={"password"}
+          defaultValue={formData.password && formData.password}
           onChange={(e) => handleChange(e.target)}
           error={error.hasOwnProperty("password") && error["password"]}
         />
@@ -105,6 +134,7 @@ const Signup = () => {
           name={"passwordConfirm"}
           label={"password confirmation"}
           type={"password"}
+          defaultValue={formData.passwordConfirm && formData.passwordConfirm}
           onChange={(e) => handleChange(e.target)}
           error={
             error.hasOwnProperty("passwordConfirm") && error["passwordConfirm"]

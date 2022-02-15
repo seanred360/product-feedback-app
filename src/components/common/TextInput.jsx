@@ -29,7 +29,7 @@ const TextInput = ({
         autoFocus={autoFocus}
         onChange={onChange}
       />
-      {error && <span className="--error">{error}</span>}
+      {error && <span className="--error-message">{error}</span>}
       {message && <span className="--message">{message}</span>}
     </div>
   );

@@ -415,10 +415,14 @@ textarea:focus {
   outline: 1px solid #4661e6;
 }
 
-input.--error,
-select.--error,
-textarea.--error {
+input .--error,
+select .--error,
+textarea .--error {
   border: 1px solid red;
+}
+
+.--error-message {
+  color: red;
 }
 
 select {

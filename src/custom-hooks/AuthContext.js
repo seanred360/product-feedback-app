@@ -12,15 +12,20 @@ const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
-  function signup(displayName, email, password) {
-    auth.createUserWithEmailAndPassword(email, password).then((res) => {
-      const user = auth.currentUser;
-      return user.updateProfile({
-        displayName: displayName,
-        photoURL: `https://avatars.dicebear.com/api/avataaars/${Date.now()}.svg`,
-      });
-    });
-  }
+  // function signup(displayName, email, password) {
+  //   auth
+  //     .createUserWithEmailAndPassword(email, password)
+  //     .then((res) => {
+  //       const user = auth.currentUser;
+  //       return user.updateProfile({
+  //         displayName: displayName,
+  //         photoURL: `https://avatars.dicebear.com/api/avataaars/${Date.now()}.svg`,
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       return err;
+  //     });
+  // }
 
   function login(email, password) {
     return auth.signInWithEmailAndPassword(email, password);
@@ -38,20 +43,16 @@ const AuthProvider = ({ children }) => {
     return auth.sendPasswordResetEmail(email);
   }
 
-  function updateEmail(email) {
-    return auth.currentUser.updateEmail(email);
+  function updatePassword(newPassword) {
+    return auth.currentUser.updatePassword(newPassword);
   }
 
-  function updatePassword(password) {
-    return auth.currentUser.updatePassword(password);
+  function updateDisplayName(newDisplayName) {
+    return auth.currentUser.updateProfile(newDisplayName);
   }
 
-  function updateDisplayName(displayName) {
-    return auth.currentUser.updateProfile(displayName);
-  }
-
-  function randomizeAvatarPhoto(photoUrl) {
-    return auth.currentUser.updateProfile(photoUrl);
+  function randomizeAvatarPhoto(newPhotoUrl) {
+    return auth.currentUser.updateProfile(newPhotoUrl);
   }
 
   useEffect(() => {
@@ -65,7 +66,7 @@ const AuthProvider = ({ children }) => {
   const value = {
     currentUser,
     login,
-    signup,
+    // signup,
     logout,
     resetPassword,
     updateEmail,
