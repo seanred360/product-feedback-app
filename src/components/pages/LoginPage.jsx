@@ -3,6 +3,8 @@ import { useAuth } from "../../custom-hooks/AuthContext";
 import { useState } from "react/cjs/react.development";
 import { Link, useHistory } from "react-router-dom";
 import BackButton from "../common/BackButton";
+import { toast } from "react-toastify";
+import { auth } from "../firebase";
 
 const LoginPage = () => {
   const { login } = useAuth();
@@ -22,15 +24,19 @@ const LoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const displayName = auth.currentUser.displayName;
 
     try {
       setError("");
       setLoading(true);
-      await login(formData.email, formData.password);
+      await toast.promise(login(formData.email, formData.password), {
+        pending: "Logging you in",
+        success: `${displayName ? `Welcome ${displayName}` : `Welcome`}`,
+        error: "Failed to login",
+      });
       if (history.location.reauthenticate) history.push("/account");
       else history.push("/");
     } catch (err) {
-      console.log(err);
       setError("The email or password is incorrect");
       setLoading(false);
     }

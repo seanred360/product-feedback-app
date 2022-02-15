@@ -9,8 +9,18 @@ const App = () => {
     <div className="App">
       <AuthProvider>
         <BrowserRouter>
-            <ToastContainer />
-            <Routes />
+          <ToastContainer
+            position="bottom-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
+          <Routes />
         </BrowserRouter>
       </AuthProvider>
     </div>
