@@ -20,7 +20,14 @@ const ViewFeedbackPage = () => {
     }
   }, [response]);
 
-  if (loading) return <Spinner />;
+  if (loading)
+    return (
+      <div
+        style={{ height: "100vh", display: "flex", justifyContent: "center" }}
+      >
+        <Spinner />
+      </div>
+    );
   if (error) return <strong>{error.message}</strong>;
   return (
     <div className="view-feedback-page">

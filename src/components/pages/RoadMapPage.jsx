@@ -19,7 +19,9 @@ const RoadMapPage = () => {
   useEffect(() => {
     if (response !== null) {
       setFeedback(response);
-      setActiveStatusArray(_.filter(response, (res) => res.status === "in-progress"));
+      setActiveStatusArray(
+        _.filter(response, (res) => res.status === "in-progress")
+      );
     }
   }, [response]);
 
@@ -38,8 +40,15 @@ const RoadMapPage = () => {
     setActiveStatusArray(activeStatusArray);
   };
 
-  if (loading) return <Spinner />;
-  if (error) return <h1>null data</h1>;
+  if (loading)
+    return (
+      <div
+        style={{ height: "100vh", display: "flex", justifyContent: "center" }}
+      >
+        <Spinner />
+      </div>
+    );
+  if (error) return <strong>No Data Found</strong>;
   return (
     <div className="road-map-page">
       <div className="__nav-top">
