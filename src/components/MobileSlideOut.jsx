@@ -1,30 +1,25 @@
-import { useState } from "react";
-import RenderCategoryButtons from "./RenderCategoryButtons";
-import RoadMapOverview from "./RoadMapOverview";
 import { useAuth } from "../custom-hooks/AuthContext";
 import { auth } from "./firebase";
-import RenderUser from "../components/common/RenderUser";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
+import RenderCategoryButtons from "./RenderCategoryButtons";
+import RoadMapOverview from "./RoadMapOverview";
+import RenderUser from "../components/common/RenderUser";
 
 const MobileSlideOut = ({ setIsOpen, isOpen, dataToSort, setData }) => {
   const { logout } = useAuth();
   const { photoURL, displayName, email } = auth.currentUser;
   const history = useHistory();
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const handleLogout = async (e) => {
     e.preventDefault();
 
     try {
-      setError("");
-      setLoading(true);
       await logout();
       history.push("/");
     } catch {
-      setError("Failed to logout");
+      toast.error("Failed to logout");
     }
-    setLoading(false);
   };
 
   return (

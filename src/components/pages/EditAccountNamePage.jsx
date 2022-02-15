@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
-import BackButton from "../common/BackButton";
-import TextInput from "../common/TextInput";
+import { useHistory } from "react-router-dom";
 import Joi from "joi-browser";
 import { auth } from "../firebase";
 import { useAuth } from "../../custom-hooks/AuthContext";
+import BackButton from "../common/BackButton";
+import TextInput from "../common/TextInput";
 import Spinner from "../common/Spinner";
 import { toast } from "react-toastify";
 
@@ -12,25 +12,18 @@ const EditAccountNamePage = () => {
   const { displayName } = auth.currentUser;
   const { updateDisplayName } = useAuth();
   const history = useHistory();
-  const location = useLocation();
   const [formData, setFormData] = useState(displayName);
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    try {
-      setError("");
-      setLoading(true);
-      await toast.promise(updateDisplayName({ displayName: formData }), {
-        pending: "Updating your name",
-        success: `Your new name is ${formData}`,
-        error: "Failed to update your name",
-      });
-    } catch (err) {
-      setError(err);
-    }
+    setLoading(true);
+    await toast.promise(updateDisplayName({ displayName: formData }), {
+      pending: "Updating your name",
+      success: `Your new name is ${formData}`,
+      error: "Failed to update your name",
+    });
     setLoading(false);
     history.push("/account");
   };

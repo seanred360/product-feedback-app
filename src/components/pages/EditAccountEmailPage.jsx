@@ -1,27 +1,25 @@
 import { useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
-import BackButton from "../common/BackButton";
-import TextInput from "../common/TextInput";
-import { ToastContainer, toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
 import Joi from "joi-browser";
 import { auth } from "../firebase";
 import { useAuth } from "../../custom-hooks/AuthContext";
+import BackButton from "../common/BackButton";
+import TextInput from "../common/TextInput";
+import { toast } from "react-toastify";
 import Spinner from "../common/Spinner";
 
 const EditAccountEmailPage = () => {
   const { email } = auth.currentUser;
   const { updateEmail } = useAuth();
   const history = useHistory();
-  const location = useLocation();
   const [formData, setFormData] = useState(email);
-  const [error, setError] = useState("");
+  const [setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      setError("");
       setLoading(true);
       await toast.promise(updateEmail(formData), {
         pending: "Updating your email",
@@ -30,7 +28,6 @@ const EditAccountEmailPage = () => {
       });
     } catch (err) {
       setError(err);
-      console.log(err);
     }
     setLoading(false);
     history.push("/account");
