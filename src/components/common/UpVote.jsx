@@ -24,7 +24,6 @@ const UpVote = ({ feedback }) => {
         )
         .then(function (response) {
           setUpvotesState([...upvotesState, auth.currentUser.uid]);
-          toast.success("Up vote successful!");
           setHasUpvoted(true);
           setLoading(false);
         });

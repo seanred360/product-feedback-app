@@ -6,7 +6,7 @@ import BackButton from "../common/BackButton";
 import TextInput from "../common/TextInput";
 import Select from "../common/Select";
 import TextArea from "../common/TextArea";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useAuth } from "../../custom-hooks/AuthContext";
 
 const PostFeedbackPage = () => {
@@ -18,6 +18,7 @@ const PostFeedbackPage = () => {
     description: "",
   });
   const [error, setError] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const schema = {
     title: Joi.string().required().label("Feedback Title"),
@@ -55,7 +56,7 @@ const PostFeedbackPage = () => {
     setError(error);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const errors = validate();
@@ -64,25 +65,32 @@ const PostFeedbackPage = () => {
       toast.error("Please fill in the required fields.");
       return;
     }
-    axios
-      .post(process.env.REACT_APP_MONGO_URL, {
-        title: formData.title,
-        author: currentUser.uid,
-        category: formData.category,
-        description: formData.description,
-      })
-      .then(function (response) {
-        toast.success("Thanks for your feedback!");
+  
+    setLoading(true);
+    await toast
+      .promise(
+        axios.post(process.env.REACT_APP_MONGO_URL, {
+          title: formData.title,
+          author: currentUser.uid,
+          category: formData.category,
+          description: formData.description,
+        }),
+        {
+          pending: "Posting your feedback",
+          success: `Thanks for your feedback!`,
+          error: "Failed to post your feedback",
+        }
+      )
+      .then(() => {
         history.push("/");
       })
-      .catch(function (error) {
-        toast.error("400 Bad Request Error");
+      .catch((err) => {
+        setLoading(false);
       });
   };
 
   return (
     <div className="post-feedback-page">
-      <ToastContainer />
       <div className="__top-group flex flex-ai-c flex-jc-sb">
         <BackButton />
       </div>

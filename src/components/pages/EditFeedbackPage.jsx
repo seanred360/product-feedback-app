@@ -5,8 +5,9 @@ import BackButton from "../common/BackButton";
 import TextInput from "../common/TextInput";
 import Select from "../common/Select";
 import TextArea from "../common/TextArea";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useHistory, useLocation } from "react-router-dom";
+import Spinner from "../common/Spinner";
 
 const EditFeedbackPage = () => {
   const history = useHistory();
@@ -17,6 +18,7 @@ const EditFeedbackPage = () => {
     description: location.selectedFeedback.description,
   });
   const [error, setError] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const schema = {
     title: Joi.string().required().label("Feedback Title"),
@@ -67,7 +69,8 @@ const EditFeedbackPage = () => {
         toast.error("Failed to delete feedback");
       });
   };
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const errors = validate();
@@ -76,34 +79,34 @@ const EditFeedbackPage = () => {
       toast.error("Please fill in the required fields.");
       return;
     }
-    axios
-      .patch(
-        `${process.env.REACT_APP_MONGO_URL}/edit/${location.selectedFeedback.slug}`,
+
+    setLoading(true);
+    await toast
+      .promise(
+        axios.patch(
+          `${process.env.REACT_APP_MONGO_URL}/edit/${location.selectedFeedback.slug}`,
+          {
+            title: formData.title,
+            category: formData.category,
+            description: formData.description,
+          }
+        ),
         {
-          title: formData.title,
-          category: formData.category,
-          description: formData.description,
+          pending: "Saving your changes",
+          success: `Feedback updated!`,
+          error: "Failed to save your changes",
         }
       )
-      .then(function (response) {
-        console.log(response);
-        toast.success("Edit feedback successful!");
+      .then(() => {
         history.push("/");
       })
-      .catch(function (error) {
-        console.log(error);
-        toast.error("Failed to edit feedback");
+      .catch((err) => {
+        setLoading(false);
       });
   };
 
-  if (!location.selectedFeedback) {
-    history.push("/");
-    return null;
-  }
-
   return (
     <div className="edit-feedback-page">
-      <ToastContainer />
       <div className="__top-group flex flex-ai-c flex-jc-sb">
         <BackButton />
       </div>
@@ -142,29 +145,33 @@ const EditFeedbackPage = () => {
             error={error.hasOwnProperty("description") && error["description"]}
           />
 
-          <div className="__buttons flex flex-jc-c flex-ai-c">
-            <button
-              className="all-buttons --purple-button"
-              type="submit"
-              disabled={validate()}
-            >
-              Save Changes
-            </button>
-            <button
-              className="all-buttons --blue-grey2-button"
-              type="button"
-              onClick={history.goBack}
-            >
-              Cancel
-            </button>
-            <button
-              className="all-buttons --red-button"
-              type="button"
-              onClick={handleDelete}
-            >
-              Delete
-            </button>
-          </div>
+          {loading ? (
+            <Spinner />
+          ) : (
+            <div className="__buttons flex flex-jc-c flex-ai-c">
+              <button
+                className="all-buttons --purple-button"
+                type="submit"
+                disabled={validate()}
+              >
+                Save Changes
+              </button>
+              <button
+                className="all-buttons --blue-grey2-button"
+                type="button"
+                onClick={history.goBack}
+              >
+                Cancel
+              </button>
+              <button
+                className="all-buttons --red-button"
+                type="button"
+                onClick={handleDelete}
+              >
+                Delete
+              </button>
+            </div>
+          )}
         </form>
       </div>
     </div>
