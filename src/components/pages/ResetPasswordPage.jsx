@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 import BackButton from "../common/BackButton";
 import Spinner from "../common/Spinner";
 import { MdMarkEmailRead } from "react-icons/md";
+import { toast } from "react-toastify";
 
 const ResetPasswordPage = () => {
   const { resetPassword } = useAuth();
@@ -32,7 +33,11 @@ const ResetPasswordPage = () => {
       setMessage("");
       setError("");
       setLoading(true);
-      await resetPassword(formData.email);
+      await toast.promise(resetPassword(formData.email), {
+        pending: "Sending password reset email",
+        success: `Check your email for further instructions`,
+        error: "Failed to reset your password",
+      });
       setMessage("Check your email for further instructions");
       setHasSubmitted(true);
     } catch {
@@ -95,7 +100,12 @@ const ResetPasswordPage = () => {
           <h1>Success!</h1>
           <p>Check your email for further instructions</p>
           <div>
-            <button className="all-buttons --gradiant-button" onClick={() => history.push('/log-in')}>Log In</button>
+            <button
+              className="all-buttons --gradiant-button"
+              onClick={() => history.push("/log-in")}
+            >
+              Log In
+            </button>
           </div>
           <div>
             Need an account? <Link to="/sign-up">Sign Up</Link>

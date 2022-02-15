@@ -6,6 +6,7 @@ import Joi from "joi-browser";
 import { auth } from "../firebase";
 import { useAuth } from "../../custom-hooks/AuthContext";
 import Spinner from "../common/Spinner";
+import { toast } from "react-toastify";
 
 const EditAccountNamePage = () => {
   const { displayName } = auth.currentUser;
@@ -22,10 +23,13 @@ const EditAccountNamePage = () => {
     try {
       setError("");
       setLoading(true);
-      await updateDisplayName({ displayName: formData });
+      await toast.promise(updateDisplayName({ displayName: formData }), {
+        pending: "Updating your name",
+        success: `Your new name is ${formData}`,
+        error: "Failed to update your name",
+      });
     } catch (err) {
       setError(err);
-      console.log(err);
     }
     setLoading(false);
     history.push("/account");

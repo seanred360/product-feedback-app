@@ -23,7 +23,11 @@ const EditAccountEmailPage = () => {
     try {
       setError("");
       setLoading(true);
-      await updateEmail(formData);
+      await toast.promise(updateEmail(formData), {
+        pending: "Updating your email",
+        success: `Your new email is ${formData}`,
+        error: "Failed to update your email",
+      });
     } catch (err) {
       setError(err);
       console.log(err);
