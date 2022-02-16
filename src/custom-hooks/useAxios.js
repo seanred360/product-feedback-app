@@ -8,10 +8,18 @@ const useAxios = ({ url, method, body = null, headers = null }) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState("");
   const [loading, setloading] = useState(true);
+  const controller = new AbortController();
 
   useEffect(() => {
     const fetchData = () => {
-      axios[method](url, JSON.parse(headers), JSON.parse(body))
+      axios[method](
+        url,
+        {
+          signal: controller.signal,
+        },
+        JSON.parse(headers),
+        JSON.parse(body)
+      )
         .then((res) => {
           setResponse(res.data);
         })
@@ -26,7 +34,7 @@ const useAxios = ({ url, method, body = null, headers = null }) => {
     fetchData();
   }, [method, url, body, headers]);
 
-  return { response, error, loading };
+  return { response, error, loading, controller };
 };
 
 export default useAxios;
