@@ -1,21 +1,22 @@
 import { useState } from "react";
 import axios from "axios";
 import Joi from "joi-browser";
+import { useHistory, useLocation, Redirect } from "react-router-dom";
 import BackButton from "../common/BackButton";
 import TextInput from "../common/TextInput";
 import Select from "../common/Select";
 import TextArea from "../common/TextArea";
 import { toast } from "react-toastify";
-import { useHistory, useLocation } from "react-router-dom";
 import Spinner from "../common/Spinner";
 
 const EditFeedbackPage = () => {
   const history = useHistory();
   const location = useLocation();
+  const selectedFeedback = location.selectedFeedback || undefined;
   const [formData, setFormData] = useState({
-    title: location.selectedFeedback.title,
-    category: location.selectedFeedback.category,
-    description: location.selectedFeedback.description,
+    title: selectedFeedback && selectedFeedback.title,
+    category: selectedFeedback && selectedFeedback.category,
+    description: selectedFeedback && selectedFeedback.description,
   });
   const [error, setError] = useState({});
   const [loading, setLoading] = useState(false);
@@ -98,13 +99,17 @@ const EditFeedbackPage = () => {
         }
       )
       .then(() => {
-        history.push("/");
+        history.push({
+          pathname: `/${selectedFeedback.slug}`,
+          selectedFeedback: selectedFeedback,
+        });
       })
       .catch((err) => {
         setLoading(false);
       });
   };
 
+  if (!selectedFeedback) return <Redirect to="/" />;
   return (
     <div className="edit-feedback-page">
       <div className="__top-group flex flex-ai-c flex-jc-sb">
@@ -117,7 +122,7 @@ const EditFeedbackPage = () => {
           <TextInput
             name={"title"}
             label={"Feedback Title"}
-            defaultValue={location.selectedFeedback.title}
+            defaultValue={selectedFeedback.title}
             instructions={"Add a short, descriptive headline"}
             autoFocus={true}
             onChange={(e) => handleChange(e.target)}
@@ -126,7 +131,7 @@ const EditFeedbackPage = () => {
           <Select
             name={"category"}
             label={"Category"}
-            defaultValue={location.selectedFeedback.category}
+            defaultValue={selectedFeedback.category}
             instructions={"Choose a category for your feedback"}
             items={["Feature", "UI", "UX", "Enhancement", "Bug"]}
             onChange={(e) => handleChange(e.target)}
@@ -135,7 +140,7 @@ const EditFeedbackPage = () => {
           <TextArea
             name={"description"}
             label={"Feedback Description"}
-            defaultValue={location.selectedFeedback.description}
+            defaultValue={selectedFeedback.description}
             instructions={
               "Include any specific comments on what should be improved, added,etc."
             }
@@ -159,7 +164,12 @@ const EditFeedbackPage = () => {
               <button
                 className="all-buttons --blue-grey2-button"
                 type="button"
-                onClick={history.goBack}
+                onClick={() =>
+                  history.push({
+                    pathname: `/${selectedFeedback.slug}`,
+                    selectedFeedback,
+                  })
+                }
               >
                 Cancel
               </button>

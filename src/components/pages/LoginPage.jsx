@@ -1,10 +1,11 @@
 import TextInput from "../common/TextInput";
 import { useAuth } from "../../custom-hooks/AuthContext";
-import { useState } from "react/cjs/react.development";
-import { Link, useHistory } from "react-router-dom";
+import { useState } from "react";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import BackButton from "../common/BackButton";
 import { toast } from "react-toastify";
 import { auth } from "../firebase";
+import PageSpinner from "../common/PageSpinner";
 
 const LoginPage = () => {
   const { login } = useAuth();
@@ -30,21 +31,21 @@ const LoginPage = () => {
       setLoading(true);
       await toast.promise(login(formData.email, formData.password), {
         pending: "Logging you in",
-        success: `${
-          auth.currentUser.displayName
-            ? `Welcome ${auth.currentUser.displayName}`
-            : `Welcome`
-        }`,
+        success: "Welcome",
         error: "Failed to login",
       });
       if (history.location.reauthenticate) history.push("/account");
-      else history.push("/");
+      else history.replace("/");
     } catch (err) {
+      console.log(err);
       setError("The email or password is incorrect");
       setLoading(false);
     }
   };
 
+  if (loading) return <PageSpinner />;
+  if (auth.currentUser && !history.location.reauthenticate)
+    return <Redirect to="/" />;
   return (
     <div className="login-page">
       {history.location.reauthenticate ? (

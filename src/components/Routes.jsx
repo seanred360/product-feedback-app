@@ -18,7 +18,7 @@ const Routes = () => {
   return (
     <Switch>
       <PrivateRoute exact path="/" component={HomePage} />
-      <Route path="/road-map" component={RoadMapPage} />
+      <PrivateRoute path="/road-map" component={RoadMapPage} />
       <PrivateRoute path="/account" component={AccountPage} />
       <PrivateRoute
         path="/edit-account-email"
@@ -28,14 +28,11 @@ const Routes = () => {
       <PrivateRoute path="/update-profile" component={UpdateProfilePage} />
       <PrivateRoute path="/new" component={PostFeedbackPage} />
       <PrivateRoute path="/edit/:slug" component={EditFeedbackPage} />
-      <Route path="/reset-password" component={ResetPasswordPage} />
-      <Route path="/sign-up" component={SignupPage} />
+      <PrivateRoute path="/reset-password" component={ResetPasswordPage} />
+      <PrivateRoute path="/sign-up" isPublic={true} component={SignupPage} />
       <Route path="/log-in" component={LoginPage} />
       <Route path="/not-found" component={NotFoundPage} />
-      <Route
-        path="/:slug"
-        render={(props) => <ViewFeedbackPage {...props} />}
-      />
+      <PrivateRoute path="/:slug" component={ViewFeedbackPage} />
     </Switch>
   );
 };

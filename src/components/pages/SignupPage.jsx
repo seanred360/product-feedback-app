@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import Joi from "joi-browser";
 import TextInput from "../common/TextInput";
 import { toast } from "react-toastify";
-import Spinner from "../common/Spinner";
+import PageSpinner from "../common/PageSpinner";
 import { auth } from "../firebase";
 
 const Signup = () => {
@@ -91,14 +91,7 @@ const Signup = () => {
       });
   };
 
-  if (loading)
-    return (
-      <div
-        style={{ height: "100vh", display: "flex", justifyContent: "center" }}
-      >
-        <Spinner />
-      </div>
-    );
+  if (loading) return <PageSpinner />;
   return (
     <div className="signup-page">
       <form onSubmit={handleSubmit}>

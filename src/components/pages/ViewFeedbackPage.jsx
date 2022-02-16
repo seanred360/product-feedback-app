@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "react-router";
+import { Redirect } from "react-router-dom";
+import { auth } from "../firebase";
+import useAxios from "../../custom-hooks/useAxios";
 import BackButton from "../common/BackButton";
 import EditFeedbackButton from "../EditFeedbackButton";
 import RenderFeedback from "../RenderFeedback";
 import CommentsSection from "../RenderCommentsSection";
-import useAxios from "../../custom-hooks/useAxios";
-import Spinner from "../common/Spinner";
-import { auth } from "../firebase";
+import PageSpinner from "../common/PageSpinner";
 
 const ViewFeedbackPage = () => {
   const location = useLocation();
@@ -22,15 +23,9 @@ const ViewFeedbackPage = () => {
     }
   }, [response]);
 
-  if (loading)
-    return (
-      <div
-        style={{ height: "100vh", display: "flex", justifyContent: "center" }}
-      >
-        <Spinner />
-      </div>
-    );
+  if (loading) return <PageSpinner />;
   if (error) return <strong>{error.message}</strong>;
+  if (!selectedFeedback) return <Redirect to="/" />;
   return (
     <div className="view-feedback-page">
       <div className="__top-group flex flex-ai-c flex-jc-sb">
