@@ -60,7 +60,7 @@ const PostComment = ({ targetFeedback }) => {
   };
 
   return (
-    <div className="add-comment">
+    <div className="post-comment">
       {loading ? (
         <PageSpinner height="100%" />
       ) : (
