@@ -12,7 +12,7 @@ import PageSpinner from "../common/PageSpinner";
 const ViewFeedbackPage = () => {
   const location = useLocation();
   const [selectedFeedback, setSelectedFeedback] = useState();
-  const { response, loading, error } = useAxios({
+  const { response, loading, error, controller } = useAxios({
     method: "get",
     url: `${process.env.REACT_APP_MONGO_URL}/${location.pathname}`,
   });
@@ -21,7 +21,11 @@ const ViewFeedbackPage = () => {
     if (response !== null) {
       setSelectedFeedback(response);
     }
-  }, [response]);
+    return () => {
+      //if the ajax call doesn't finish before we unmount, cancel it
+      controller.abort();
+    };
+  }, [response, controller]);
 
   if (loading) return <PageSpinner />;
   if (error) return <strong>{error.message}</strong>;

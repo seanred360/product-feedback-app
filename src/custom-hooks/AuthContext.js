@@ -12,21 +12,6 @@ const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
 
-  // function signup(displayName, email, password) {
-  //   auth
-  //     .createUserWithEmailAndPassword(email, password)
-  //     .then((res) => {
-  //       const user = auth.currentUser;
-  //       return user.updateProfile({
-  //         displayName: displayName,
-  //         photoURL: `https://avatars.dicebear.com/api/avataaars/${Date.now()}.svg`,
-  //       });
-  //     })
-  //     .catch((err) => {
-  //       return err;
-  //     });
-  // }
-
   function login(email, password) {
     return auth.signInWithEmailAndPassword(email, password);
   }
@@ -35,12 +20,12 @@ const AuthProvider = ({ children }) => {
     auth.signOut();
   }
 
-  function updateEmail(newEmail) {
-    return auth.updateEmail(newEmail);
-  }
-
   function resetPassword(email) {
     return auth.sendPasswordResetEmail(email);
+  }
+
+  function updateEmail(newEmail) {
+    return auth.currentUser.updateEmail(newEmail);
   }
 
   function updatePassword(newPassword) {
@@ -83,3 +68,18 @@ const AuthProvider = ({ children }) => {
 };
 
 export default AuthProvider;
+
+// function signup(displayName, email, password) {
+//   auth
+//     .createUserWithEmailAndPassword(email, password)
+//     .then((res) => {
+//       const user = auth.currentUser;
+//       return user.updateProfile({
+//         displayName: displayName,
+//         photoURL: `https://avatars.dicebear.com/api/avataaars/${Date.now()}.svg`,
+//       });
+//     })
+//     .catch((err) => {
+//       return err;
+//     });
+// }

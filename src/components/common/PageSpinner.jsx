@@ -1,8 +1,8 @@
 import Spinner from "./Spinner";
 
-const PageSpinner = () => {
+const PageSpinner = ({ height = "100vh" }) => {
   return (
-    <div style={{ height: "100vh", display: "flex", justifyContent: "center" }}>
+    <div style={{ height: height, display: "flex", justifyContent: "center" }}>
       <Spinner />
     </div>
   );

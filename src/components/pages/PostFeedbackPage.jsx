@@ -8,6 +8,7 @@ import Select from "../common/Select";
 import TextArea from "../common/TextArea";
 import { toast } from "react-toastify";
 import { useAuth } from "../../custom-hooks/AuthContext";
+import PageSpinner from "../common/PageSpinner";
 
 const PostFeedbackPage = () => {
   const { currentUser } = useAuth();
@@ -65,7 +66,7 @@ const PostFeedbackPage = () => {
       toast.error("Please fill in the required fields.");
       return;
     }
-  
+
     setLoading(true);
     await toast
       .promise(
@@ -89,6 +90,7 @@ const PostFeedbackPage = () => {
       });
   };
 
+  if (loading) return <PageSpinner />;
   return (
     <div className="post-feedback-page">
       <div className="__top-group flex flex-ai-c flex-jc-sb">

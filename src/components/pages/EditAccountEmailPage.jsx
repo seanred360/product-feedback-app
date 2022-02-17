@@ -13,7 +13,7 @@ const EditAccountEmailPage = () => {
   const { updateEmail } = useAuth();
   const history = useHistory();
   const [formData, setFormData] = useState(email);
-  const [setError] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
@@ -26,11 +26,13 @@ const EditAccountEmailPage = () => {
         success: `Your new email is ${formData}`,
         error: "Failed to update your email",
       });
+      history.push("/account");
     } catch (err) {
-      setError(err);
+      if (err.code === "auth/email-already-in-use")
+        setError("Email is already in use");
+      else setError(err.code);
+      setLoading(false);
     }
-    setLoading(false);
-    history.push("/account");
   };
 
   const validate = () => {
@@ -64,6 +66,7 @@ const EditAccountEmailPage = () => {
             autoFocus={true}
             required={true}
             type="email"
+            error={error}
           />
         )}
 

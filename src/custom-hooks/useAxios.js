@@ -8,7 +8,7 @@ const useAxios = ({ url, method, body = null, headers = null }) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState("");
   const [loading, setloading] = useState(true);
-  const controller = new AbortController();
+  const [controller] = useState(new AbortController());
 
   useEffect(() => {
     const fetchData = () => {
@@ -32,7 +32,7 @@ const useAxios = ({ url, method, body = null, headers = null }) => {
     };
 
     fetchData();
-  }, [method, url, body, headers]);
+  }, [method, url, body, headers, controller.signal]);
 
   return { response, error, loading, controller };
 };

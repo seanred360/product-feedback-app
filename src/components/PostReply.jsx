@@ -5,11 +5,13 @@ import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import Joi from "joi-browser";
 import TextArea from "./common/TextArea";
+import PageSpinner from "./common/PageSpinner";
 
 const PostReply = ({ targetComment, replyingTo }) => {
   const history = useHistory();
-  const [error, setError] = useState();
   const [formData, setFormData] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
 
   const validateProperty = ({ name, value }) => {
     const obj = { [name]: value };
@@ -28,8 +30,10 @@ const PostReply = ({ targetComment, replyingTo }) => {
     setError(errors);
   };
 
-  const handlePostReply = () => {
-    axios
+  const handlePostReply = async () => {
+    setLoading(true);
+
+    await axios
       .patch(`${process.env.REACT_APP_MONGO_URL}/postreply/${targetComment}`, {
         content: formData,
         replyingTo: replyingTo,
@@ -39,38 +43,43 @@ const PostReply = ({ targetComment, replyingTo }) => {
           email: auth.currentUser.email,
         },
       })
-      .then(function (response) {
-        toast.success("Post reply successful!");
+      .then(() => {
         history.go();
       })
-      .catch(function (error) {
-        toast.error("Failed to post reply");
+      .catch((err) => {
+        setError(err);
       });
   };
 
   return (
     <div className="add-comment">
-      <h2 className="__header">Replying to</h2>
-      <form>
-        <TextArea
-          name="comment"
-          type="text"
-          placeholder="Type your reply here"
-          cols={30}
-          rows={20}
-          onChange={(e) => handleChange(e.target)}
-        />
-      </form>
-      <div className="__bottom flex flex-ai-c flex-jc-sb">
-        <span className="--characters-remaining">250 Characters left</span>
-        <button
-          className="all-buttons --purple-button"
-          type="submit"
-          onClick={handlePostReply}
-        >
-          Post Reply
-        </button>
-      </div>
+      {loading ? (
+        <PageSpinner height="100%" />
+      ) : (
+        <>
+          <h2 className="__header">Replying to</h2>
+          <form>
+            <TextArea
+              name="comment"
+              type="text"
+              placeholder="Type your reply here"
+              cols={30}
+              rows={20}
+              onChange={(e) => handleChange(e.target)}
+            />
+          </form>
+          <div className="__bottom flex flex-ai-c flex-jc-sb">
+            <span className="--characters-remaining">250 Characters left</span>
+            <button
+              className="all-buttons --purple-button"
+              type="submit"
+              onClick={handlePostReply}
+            >
+              Post Reply
+            </button>
+          </div>{" "}
+        </>
+      )}
     </div>
   );
 };

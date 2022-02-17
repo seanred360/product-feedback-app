@@ -7,7 +7,7 @@ import TextInput from "../common/TextInput";
 import Select from "../common/Select";
 import TextArea from "../common/TextArea";
 import { toast } from "react-toastify";
-import Spinner from "../common/Spinner";
+import PageSpinner from "../common/PageSpinner";
 
 const EditFeedbackPage = () => {
   const history = useHistory();
@@ -18,8 +18,8 @@ const EditFeedbackPage = () => {
     category: selectedFeedback && selectedFeedback.category,
     description: selectedFeedback && selectedFeedback.description,
   });
-  const [error, setError] = useState({});
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({});
 
   const schema = {
     title: Joi.string().required().label("Feedback Title"),
@@ -110,6 +110,7 @@ const EditFeedbackPage = () => {
   };
 
   if (!selectedFeedback) return <Redirect to="/" />;
+  if (loading) return <PageSpinner />;
   return (
     <div className="edit-feedback-page">
       <div className="__top-group flex flex-ai-c flex-jc-sb">
@@ -149,39 +150,34 @@ const EditFeedbackPage = () => {
             onChange={(e) => handleChange(e.target)}
             error={error.hasOwnProperty("description") && error["description"]}
           />
-
-          {loading ? (
-            <Spinner />
-          ) : (
-            <div className="__buttons flex flex-jc-c flex-ai-c">
-              <button
-                className="all-buttons --purple-button"
-                type="submit"
-                disabled={validate()}
-              >
-                Save Changes
-              </button>
-              <button
-                className="all-buttons --blue-grey2-button"
-                type="button"
-                onClick={() =>
-                  history.push({
-                    pathname: `/${selectedFeedback.slug}`,
-                    selectedFeedback,
-                  })
-                }
-              >
-                Cancel
-              </button>
-              <button
-                className="all-buttons --red-button"
-                type="button"
-                onClick={handleDelete}
-              >
-                Delete
-              </button>
-            </div>
-          )}
+          <div className="__buttons flex flex-jc-c flex-ai-c">
+            <button
+              className="all-buttons --purple-button"
+              type="submit"
+              disabled={validate()}
+            >
+              Save Changes
+            </button>
+            <button
+              className="all-buttons --blue-grey2-button"
+              type="button"
+              onClick={() =>
+                history.push({
+                  pathname: `/${selectedFeedback.slug}`,
+                  selectedFeedback,
+                })
+              }
+            >
+              Cancel
+            </button>
+            <button
+              className="all-buttons --red-button"
+              type="button"
+              onClick={handleDelete}
+            >
+              Delete
+            </button>
+          </div>
         </form>
       </div>
     </div>

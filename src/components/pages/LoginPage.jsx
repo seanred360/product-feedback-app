@@ -37,7 +37,6 @@ const LoginPage = () => {
       if (history.location.reauthenticate) history.push("/account");
       else history.replace("/");
     } catch (err) {
-      console.log(err);
       setError("The email or password is incorrect");
       setLoading(false);
     }

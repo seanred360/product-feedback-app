@@ -26,6 +26,7 @@ const TextArea = ({
         defaultValue={defaultValue}
         onChange={onChange}
       />
+      {error && <span className="--error-message">{error}</span>}
     </div>
   );
 };
