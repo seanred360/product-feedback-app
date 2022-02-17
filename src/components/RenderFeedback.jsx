@@ -9,17 +9,18 @@ const RenderFeedback = ({
   description,
   category,
   commentsCount,
+  clickable = false,
 }) => {
   const history = useHistory();
   const handleClick = () => {
-    history.push(`/${feedback.slug}`);
+    clickable && history.push(`/${feedback.slug}`);
   };
 
   return (
     <div className="feedback" onClick={handleClick}>
       <h1 className="__title">{title}</h1>
       <p className="__description">{description}</p>
-      <CategoryButton itemName={category} />
+      <CategoryButton itemName={category} disabled={true} />
       <div className="__bottom">
         <UpVote feedback={feedback} />
         <CommentsCounter commentsCount={commentsCount} />

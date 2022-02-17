@@ -15,6 +15,7 @@ const RenderAllFeedback = ({ feedbackPosts }) => {
             category={feedback.category}
             upvotes={feedback.upvotes}
             commentsCount={_.size(feedback.comments)}
+            clickable={true}
           />
         ))
       ) : (

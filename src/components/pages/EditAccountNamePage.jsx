@@ -7,7 +7,6 @@ import BackButton from "../common/BackButton";
 import TextInput from "../common/TextInput";
 import Spinner from "../common/Spinner";
 import { toast } from "react-toastify";
-import { set } from "lodash";
 
 const EditAccountNamePage = () => {
   const { displayName } = auth.currentUser;

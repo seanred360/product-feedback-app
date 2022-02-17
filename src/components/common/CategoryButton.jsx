@@ -1,6 +1,12 @@
 import _ from "lodash";
 
-const CategoryButton = ({ setIsOpen, itemName, dataToSort, setData }) => {
+const CategoryButton = ({
+  setIsOpen,
+  itemName,
+  dataToSort,
+  setData,
+  disabled = false,
+}) => {
   const handleClick = (filterCategory) => {
     if (filterCategory === "All") setData(dataToSort);
     else {
@@ -10,9 +16,13 @@ const CategoryButton = ({ setIsOpen, itemName, dataToSort, setData }) => {
   };
 
   return (
-    <div className="category-button" onClick={() => handleClick(itemName)}>
+    <button
+      className="category-button"
+      onClick={() => handleClick(itemName)}
+      disabled={disabled}
+    >
       <span className="__item-name">{itemName}</span>
-    </div>
+    </button>
   );
 };
 

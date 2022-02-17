@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from "axios";
 import { auth } from "./firebase";
 import { useHistory } from "react-router-dom";
-import { toast } from "react-toastify";
 import Joi from "joi-browser";
 import TextArea from "./common/TextArea";
 import PageSpinner from "./common/PageSpinner";
