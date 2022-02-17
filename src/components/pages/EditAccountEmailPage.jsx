@@ -28,9 +28,15 @@ const EditAccountEmailPage = () => {
       });
       history.push("/account");
     } catch (err) {
-      if (err.code === "auth/email-already-in-use")
+      if (err.code === "auth/invalid-email") {
+        setError("Email is invalid");
+      }
+      if (err.code === "auth/email-already-in-use") {
         setError("Email is already in use");
-      else setError(err.code);
+      }
+      if (err.code === "auth/requires-recent-login") {
+        history.push({ pathname: "/log-in", reauthenticate: true });
+      }
       setLoading(false);
     }
   };

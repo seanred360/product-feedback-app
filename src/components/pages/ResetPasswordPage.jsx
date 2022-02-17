@@ -10,15 +10,15 @@ import { toast } from "react-toastify";
 
 const ResetPasswordPage = () => {
   const { resetPassword } = useAuth();
-  const [error, setError] = useState("");
+  const history = useHistory();
   const [message, setMessage] = useState("");
-  const [loading, setLoading] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
   });
-  const history = useHistory();
   const isReauthenticate = history.location.reauthenticate;
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (input) => {
     let data = { ...formData };
@@ -30,8 +30,6 @@ const ResetPasswordPage = () => {
     e.preventDefault();
 
     try {
-      setMessage("");
-      setError("");
       setLoading(true);
       await toast.promise(resetPassword(formData.email), {
         pending: "Sending password reset email",
@@ -40,8 +38,16 @@ const ResetPasswordPage = () => {
       });
       setMessage("Check your email for further instructions");
       setHasSubmitted(true);
-    } catch {
-      setError("Failed to reset password");
+    } catch (err) {
+      if (err.code === "auth/invalid-email") {
+        setError("This email is not valid");
+      }
+      if (err.code === "auth/user-not-found") {
+        setError("There are no users with this email");
+      } else {
+        console.log(err);
+        setError("Something went wrong");
+      }
     }
     setLoading(false);
   };

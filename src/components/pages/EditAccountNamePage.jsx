@@ -7,25 +7,31 @@ import BackButton from "../common/BackButton";
 import TextInput from "../common/TextInput";
 import Spinner from "../common/Spinner";
 import { toast } from "react-toastify";
+import { set } from "lodash";
 
 const EditAccountNamePage = () => {
   const { displayName } = auth.currentUser;
   const { updateDisplayName } = useAuth();
   const history = useHistory();
   const [formData, setFormData] = useState(displayName);
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    setLoading(true);
-    await toast.promise(updateDisplayName({ displayName: formData }), {
-      pending: "Updating your name",
-      success: `Your new name is ${formData}`,
-      error: "Failed to update your name",
-    });
-    setLoading(false);
-    history.push("/account");
+    try {
+      setLoading(true);
+      await toast.promise(updateDisplayName({ displayName: formData }), {
+        pending: "Updating your name",
+        success: `Your new name is ${formData}`,
+        error: "Failed to update your name",
+      });
+      history.push("/account");
+    } catch (err) {
+      setError("Something went wrong");
+      setLoading(false);
+    }
   };
 
   const validate = () => {
@@ -58,6 +64,7 @@ const EditAccountNamePage = () => {
             onChange={(e) => setFormData(e.target.value)}
             autoFocus={true}
             required={true}
+            error={error}
           />
         )}
 
