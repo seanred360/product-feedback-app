@@ -8,7 +8,7 @@ const Select = ({
   error,
 }) => {
   return (
-    <div>
+    <div className="form-group">
       <label htmlFor={name}>{label}</label>
       <br />
       <span className="__instructions">{instructions}</span>

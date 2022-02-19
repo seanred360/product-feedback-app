@@ -1,15 +1,49 @@
+form {
+  font-size: 13px;
+  line-height: 19px;
+  margin-bottom: 8px;
+
+  @include respond-above(sm) {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .form-group {
+    label {
+      font-weight: bold;
+      color: #3a4374;
+
+      &::before {
+        display: block;
+        content: "";
+        margin-top: 24px;
+      }
+    }
+
+    .__instructions {
+      color: #647196;
+    }
+  }
+}
+
 input,
 select,
 textarea {
-  width: 279px;
+  width: 100%;
   height: 48px;
   margin-top: 16px;
-  // margin-bottom: 24px;
   padding: 14px 16px;
   background-color: #f7f8fd;
   border: none;
   border-radius: 5px;
   resize: none;
+
+  &::placeholder {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    font-family: Jost;
+  }
 
   &:focus {
     outline: 1px solid $blue;
@@ -39,4 +73,9 @@ select {
 
 textarea {
   height: 120px;
+  font-family: Jost;
+
+  &:last-of-type {
+    margin-bottom: 24px;
+  }
 }

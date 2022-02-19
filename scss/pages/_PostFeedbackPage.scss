@@ -1,8 +1,5 @@
 .post-feedback-page,
 .edit-feedback-page {
-  padding: 34px 24px;
-  background: $grey;
-
   .__top-group {
     margin-bottom: 55px;
   }
@@ -12,6 +9,10 @@
     padding: 24px;
     background: $white;
     border-radius: 10px;
+
+    @include respond-above(sm) {
+      padding: 42px;
+    }
 
     .__plus-circle {
       display: flex;
@@ -38,29 +39,11 @@
       font-size: 18px;
       letter-spacing: -0.25px;
       color: $blueGrey2;
-    }
 
-    form {
-      font-size: 13px;
-      line-height: 19px;
-      margin-bottom: 24px;
-      &:last-of-type {
+      @include respond-above(sm) {
         margin-bottom: 40px;
-      }
-
-      label {
-        font-weight: bold;
-        color: #3a4374;
-
-        &::before {
-          display: block;
-          content: "";
-          margin-top: 24px;
-        }
-      }
-
-      .__instructions {
-        color: #647196;
+        font-size: 24px;
+        line-height: 35px;
       }
     }
 
@@ -73,6 +56,47 @@
       }
       button {
         width: 100%;
+      }
+
+      @include respond-above(sm) {
+        flex-direction: row;
+
+        :not(:last-child) {
+          margin-bottom: 0;
+        }
+
+        button {
+          width: unset;
+          padding: 12px 24px;
+
+          &.--purple-button {
+            margin-right: 16px;
+            margin-left: auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+.edit-feedback-page {
+  .__buttons {
+    @include respond-above(sm) {
+      flex-direction: row;
+
+      :not(:last-child) {
+        margin-bottom: 0;
+      }
+
+      button {
+        &.all-buttons.--purple-button {
+          margin-right: auto;
+          margin-left: 0;
+        }
+        &.all-buttons.--blue-grey2-button {
+          margin-left: auto;
+          margin-right: 16px;
+        }
       }
     }
   }

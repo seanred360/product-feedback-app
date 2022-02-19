@@ -23,13 +23,6 @@
     &:focus {
       outline: 1px solid $blue;
     }
-
-    &::placeholder {
-      position: absolute;
-      top: 16px;
-      left: 16px;
-      font-family: Jost;
-    }
   }
 
   .__bottom {

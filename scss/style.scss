@@ -2,7 +2,6 @@
 @import "./common/mixins";
 @import "globals";
 @import "buttons";
-@import "formElements";
 @import "./common/RenderUser";
 @import "./common/Spinner";
 @import "./common/HamburgerButton";
@@ -10,6 +9,7 @@
 @import "./common/UpVote";
 @import "./common/DropDown";
 @import "./common/PostComment";
+@import "./common/FormGroup";
 
 @import "Logo";
 @import "ToolBar";

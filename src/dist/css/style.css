@@ -209,50 +209,6 @@ Link:focus, Link:hover, Link:visited, Link:link, Link:active {
   text-decoration: underline;
 }
 
-input,
-select,
-textarea {
-  width: 279px;
-  height: 48px;
-  margin-top: 16px;
-  padding: 14px 16px;
-  background-color: #f7f8fd;
-  border: none;
-  border-radius: 5px;
-  resize: none;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  outline: 1px solid #4661e6;
-}
-
-input .--error,
-select .--error,
-textarea .--error {
-  border: 1px solid red;
-}
-
-.--error-message {
-  color: red;
-}
-
-select {
-  background-image: url("https://cdn0.iconfinder.com/data/icons/arrows-2-10/128/Chevron-Down-Arrow-Download-South-Action-Motion-512.png");
-  background-repeat: no-repeat, repeat;
-  background-position: right 1rem center;
-  border-radius: 0.25rem;
-  appearance: none;
-  background-size: 10px 10px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
-  outline: none;
-}
-
-textarea {
-  height: 120px;
-}
-
 .user {
   display: flex;
   margin-bottom: 24px;
@@ -619,17 +575,96 @@ textarea {
   outline: 1px solid #4661e6;
 }
 
-.post-comment textarea::placeholder {
+.post-comment .__bottom .--characters-remaining {
+  font-size: 13px;
+  line-height: 19px;
+  color: #647196;
+}
+
+form {
+  font-size: 13px;
+  line-height: 19px;
+  margin-bottom: 8px;
+}
+
+@media (min-width: 576px) {
+  form {
+    font-size: 16px;
+    line-height: 20px;
+  }
+}
+
+form .form-group label {
+  font-weight: bold;
+  color: #3a4374;
+}
+
+form .form-group label::before {
+  display: block;
+  content: "";
+  margin-top: 24px;
+}
+
+form .form-group .__instructions {
+  color: #647196;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  height: 48px;
+  margin-top: 16px;
+  padding: 14px 16px;
+  background-color: #f7f8fd;
+  border: none;
+  border-radius: 5px;
+  resize: none;
+}
+
+input::placeholder,
+select::placeholder,
+textarea::placeholder {
   position: absolute;
   top: 16px;
   left: 16px;
   font-family: Jost;
 }
 
-.post-comment .__bottom .--characters-remaining {
-  font-size: 13px;
-  line-height: 19px;
-  color: #647196;
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 1px solid #4661e6;
+}
+
+input .--error,
+select .--error,
+textarea .--error {
+  border: 1px solid red;
+}
+
+.--error-message {
+  color: red;
+}
+
+select {
+  background-image: url("https://cdn0.iconfinder.com/data/icons/arrows-2-10/128/Chevron-Down-Arrow-Download-South-Action-Motion-512.png");
+  background-repeat: no-repeat, repeat;
+  background-position: right 1rem center;
+  border-radius: 0.25rem;
+  appearance: none;
+  background-size: 10px 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
+  outline: none;
+}
+
+textarea {
+  height: 120px;
+  font-family: Jost;
+}
+
+textarea:last-of-type {
+  margin-bottom: 24px;
 }
 
 .logo-container {
@@ -1337,12 +1372,6 @@ textarea {
   color: #647196;
 }
 
-.post-feedback-page,
-.edit-feedback-page {
-  padding: 34px 24px;
-  background: #f2f4ff;
-}
-
 .post-feedback-page .__top-group,
 .edit-feedback-page .__top-group {
   margin-bottom: 55px;
@@ -1354,6 +1383,13 @@ textarea {
   padding: 24px;
   background: #ffffff;
   border-radius: 10px;
+}
+
+@media (min-width: 576px) {
+  .post-feedback-page .feedback-window,
+  .edit-feedback-page .feedback-window {
+    padding: 42px;
+  }
 }
 
 .post-feedback-page .feedback-window .__plus-circle,
@@ -1380,34 +1416,13 @@ textarea {
   color: #3a4374;
 }
 
-.post-feedback-page .feedback-window form,
-.edit-feedback-page .feedback-window form {
-  font-size: 13px;
-  line-height: 19px;
-  margin-bottom: 24px;
-}
-
-.post-feedback-page .feedback-window form:last-of-type,
-.edit-feedback-page .feedback-window form:last-of-type {
-  margin-bottom: 40px;
-}
-
-.post-feedback-page .feedback-window form label,
-.edit-feedback-page .feedback-window form label {
-  font-weight: bold;
-  color: #3a4374;
-}
-
-.post-feedback-page .feedback-window form label::before,
-.edit-feedback-page .feedback-window form label::before {
-  display: block;
-  content: "";
-  margin-top: 24px;
-}
-
-.post-feedback-page .feedback-window form .__instructions,
-.edit-feedback-page .feedback-window form .__instructions {
-  color: #647196;
+@media (min-width: 576px) {
+  .post-feedback-page .feedback-window .__header,
+  .edit-feedback-page .feedback-window .__header {
+    margin-bottom: 40px;
+    font-size: 24px;
+    line-height: 35px;
+  }
 }
 
 .post-feedback-page .feedback-window .__buttons,
@@ -1426,12 +1441,50 @@ textarea {
   width: 100%;
 }
 
+@media (min-width: 576px) {
+  .post-feedback-page .feedback-window .__buttons,
+  .edit-feedback-page .feedback-window .__buttons {
+    flex-direction: row;
+  }
+  .post-feedback-page .feedback-window .__buttons :not(:last-child),
+  .edit-feedback-page .feedback-window .__buttons :not(:last-child) {
+    margin-bottom: 0;
+  }
+  .post-feedback-page .feedback-window .__buttons button,
+  .edit-feedback-page .feedback-window .__buttons button {
+    width: unset;
+    padding: 12px 24px;
+  }
+  .post-feedback-page .feedback-window .__buttons button.--purple-button,
+  .edit-feedback-page .feedback-window .__buttons button.--purple-button {
+    margin-right: 16px;
+    margin-left: auto;
+  }
+}
+
+@media (min-width: 576px) {
+  .edit-feedback-page .__buttons {
+    flex-direction: row;
+  }
+  .edit-feedback-page .__buttons :not(:last-child) {
+    margin-bottom: 0;
+  }
+  .edit-feedback-page .__buttons button.all-buttons.--purple-button {
+    margin-right: auto;
+    margin-left: 0;
+  }
+  .edit-feedback-page .__buttons button.all-buttons.--blue-grey2-button {
+    margin-left: auto;
+    margin-right: 16px;
+  }
+}
+
 .view-feedback-page,
 .post-feedback-page,
 .edit-feedback-page {
   max-width: 730px;
   margin: 0 auto;
-  padding: 2.125rem 1.5rem;
+  padding: 34px 24px;
   background: #f2f4ff;
 }
 
