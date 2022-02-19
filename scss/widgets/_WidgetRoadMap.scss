@@ -1,0 +1,59 @@
+.widget-road-map {
+  width: 223px;
+  height: 178px;
+  padding: 1.5rem 1.5rem;
+  background: $white;
+  border-radius: 10px;
+
+  .__title {
+    font-weight: bold;
+    @include font-size(18);
+    @include line-height(26);
+    letter-spacing: -0.25px;
+    color: $blueGrey2;
+  }
+
+  a {
+    float: right;
+    font-weight: 600;
+    @include font-size(13);
+    text-decoration-line: underline;
+    color: $blue;
+  }
+
+  ul {
+    padding: 0;
+    margin: 1.5rem 0;
+    text-align: left;
+
+    li {
+      @include font-size(16);
+      color: $darkGrey;
+
+      .--dot {
+        display: inline-block;
+        width: 0.5rem;
+        height: 0.5rem;
+        margin-right: 1rem;
+        background-color: red;
+        border-radius: 50%;
+
+        &.--peach {
+          background-color: $peach;
+        }
+        &.--purple {
+          background-color: $purple;
+        }
+        &.--light-blue {
+          background-color: $lightBlue;
+        }
+      }
+
+      .--count {
+        float: right;
+        font-weight: bold;
+        @include font-size(16);
+      }
+    }
+  }
+}

@@ -3,14 +3,14 @@ import HamburgerButton from "./HamburgerButton";
 
 const Logo = ({ onOpen, isOpen }) => {
   return (
-    <div className="nav-bar__container">
-      <nav className="nav-bar flex flex-jc-sb flex-ai-c">
-        <div className="__left-content flex">
+    <div className="logo-container">
+      <div className="logo">
+        <div className="__left-content">
           <span className="__app-name">Frontend Mentor</span>
           <span className="__app-label">Feedback Board</span>
         </div>
         <HamburgerButton onOpen={onOpen} isOpen={isOpen} />
-      </nav>
+      </div>
     </div>
   );
 };

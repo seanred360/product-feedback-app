@@ -1,7 +1,43 @@
 .home-page {
   display: flex;
   min-height: 100vh;
+  margin: 0px auto;
   flex-direction: column;
-  padding: 1.5rem;
+  padding: 16px 24px;
   background: $grey;
+
+  @include respond-above(lg) {
+    display: grid;
+    max-width: 1110px;
+    grid-template-columns: auto 1fr;
+    column-gap: 30px;
+    margin: auto;
+  }
+
+  .__left-content {
+    display: inline-flex;
+    flex-direction: column;
+
+    @include respond-below(lg) {
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      .logo-container,
+      .widget-user,
+      .widget-select-category,
+      .widget-road-map {
+        margin: 10px;
+        flex: 40%;
+      }
+    }
+
+    @include respond-above(lg) {
+      .logo-container,
+      .widget-user,
+      .widget-select-category,
+      .widget-road-map {
+        margin-bottom: 24px;
+      }
+    }
+  }
 }

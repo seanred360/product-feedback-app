@@ -8,7 +8,7 @@ import Spinner from "./Spinner";
 const UpVote = ({ feedback }) => {
   const [upvotesState, setUpvotesState] = useState(feedback.upvotes);
   const [hasUpvoted, setHasUpvoted] = useState(
-    upvotesState.includes(auth.currentUser.email)
+    upvotesState.includes(auth.currentUser.uid)
   );
   const [loading, setLoading] = useState(false);
 

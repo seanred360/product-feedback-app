@@ -1,10 +1,16 @@
 .feedback {
-  margin: 1rem 0;
-  padding: 1.5rem;
+  position: relative;
+  margin: 16px 0;
+  padding: 24px;
   background: $white;
   border-radius: 10px;
   font-weight: normal;
-  @include line-height(19);
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.03);
+  }
 
   .__title {
     margin: 9px 0;
@@ -20,14 +26,68 @@
     color: $darkGrey;
   }
 
-  .--button-category {
+  .category-button {
     margin: 9px 0;
   }
 
-  .__bottom {
+  .Spinner {
+    width: 69px;
+    height: 32px;
+    margin: 0;
+    margin-right: auto;
+  }
+
+  @include respond-below(sm) {
+    .__bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 9px 0;
+
+      .--counter-comments {
+        margin-left: auto;
+      }
+    }
+  }
+
+  // tablet and desktop
+  @include respond-above(sm) {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 9px 0;
+    justify-content: left;
+    padding: 28px 32px;
+
+    .up-vote {
+      margin-right: 40px;
+      font-size: 16px;
+    }
+
+    .__title {
+      font-size: 18px;
+      line-height: 26px;
+      margin-top: 0px;
+    }
+
+    .__description {
+      font-size: 16px;
+      line-height: 23px;
+    }
+
+    .__right {
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-left: auto;
+    }
+
+    .category-button {
+      margin-top: 12px;
+      margin-bottom: 0px;
+    }
+
+    .Spinner {
+      flex-direction: column;
+      width: 40px;
+      margin: 0;
+      margin-right: 40px;
+    }
   }
 }

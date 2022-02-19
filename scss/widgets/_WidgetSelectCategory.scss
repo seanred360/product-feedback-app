@@ -1,0 +1,13 @@
+.widget-select-category {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 223px;
+  padding: 1.5rem 1.5rem;
+  background: $white;
+  border-radius: 10px;
+
+  .category-button {
+    margin: 5px;
+  }
+}

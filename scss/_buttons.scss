@@ -8,6 +8,8 @@
   @include line-height(19);
   color: $grey;
   border: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
 
   &:disabled {
     opacity: 0.2;
@@ -75,20 +77,4 @@
       text-decoration: underline;
     }
   }
-}
-
-.--button-category {
-  display: inline-block;
-  height: 30px;
-  margin-right: 8px;
-  padding: 5px 16px;
-  text-align: center;
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 19px;
-  color: $blue;
-  background: $grey;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
 }

@@ -1,0 +1,36 @@
+.toolbar-container {
+  padding: 16px 24px;
+  height: 56px;
+  background-color: $blueGrey2;
+  color: $white;
+
+  @include respond-above(sm) {
+    height: 72px;
+    border-radius: 10px;
+  }
+
+  .toolbar {
+    height: 100%;
+
+    .__left-content {
+      flex-direction: row;
+      font-size: 18px;
+
+      .__label {
+        @include respond-below(sm) {
+          display: none;
+        }
+        svg {
+          font-size: 24px;
+          margin-right: 16px;
+        }
+      }
+
+      .dropdown {
+        @include respond-above(sm) {
+          margin-left: 38px;
+        }
+      }
+    }
+  }
+}

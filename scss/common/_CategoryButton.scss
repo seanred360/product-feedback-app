@@ -1,0 +1,35 @@
+.category-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 30px;
+  padding: 16px;
+  text-align: center;
+  color: $blue;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 13px;
+  color: $blue;
+  background: $grey;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $grey4;
+  }
+
+  &:active {
+    background: $blue;
+  }
+
+  &.selected {
+    background: $blue;
+    color: $white;
+  }
+
+  &.disabled {
+    pointer-events: none;
+  }
+}

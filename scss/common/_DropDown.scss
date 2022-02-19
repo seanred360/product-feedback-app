@@ -1,85 +1,20 @@
-.up-vote,
-.category-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border: none;
-  border-radius: 0.625rem;
-  font-weight: bold;
-  @include font-size(13);
-  color: $blue;
-  background: $grey;
-
-  &:hover {
-    background: #cfd7ff;
-  }
-
-  &:active {
-    background: #4661e6;
-  }
-}
-
-// upvote button
-.up-vote {
-  width: 2.5rem;
-  height: 3.3125rem;
-
-  @include respond-below(sm) {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 6px 14px;
-    width: 69px;
-    height: 32px;
-  }
-
-  &:active {
-    color: $white;
-    .__quantity {
-      color: $white;
-    }
-  }
-
-  .__quantity {
-    color: #3a4374;
-  }
-}
-
-// category button
-.category-button {
-  display: inline-block;
-  height: 1.875rem;
-  margin-right: 0.5rem;
-  padding: 5px 1rem;
-  text-align: center;
-  color: $blue;
-
-  &:hover {
-    color: $blue;
-  }
-  &:active {
-    color: $white;
-  }
-}
-
-// dropdown menu
 .dropdown {
   .dropdown-toggle {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 3.5rem;
+    height: 56px;
     border: none;
     border-radius: 10px;
     transition: all 0.3s ease;
     background-color: $blueGrey2;
     font-family: "Jost", sans-serif;
-    @include font-size(13);
+    font-size: 13px;
     color: $white;
 
     @include respond-above(sm) {
-      max-height: 4.5rem;
-      @include font-size(14);
+      max-height: 72px;
+      font-size: 14px;
       cursor: pointer;
     }
 
@@ -105,13 +40,14 @@
     position: absolute;
     width: 255px;
     padding: 0;
-    margin-top: 1rem;
+    margin-top: 16px;
     box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
     border-radius: 10px;
     text-align: left;
     cursor: pointer;
     background: $white;
     transition: all 0.3s ease;
+    z-index: 10;
 
     & :first-child button {
       border-top-right-radius: 10px;
@@ -126,7 +62,7 @@
     .dropdown-item {
       width: 100%;
       height: 47px;
-      padding: 0.75rem 1.5rem;
+      padding: 12px 24px;
       margin: 0;
       border: none;
       border-bottom: 1px solid #e1e3ea;
@@ -134,7 +70,7 @@
       transition: all 0.3s ease;
       cursor: pointer;
       font-family: "Jost", sans-serif;
-      @include font-size(16);
+      font-size: 16px;
       color: $darkGrey;
       background: $white;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

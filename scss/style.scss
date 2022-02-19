@@ -2,17 +2,24 @@
 @import "./common/mixins";
 @import "globals";
 @import "buttons";
-@import "interactiveElements";
 @import "formElements";
 @import "./common/RenderUser";
-@import "./common//Spinner";
+@import "./common/Spinner";
+@import "./common/HamburgerButton";
+@import "./common/CategoryButton";
+@import "./common/UpVote";
+@import "./common/DropDown";
 
-@import "navbar";
-@import "navbar2";
+@import "Logo";
+@import "ToolBar";
 @import "MobileSlideOut";
 @import "Feedback";
 @import "FeedbackEmpty";
 @import "CommentsSection";
+
+@import "./widgets/WidgetUser";
+@import "./widgets/WidgetSelectCategory";
+@import "./widgets/WidgetRoadMap";
 
 @import "./pages/HomePage";
 @import "./pages/EditAccountPage";

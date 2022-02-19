@@ -1,0 +1,61 @@
+.logo-container {
+  position: relative;
+  padding: 16px 24px;
+  background: radial-gradient(
+    128.88% 128.88% at 103.9% -10.39%,
+    #e84d70 0%,
+    #a337f6 53.09%,
+    #28a7ed 100%
+  );
+  color: $white;
+
+  @include respond-above(sm) {
+    width: 223px;
+    border-radius: 10px;
+  }
+
+  @include respond-above(lg) {
+    height: 137px;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include respond-above(sm) {
+      position: absolute;
+      bottom: 0;
+      margin-bottom: 24px;
+    }
+
+    .__left-content {
+      display: flex;
+      flex-direction: column;
+
+      .__app-name {
+        font-weight: bold;
+        font-size: 15px;
+        line-height: 22px;
+        /* identical to box height */
+        letter-spacing: -0.1875px;
+
+        @include respond-above(sm) {
+          font-size: 20px;
+        }
+      }
+
+      .__app-label {
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 22px;
+        /* identical to box height */
+
+        @include respond-above(sm) {
+          font-size: 15px;
+          line-height: 29px;
+        }
+      }
+    }
+  }
+}

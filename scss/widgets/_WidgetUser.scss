@@ -1,0 +1,17 @@
+.widget-user {
+  width: 223px;
+  padding: 24px;
+  background: $white;
+  border-radius: 10px;
+
+  .__bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    button {
+      margin-right: 10px;
+    }
+  }
+}

@@ -1,0 +1,45 @@
+.up-vote {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 40px;
+  height: 53px;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 13px;
+  color: $blue;
+  background: $grey;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: $grey4;
+  }
+
+  &:active {
+    background: $blue;
+  }
+
+  @include respond-below(sm) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 6px 14px;
+    width: 69px;
+    height: 32px;
+  }
+
+
+  &:disabled {
+    color: $white;
+    background: $blue;
+    pointer-events: none;
+    .__quantity {
+      color: $white;
+    }
+  }
+
+  .__quantity {
+    color: #3a4374;
+  }
+}

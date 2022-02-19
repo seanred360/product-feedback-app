@@ -4,7 +4,7 @@ import RenderFeedbackEmpty from "./RenderFeedbackEmpty";
 
 const RenderAllFeedback = ({ feedbackPosts }) => {
   return (
-    <>
+    <div className="all-feedback">
       {feedbackPosts && !_.isEmpty(feedbackPosts) ? (
         feedbackPosts.map((feedback) => (
           <RenderFeedback
@@ -21,7 +21,7 @@ const RenderAllFeedback = ({ feedbackPosts }) => {
       ) : (
         <RenderFeedbackEmpty />
       )}
-    </>
+    </div>
   );
 };
 
