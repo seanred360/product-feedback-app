@@ -1,12 +1,12 @@
 .comments-section,
 .post-comment {
-  padding: 1.5rem;
+  padding: 24px;
   background: $white;
   border-radius: 10px;
 
   .comments-count {
     margin: 0;
-    margin-bottom: 1.5rem;
+    margin-bottom: 24px;
     font-weight: bold;
     font-size: 18px;
     line-height: 26px;
@@ -16,16 +16,14 @@
 
   .comment,
   .reply-comment {
-    // padding-top: 1.5rem;
-    // padding-bottom: 1.5rem;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-top: 24px;
+    margin-bottom: 24px;
 
     .__user {
       .--user-image {
         width: 40px;
         height: 40px;
-        margin-right: 1rem;
+        margin-right: 16px;
         border-radius: 50%;
       }
       .--user-text {
@@ -80,7 +78,7 @@
 
   .__replies {
     .reply-comment {
-      padding-left: 3rem;
+      padding-left: 48px;
       &:nth-child(1) {
         border-left: 1px solid #8c92b25a;
       }
@@ -97,48 +95,6 @@
         line-height: 19px;
         color: $darkGrey;
       }
-    }
-  }
-}
-
-.post-comment {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-
-  .__header {
-    margin: 0;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 26px;
-    letter-spacing: -0.25px;
-    color: $blueGrey2;
-  }
-
-  input {
-    width: 100%;
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
-    padding: 1rem 0 80px 1rem;
-    border: none;
-    border-radius: 5px;
-    background: $grey;
-
-    &:focus {
-      outline: 1px solid $blue;
-    }
-
-    &::placeholder {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-    }
-  }
-
-  .__bottom {
-    .--characters-remaining {
-      font-size: 13px;
-      line-height: 19px;
-      color: #647196;
     }
   }
 }

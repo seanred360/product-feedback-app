@@ -22,7 +22,7 @@ const RenderCommentsSection = ({ commentsCount, targetFeedback }) => {
             ))}
         </div>
       </div>
-      <PostComment targetFeedback={targetFeedback} />
+      <PostComment targetFeedback={targetFeedback} placeholder="Type your comment here"/>
     </>
   );
 };

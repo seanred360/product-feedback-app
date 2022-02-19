@@ -32,7 +32,7 @@ const RenderFeedback = ({
   return (
     <>
       {isMobile ? (
-        <div className="feedback" onClick={handleClick}>
+        <div className={`feedback ${clickable && "--clickable"}`} onClick={handleClick}>
           <h1 className="__title">{title}</h1>
           <p className="__description">{description}</p>
           <CategoryButton itemCategory={category} disabled={true} />
@@ -42,7 +42,7 @@ const RenderFeedback = ({
           </div>
         </div>
       ) : (
-        <div className="feedback" onClick={handleClick}>
+        <div className={`feedback ${clickable && "--clickable"}`} onClick={handleClick}>
           <UpVote feedback={feedback} />
           <div className="__middle">
             <h1 className="__title">{title}</h1>

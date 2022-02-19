@@ -591,6 +591,47 @@ textarea {
   color: #ad1fea;
 }
 
+.post-comment {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.post-comment .__header {
+  margin: 0;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: -0.25px;
+  color: #3a4374;
+}
+
+.post-comment textarea {
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  padding: 16px 0 80px 16px;
+  border: none;
+  border-radius: 5px;
+  background: #f2f4ff;
+}
+
+.post-comment textarea:focus {
+  outline: 1px solid #4661e6;
+}
+
+.post-comment textarea::placeholder {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-family: Jost;
+}
+
+.post-comment .__bottom .--characters-remaining {
+  font-size: 13px;
+  line-height: 19px;
+  color: #647196;
+}
+
 .logo-container {
   position: relative;
   padding: 16px 24px;
@@ -742,12 +783,17 @@ textarea {
   background: #ffffff;
   border-radius: 10px;
   font-weight: normal;
-  cursor: pointer;
+  pointer-events: none;
   transition: all 0.3s ease;
 }
 
 .feedback:hover {
   transform: scale(1.03);
+}
+
+.feedback.--clickable {
+  cursor: pointer;
+  pointer-events: all;
 }
 
 .feedback .__title {
@@ -863,7 +909,7 @@ textarea {
 
 .comments-section,
 .post-comment {
-  padding: 1.5rem;
+  padding: 24px;
   background: #ffffff;
   border-radius: 10px;
 }
@@ -871,7 +917,7 @@ textarea {
 .comments-section .comments-count,
 .post-comment .comments-count {
   margin: 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 24px;
   font-weight: bold;
   font-size: 18px;
   line-height: 26px;
@@ -883,8 +929,8 @@ textarea {
 .comments-section .reply-comment,
 .post-comment .comment,
 .post-comment .reply-comment {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 
 .comments-section .comment .__user .--user-image,
@@ -893,7 +939,7 @@ textarea {
 .post-comment .reply-comment .__user .--user-image {
   width: 40px;
   height: 40px;
-  margin-right: 1rem;
+  margin-right: 16px;
   border-radius: 50%;
 }
 
@@ -967,7 +1013,7 @@ textarea {
 
 .comments-section .__replies .reply-comment,
 .post-comment .__replies .reply-comment {
-  padding-left: 3rem;
+  padding-left: 48px;
 }
 
 .comments-section .__replies .reply-comment:nth-child(1),
@@ -985,46 +1031,6 @@ textarea {
 .post-comment .__replies .reply-comment .__content {
   border-bottom: none;
   font-weight: normal;
-  font-size: 13px;
-  line-height: 19px;
-  color: #647196;
-}
-
-.post-comment {
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.post-comment .__header {
-  margin: 0;
-  font-weight: bold;
-  font-size: 18px;
-  line-height: 26px;
-  letter-spacing: -0.25px;
-  color: #3a4374;
-}
-
-.post-comment input {
-  width: 100%;
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-  padding: 1rem 0 80px 1rem;
-  border: none;
-  border-radius: 5px;
-  background: #f2f4ff;
-}
-
-.post-comment input:focus {
-  outline: 1px solid #4661e6;
-}
-
-.post-comment input::placeholder {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-}
-
-.post-comment .__bottom .--characters-remaining {
   font-size: 13px;
   line-height: 19px;
   color: #647196;

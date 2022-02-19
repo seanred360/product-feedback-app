@@ -2,6 +2,7 @@ const TextArea = ({
   name,
   label,
   instructions,
+  placeholder,
   autoFocus,
   value,
   defaultValue,
@@ -21,6 +22,7 @@ const TextArea = ({
         name={name}
         cols={cols}
         rows={rows}
+        placeholder={placeholder}
         autoFocus={autoFocus}
         value={value}
         defaultValue={defaultValue}

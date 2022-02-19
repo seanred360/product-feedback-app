@@ -51,7 +51,7 @@ const PostReply = ({ targetComment, replyingTo }) => {
   };
 
   return (
-    <div className="add-comment">
+    <div className="post-comment">
       {loading ? (
         <PageSpinner height="100%" />
       ) : (
