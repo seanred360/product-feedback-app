@@ -11,9 +11,11 @@ const AccountPage = () => {
   const history = useHistory();
   const [photoURLState, setPhotoURLState] = useState(photoURL);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
 
   const handleRandomizePhoto = async () => {
     setLoading(true);
+    setError();
     await fetch(
       `https://avatars.dicebear.com/api/avataaars/${Date.now()}.svg`
     ).then((res) => {
@@ -25,6 +27,7 @@ const AccountPage = () => {
         setPhotoURLState(newPhotoURL);
       } else {
         toast.error("Failed to get a new photo");
+        setError("Failed to get a new photo");
       }
     });
     setLoading(false);
@@ -35,7 +38,7 @@ const AccountPage = () => {
       <div className="__top-group flex flex-ai-c flex-jc-sb">
         <BackButton />
       </div>
-      <div className="window">
+      <div className="__photo-window">
         <div className="__user-image-container">
           <div className="spinner-container">
             {loading ? (
@@ -54,6 +57,7 @@ const AccountPage = () => {
           >
             Randomize Photo
           </button>
+          {error ? <span className="--error-message">{error}</span> : null}
         </div>
         <h1 className="--display-name">Welcome, {displayName}</h1>
       </div>

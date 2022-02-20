@@ -1,12 +1,15 @@
 .account-page {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
   padding: 34px 24px;
   background: $grey;
 
   .__top-group {
-    margin-bottom: 55px;
+    margin-bottom: 28px;
   }
 
-  .window {
+  .__photo-window {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,6 +19,7 @@
     padding: 24px;
     background: $white;
     border-radius: 10px;
+    transition: all 0.3s ease;
 
     .__user-image-container {
       display: flex;
@@ -28,10 +32,19 @@
         height: 100px;
         margin-bottom: 24px;
         border-radius: 50%;
+
+        @include respond-above(sm) {
+          width: 150px;
+          height: 150px;
+        }
       }
 
       .--user-image {
         border: 1px solid $purple;
+      }
+
+      .--error-message {
+        color: red;
       }
 
       .--edit-photo {
