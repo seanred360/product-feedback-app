@@ -63,17 +63,15 @@ const EditAccountNamePage = () => {
             onChange={(e) => setFormData(e.target.value)}
             autoFocus={true}
             required={true}
+            placeholder="&#xf2bd;"
             error={error}
           />
         )}
-
-        <div>
-          <p>
-            {loading
-              ? "Updating your name"
-              : "Anyone can see your display name on your comments and posts."}
-          </p>
-        </div>
+        {loading ? (
+          <span className="--loading-message">Updating your name</span>
+        ) : (
+          "Anyone can see your display name on your comments and posts."
+        )}
         <div
           className="__buttons"
           style={loading ? { display: "none" } : { display: "flex" }}

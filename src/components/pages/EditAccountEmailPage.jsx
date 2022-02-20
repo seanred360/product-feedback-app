@@ -65,24 +65,23 @@ const EditAccountEmailPage = () => {
           <Spinner />
         ) : (
           <TextInput
-            label={"Name"}
+            label={"Email"}
             instructions={"Change your email address"}
             defaultValue={email}
             onChange={(e) => setFormData(e.target.value)}
             autoFocus={true}
             required={true}
             type="email"
+            placeholder="&#xf0e0;"
             error={error}
           />
         )}
 
-        <div>
-          <p>
-            {loading
-              ? "Updating your email"
-              : "Your email is hidden from other users."}
-          </p>
-        </div>
+        {loading ? (
+          <span className="--loading-message">Updating your email</span>
+        ) : (
+          "Other users cannot see your email"
+        )}
         <div
           className="__buttons"
           style={loading ? { display: "none" } : { display: "flex" }}

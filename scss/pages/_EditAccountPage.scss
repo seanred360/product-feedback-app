@@ -4,15 +4,21 @@
   background: $grey;
 
   .__top-group {
-    margin-bottom: 55px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 28px;
   }
 
   form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     justify-content: center;
     position: relative;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 24px;
     padding: 24px;
     background: $white;
@@ -23,9 +29,24 @@
       font-weight: 400;
     }
 
+    input {
+      text-indent: 24px;
+
+      &::placeholder {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        text-indent: 0px;
+      }
+    }
+
+    .--loading-message {
+      text-align: center;
+    }
+
     .__buttons {
       display: flex;
       justify-content: space-between;
+      margin-top: 28px;
 
       .--purple-button {
         margin-right: 10px;

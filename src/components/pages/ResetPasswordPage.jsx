@@ -54,37 +54,46 @@ const ResetPasswordPage = () => {
 
   if (!hasSubmitted)
     return (
-      <div className="password-page">
+      <div className="edit-account-page">
         {isReauthenticate ? (
           <div className="__top-group flex flex-ai-c flex-jc-sb">
             <BackButton />
           </div>
         ) : null}
         <form onSubmit={handleSubmit}>
-          <TextInput
-            name={"email"}
-            label={"Reset Password"}
-            type={"email"}
-            placeholder="&#xf0e0;"
-            instructions={"Please enter your email to reset your password"}
-            required={true}
-            autoFocus={true}
-            onChange={(e) => handleChange(e.target)}
-            message={message}
-            error={error}
-          />
           {loading ? (
             <Spinner />
           ) : (
-            <button
-              className="all-buttons --gradiant-button"
-              type="submit"
-              disabled={loading}
-            >
-              Reset Password
-            </button>
+            <>
+              <TextInput
+                name={"email"}
+                label={"Reset Password"}
+                type={"email"}
+                placeholder="&#xf0e0;"
+                instructions={"Please enter your email to reset your password"}
+                required={true}
+                autoFocus={true}
+                onChange={(e) => handleChange(e.target)}
+                message={message}
+                error={error}
+              />
+              <div className="__buttons">
+                <button className="all-buttons --purple-button" type="submit">
+                  Save Changes
+                </button>
+                <button
+                  className="all-buttons --blue-grey2-button"
+                  type="button"
+                  onClick={() => history.push("/account")}
+                >
+                  Cancel
+                </button>
+              </div>{" "}
+            </>
           )}
-
+          <span className="--loading-message">
+            {loading ? "Resetting your password" : null}
+          </span>
           {isReauthenticate || loading ? null : (
             <>
               <div>
