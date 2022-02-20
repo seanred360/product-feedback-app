@@ -1,9 +1,10 @@
-import BackButton from "../common/BackButton";
 import { auth } from "../firebase";
 import { FaEdit } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
 import Spinner from "../common/Spinner";
+import BackButton from "../common/BackButton";
+import { toast } from "react-toastify";
 
 const AccountPage = () => {
   const { photoURL, displayName, email } = auth.currentUser;
@@ -13,14 +14,19 @@ const AccountPage = () => {
 
   const handleRandomizePhoto = async () => {
     setLoading(true);
-    const res = await fetch(
+    await fetch(
       `https://avatars.dicebear.com/api/avataaars/${Date.now()}.svg`
-    );
-    const newPhotoURL = await res.url;
-    await auth.currentUser.updateProfile({
-      photoURL: newPhotoURL,
+    ).then((res) => {
+      if (res.status === 200) {
+        const newPhotoURL = res.url;
+        auth.currentUser.updateProfile({
+          photoURL: newPhotoURL,
+        });
+        setPhotoURLState(newPhotoURL);
+      } else {
+        toast.error("Failed to get a new photo");
+      }
     });
-    setPhotoURLState(newPhotoURL);
     setLoading(false);
   };
 
