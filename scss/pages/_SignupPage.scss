@@ -1,13 +1,17 @@
-.signup-page {
+.signup-page,
+.login-page {
   height: 100%;
   padding: 34px 24px;
   background: $grey;
 
+  .__top-group {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 28px;
+  }
+
   form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     position: relative;
     max-width: 500px;
     margin-left: auto;
@@ -17,8 +21,18 @@
     background: $white;
     border-radius: 10px;
 
-    h1 {
-      font-size: 32px;
+    @include respond-above(sm) {
+      padding: 52px 42px;
+    }
+
+    .__top {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      h1 {
+        font-size: 32px;
+      }
     }
 
     label {
@@ -48,8 +62,17 @@
         margin-bottom: 0;
       }
     }
-    .--gradiant-button {
-      margin: 24px 0;
+
+    .__bottom {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      .--gradiant-button {
+        width: 100%;
+        margin: 24px 0;
+      }
     }
   }
 }

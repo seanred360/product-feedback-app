@@ -53,10 +53,13 @@ const LoginPage = () => {
         </div>
       ) : null}
       <form onSubmit={handleSubmit}>
-        <h1>Login</h1>
+        <div className="__top">
+          <h1>Login</h1>
+        </div>
+
         <TextInput
           name={"email"}
-          label={"email"}
+          label={"Email"}
           type={"email"}
           instructions={""}
           autoFocus={true}
@@ -66,7 +69,7 @@ const LoginPage = () => {
         />
         <TextInput
           name={"password"}
-          label={"password"}
+          label={"Password"}
           type={"password"}
           instructions={""}
           onChange={(e) => handleChange(e.target)}
@@ -82,16 +85,20 @@ const LoginPage = () => {
             <Link to={{ pathname: "/reset-password" }}>Forgot Password?</Link>
           )}
         </div>
-        <button
-          className="all-buttons --gradiant-button"
-          type="submit"
-          disabled={loading}
-        >
-          Log In
-        </button>
-        <br />
-        <div>
-          Need an account? <Link to="/sign-up">Sign Up</Link>
+        <div className="__bottom">
+          <button
+            className="all-buttons --gradiant-button"
+            type="submit"
+            disabled={loading}
+          >
+            Log In
+          </button>
+          <br />
+          {history.location.reauthenticate ? null : (
+            <div>
+              Need an account? <Link to="/sign-up">Sign Up</Link>
+            </div>
+          )}
         </div>
       </form>
     </div>

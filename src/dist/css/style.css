@@ -1615,81 +1615,6 @@ textarea:last-of-type {
   margin-bottom: auto;
 }
 
-.login-page {
-  height: 100vh;
-  padding: 34px 24px;
-  background: #f2f4ff;
-}
-
-.login-page .__top-group {
-  margin-bottom: 55px;
-}
-
-.login-page form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 24px;
-  padding: 24px;
-  background: #ffffff;
-  border-radius: 10px;
-}
-
-.login-page form h1 {
-  font-size: 32px;
-}
-
-.login-page form label {
-  font-size: 24px;
-  font-weight: 400;
-}
-
-.login-page form label::before {
-  display: block;
-  content: "";
-  margin-top: 24px;
-}
-
-.login-page form input {
-  text-indent: 24px;
-}
-
-.login-page form input::placeholder {
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  text-indent: 0px;
-}
-
-.login-page form input#password, .login-page form input#email {
-  margin-bottom: 0;
-}
-
-.login-page form .__forgot-password {
-  position: relative;
-  height: 48px;
-  width: 279px;
-}
-
-.login-page form .__forgot-password a {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-.login-page form .__buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
-.login-page form .__buttons .--purple-button {
-  margin-right: 10px;
-}
-
 .password-page {
   height: 100vh;
   padding: 34px 24px;
@@ -1759,17 +1684,23 @@ textarea:last-of-type {
   color: limegreen;
 }
 
-.signup-page {
+.signup-page,
+.login-page {
   height: 100%;
   padding: 34px 24px;
   background: #f2f4ff;
 }
 
-.signup-page form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.signup-page .__top-group,
+.login-page .__top-group {
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 28px;
+}
+
+.signup-page form,
+.login-page form {
   position: relative;
   max-width: 500px;
   margin-left: auto;
@@ -1780,36 +1711,69 @@ textarea:last-of-type {
   border-radius: 10px;
 }
 
-.signup-page form h1 {
+@media (min-width: 576px) {
+  .signup-page form,
+  .login-page form {
+    padding: 52px 42px;
+  }
+}
+
+.signup-page form .__top,
+.login-page form .__top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-page form .__top h1,
+.login-page form .__top h1 {
   font-size: 32px;
 }
 
-.signup-page form label {
+.signup-page form label,
+.login-page form label {
   font-size: 24px;
   font-weight: 400;
 }
 
-.signup-page form label::before {
+.signup-page form label::before,
+.login-page form label::before {
   display: block;
   content: "";
   margin-top: 24px;
 }
 
-.signup-page form input {
+.signup-page form input,
+.login-page form input {
   text-indent: 24px;
 }
 
-.signup-page form input::placeholder {
+.signup-page form input::placeholder,
+.login-page form input::placeholder {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   text-indent: 0px;
 }
 
-.signup-page form input#name, .signup-page form input#email, .signup-page form input#password, .signup-page form input#passwordConfirm {
+.signup-page form input#name, .signup-page form input#email, .signup-page form input#password, .signup-page form input#passwordConfirm,
+.login-page form input#name,
+.login-page form input#email,
+.login-page form input#password,
+.login-page form input#passwordConfirm {
   margin-bottom: 0;
 }
 
-.signup-page form .--gradiant-button {
+.signup-page form .__bottom,
+.login-page form .__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.signup-page form .__bottom .--gradiant-button,
+.login-page form .__bottom .--gradiant-button {
+  width: 100%;
   margin: 24px 0;
 }
 /*# sourceMappingURL=style.css.map */

@@ -95,53 +95,61 @@ const Signup = () => {
   return (
     <div className="signup-page">
       <form onSubmit={handleSubmit}>
-        <h1>Sign Up</h1>
+        <div className="__top">
+          <h1>Sign Up</h1>
+        </div>
         <TextInput
           name={"name"}
-          label={"display name"}
+          label={"Display Name"}
           type={"text"}
           instructions={"Other users will see this in your comments and posts"}
           autoFocus={true}
           defaultValue={formData.name && formData.name}
           onChange={(e) => handleChange(e.target)}
+          placeholder="&#xf2bd;"
           error={error.hasOwnProperty("name") && error["name"]}
         />
         <TextInput
           name={"email"}
-          label={"email"}
+          label={"Email"}
           type={"email"}
           defaultValue={formData.email && formData.email}
           instructions={"Your email is hidden from other users"}
           onChange={(e) => handleChange(e.target)}
+          placeholder="&#xf0e0;"
           error={error.hasOwnProperty("email") && error["email"]}
         />
         <TextInput
           name={"password"}
-          label={"password"}
+          label={"Password"}
           type={"password"}
           defaultValue={formData.password && formData.password}
           onChange={(e) => handleChange(e.target)}
+          placeholder="&#xf084;"
           error={error.hasOwnProperty("password") && error["password"]}
         />
         <TextInput
           name={"passwordConfirm"}
-          label={"password confirmation"}
+          label={"Password Confirmation"}
           type={"password"}
           defaultValue={formData.passwordConfirm && formData.passwordConfirm}
           onChange={(e) => handleChange(e.target)}
+          placeholder="&#xf084;"
           error={
             error.hasOwnProperty("passwordConfirm") && error["passwordConfirm"]
           }
         />
-        <button
-          className="all-buttons --gradiant-button"
-          type="submit"
-          disabled={validate()}
-        >
-          Sign Up
-        </button>
-        <div>
-          Already have an account? <Link to="/log-in">Log In</Link>
+        <div className="__bottom">
+          <button
+            className="all-buttons --gradiant-button"
+            type="submit"
+            disabled={validate()}
+          >
+            Sign Up
+          </button>
+          <div>
+            Already have an account? <Link to="/log-in">Log In</Link>
+          </div>
         </div>
       </form>
     </div>
