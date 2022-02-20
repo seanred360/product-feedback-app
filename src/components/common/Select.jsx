@@ -20,11 +20,7 @@ const Select = ({
         onChange={onChange}
       >
         {items.map((item) => (
-          <option
-            className="__dropdown-item"
-            key={item + " option"}
-            value={item}
-          >
+          <option key={item + " option"} value={item}>
             {item}
           </option>
         ))}

@@ -86,7 +86,7 @@ const EditAccountNamePage = () => {
           <button
             className="all-buttons --blue-grey2-button"
             type="button"
-            onClick={() => history.push("/account")}
+            onClick={() => history.goBack()}
           >
             Cancel
           </button>
