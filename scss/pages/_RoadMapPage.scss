@@ -1,6 +1,14 @@
 @import "../variables";
 
 .road-map-page {
+  max-width: 1110px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include respond-above(sm) {
+    padding: 56px 39px;
+  }
+
   .__nav-top {
     display: grid;
     grid-template-columns: auto auto;
@@ -8,6 +16,10 @@
     padding: 24px 26px;
     background: $blueGrey2;
     height: 100px;
+
+    @include respond-above(sm) {
+      border-radius: 10px;
+    }
 
     .__left {
       margin-right: auto;
@@ -32,7 +44,7 @@
     }
   }
 
-  .__nav-bottom {
+  .__nav-mobile {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     height: 55px;
@@ -52,14 +64,34 @@
       &.--active {
         width: 100%;
         color: $blueGrey2;
+      }
+
+      &.--active.--orange {
+        border-bottom: 4.5px solid $peach;
+      }
+      &.--active.--purple {
         border-bottom: 4.5px solid $purple;
       }
+      &.--active.--blue {
+        border-bottom: 4.5px solid $lightBlue;
+      }
     }
+  }
+
+  .__roadmap-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
+    margin-top: 48px;
   }
 
   .__container {
     padding: 24px;
     background: $grey;
+
+    @include respond-above(sm) {
+      padding: 0;
+    }
 
     .__header {
       margin-bottom: 16px;
@@ -76,55 +108,6 @@
       .__header-description {
         font-size: 13px;
         color: $darkGrey;
-      }
-    }
-
-    .__roadmap-feedback-box {
-      margin-bottom: 16px;
-      padding: 24px;
-      background: $white;
-      border-radius: 10px;
-      border-top: 5px solid $purple;
-      text-align: left;
-
-      .__feedback-status {
-        font-size: 13px;
-        color: $darkGrey;
-        margin-bottom: 16px;
-
-        &::marker {
-          color: $purple;
-        }
-      }
-
-      .__feedback-name {
-        font-weight: bold;
-        font-size: 13px;
-        line-height: 19px;
-        color: $blueGrey2;
-      }
-
-      .__feedback-description {
-        font-size: 13px;
-        line-height: 19px;
-        color: $darkGrey;
-      }
-
-      .--button-category {
-        margin-bottom: 16px;
-      }
-
-      .__bottom {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        .--counter-comments {
-          svg {
-            margin-top: auto;
-            margin-bottom: auto;
-          }
-        }
       }
     }
   }

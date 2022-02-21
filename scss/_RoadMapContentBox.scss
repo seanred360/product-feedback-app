@@ -1,0 +1,80 @@
+.roadmap-content-box {
+  margin-bottom: 16px;
+  padding: 24px;
+  background: $white;
+  border-radius: 10px;
+  text-align: left;
+
+  &.--orange {
+    border-top: 5px solid $peach;
+  }
+
+  &.--purple {
+    border-top: 5px solid $purple;
+  }
+
+  &.--blue {
+    border-top: 5px solid $lightBlue;
+  }
+
+  .__feedback-status {
+    font-size: 13px;
+    color: $darkGrey;
+    margin-bottom: 16px;
+
+    &.--orange::marker {
+      color: $peach;
+    }
+
+    &.--purple::marker {
+      color: $purple;
+    }
+
+    &.--blue::marker {
+      color: $lightBlue;
+    }
+  }
+
+  .__feedback-name {
+    font-weight: bold;
+    font-size: 13px;
+    line-height: 19px;
+    color: $blueGrey2;
+  }
+
+  .__feedback-description {
+    font-size: 13px;
+    line-height: 19px;
+    color: $darkGrey;
+  }
+
+  .--button-category {
+    margin-bottom: 16px;
+  }
+
+  .__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 9px 0;
+
+    .up-vote {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 6px 14px;
+      width: 69px;
+      height: 32px;
+    }
+
+    .Spinner {
+      margin: 0;
+    }
+
+    .--counter-comments {
+      svg {
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+    }
+  }
+}
