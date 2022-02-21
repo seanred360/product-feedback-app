@@ -873,17 +873,15 @@ textarea:last-of-type {
   background: #ffffff;
   border-radius: 10px;
   font-weight: normal;
-  pointer-events: none;
   transition: all 0.3s ease;
-}
-
-.feedback:hover {
-  transform: scale(1.03);
 }
 
 .feedback.--clickable {
   cursor: pointer;
-  pointer-events: all;
+}
+
+.feedback.--clickable:hover {
+  transform: scale(1.03);
 }
 
 .feedback .__title {

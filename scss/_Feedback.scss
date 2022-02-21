@@ -5,16 +5,13 @@
   background: $white;
   border-radius: 10px;
   font-weight: normal;
-  pointer-events: none;
   transition: all 0.3s ease;
-
-  &:hover {
-    transform: scale(1.03);
-  }
 
   &.--clickable {
     cursor: pointer;
-    pointer-events: all;
+    &:hover {
+      transform: scale(1.03);
+    }
   }
 
   .__title {
