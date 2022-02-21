@@ -1,3 +1,45 @@
+.has-fade {
+  visibility: hidden;
+}
+
+@keyframes fade-in {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  1% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fade-in 200ms ease-in-out forwards;
+}
+
+@keyframes fade-out {
+  from {
+    visibility: visible;
+    opacity: 1;
+  }
+  99% {
+    visibility: visible;
+    opacity: 0;
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.fade-out {
+  animation: fade-out 200ms ease-in-out forwards;
+}
+
 html {
   font-size: 100%;
   box-sizing: border-box;
@@ -441,7 +483,11 @@ Link:focus, Link:hover, Link:visited, Link:link, Link:active {
   color: #3a4374;
 }
 
-.dropdown .dropdown-toggle {
+.sort-dropdown {
+  transition: all 0.3s ease;
+}
+
+.sort-dropdown .dropdown-toggle {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -456,31 +502,39 @@ Link:focus, Link:hover, Link:visited, Link:link, Link:active {
 }
 
 @media (min-width: 576px) {
-  .dropdown .dropdown-toggle {
+  .sort-dropdown .dropdown-toggle {
     max-height: 72px;
     font-size: 14px;
     cursor: pointer;
   }
 }
 
-.dropdown .dropdown-toggle .--sort-btn {
+.sort-dropdown .dropdown-toggle .--sort-btn {
   font-weight: 400;
 }
 
-.dropdown .dropdown-toggle .--sort-btn .chevron {
-  padding-top: 2px;
+.sort-dropdown .dropdown-toggle .--sort-btn .chevron {
+  position: relative;
+  margin-bottom: 12px;
+  margin-left: 9px;
 }
 
-.dropdown .dropdown-toggle .--sort-text {
+.sort-dropdown .dropdown-toggle .--sort-btn .chevron svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.sort-dropdown .dropdown-toggle .--sort-text {
   margin-left: 5px;
   font-weight: bold;
 }
 
-.dropdown .dropdown-toggle:hover {
+.sort-dropdown .dropdown-toggle:hover {
   color: #c3c7d8;
 }
 
-.dropdown .dropdown-menu {
+.sort-dropdown .dropdown-menu {
   position: absolute;
   width: 255px;
   padding: 0;
@@ -494,17 +548,17 @@ Link:focus, Link:hover, Link:visited, Link:link, Link:active {
   z-index: 10;
 }
 
-.dropdown .dropdown-menu :first-child button {
+.sort-dropdown .dropdown-menu :first-child button {
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }
 
-.dropdown .dropdown-menu :last-child button {
+.sort-dropdown .dropdown-menu :last-child button {
   border-bottom-right-radius: 10px;
   border-bottom-left-radius: 10px;
 }
 
-.dropdown .dropdown-menu .dropdown-item {
+.sort-dropdown .dropdown-menu .dropdown-item {
   width: 100%;
   height: 47px;
   padding: 12px 24px;
@@ -524,26 +578,26 @@ Link:focus, Link:hover, Link:visited, Link:link, Link:active {
 }
 
 @media (max-width: 767px) {
-  .dropdown .dropdown-menu .dropdown-item {
+  .sort-dropdown .dropdown-menu .dropdown-item {
     cursor: default;
   }
 }
 
-.dropdown .dropdown-menu .dropdown-item:hover {
+.sort-dropdown .dropdown-menu .dropdown-item:hover {
   color: #ad1fea;
   background: #ffffff;
 }
 
-.dropdown .dropdown-menu .dropdown-item svg.check {
+.sort-dropdown .dropdown-menu .dropdown-item svg.check {
   transform: scale(1.3);
   color: transparent;
 }
 
-.dropdown .dropdown-menu .dropdown-item.--selected {
+.sort-dropdown .dropdown-menu .dropdown-item.--selected {
   color: #ad1fea;
 }
 
-.dropdown .dropdown-menu .dropdown-item.--selected svg.check {
+.sort-dropdown .dropdown-menu .dropdown-item.--selected svg.check {
   color: #ad1fea;
 }
 

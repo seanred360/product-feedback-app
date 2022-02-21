@@ -4,7 +4,7 @@ import { BiCheck } from "react-icons/bi";
 import _ from "lodash";
 import { DateTime } from "luxon";
 
-const DropDownBox = ({ dataToSort, setData }) => {
+const SortDropDown = ({ dataToSort, setData }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentFilter, setCurrentFilter] = useState("Newest");
   const reorderedProductRequests = dataToSort;
@@ -66,7 +66,7 @@ const DropDownBox = ({ dataToSort, setData }) => {
   };
 
   return (
-    <div className="dropdown">
+    <div className="sort-dropdown">
       <button
         className="dropdown-toggle"
         aria-label="Sort"
@@ -76,18 +76,23 @@ const DropDownBox = ({ dataToSort, setData }) => {
       >
         <span className="--sort-btn flex flex-ai-c">
           Sort by : <span className="--sort-text"> {currentFilter}</span>
-          <div className="chevron">
-            <GoChevronDown style={{ display: isOpen ? "none" : "block" }} />
-            <GoChevronUp style={{ display: isOpen ? "block" : "none" }} />
-          </div>
+          {isOpen ? (
+            <div className="chevron">
+              <GoChevronUp />
+            </div>
+          ) : (
+            <span className="chevron">
+              <GoChevronDown />
+            </span>
+          )}
         </span>
       </button>
       <ul
-        className="dropdown-menu"
-        style={{
-          display: isOpen ? "block" : "none",
-          width: isOpen ? "255px" : "none",
-        }}
+        className={`dropdown-menu has-fade ${isOpen ? "fade-in" : "fade-out"}`}
+        // style={{
+        //   display: isOpen ? "block" : "none",
+        //   width: isOpen ? "255px" : "none",
+        // }}
       >
         {filterCategories.map((item) => (
           <li key={item}>
@@ -109,4 +114,4 @@ const DropDownBox = ({ dataToSort, setData }) => {
   );
 };
 
-export default DropDownBox;
+export default SortDropDown;

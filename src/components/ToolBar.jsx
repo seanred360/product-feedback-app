@@ -1,6 +1,6 @@
 import React from "react";
 import AddFeedbackButton from "./PostFeedbackButton";
-import DropDownBox from "./common/DropDownBox";
+import SortDropDown from "./common/SortDropDown";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import _ from "lodash";
 
@@ -13,7 +13,7 @@ const ToolBar = ({ dataToSort, setData }) => {
             <HiOutlineLightBulb />
             <span>{_.size(dataToSort)} Suggestions</span>
           </div>
-          <DropDownBox dataToSort={dataToSort} setData={setData} />
+          <SortDropDown dataToSort={dataToSort} setData={setData} />
         </div>
         <AddFeedbackButton />
       </div>
