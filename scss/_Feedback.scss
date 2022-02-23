@@ -7,6 +7,10 @@
   font-weight: normal;
   transition: all 0.3s ease;
 
+  &.--blank {
+    visibility: hidden;
+  }
+
   &.--clickable {
     cursor: pointer;
     &:hover {

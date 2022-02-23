@@ -1,0 +1,44 @@
+.pagination-btns-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  height: 64px;
+
+  @include respond-above(sm) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn {
+    width: 32px;
+    height: 32px;
+    margin-left: 10px;
+    border-radius: 100%;
+    font-size: 16px;
+    font-family: Jost;
+    font-weight: bold;
+    color: $darkGrey;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    background: $white;
+  }
+
+  .btn.next,
+  .btn.prev {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    font-size: 2.8rem;
+    border: none;
+  }
+
+  .active {
+    width: 4rem;
+    height: 4rem;
+    background: $purple;
+    color: white;
+  }
+}

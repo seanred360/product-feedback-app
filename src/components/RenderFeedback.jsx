@@ -11,6 +11,7 @@ const RenderFeedback = ({
   category,
   commentsCount,
   clickable = false,
+  isBlank = false,
 }) => {
   const history = useHistory();
   const [isMobile, setIsMobile] = useState(window.innerWidth < 576);
@@ -32,7 +33,10 @@ const RenderFeedback = ({
   return (
     <>
       {isMobile ? (
-        <div className={`feedback ${clickable && "--clickable"}`} onClick={handleClick}>
+        <div
+          className={`feedback ${clickable && "--clickable"} fade-up`}
+          onClick={handleClick}
+        >
           <h1 className="__title">{title}</h1>
           <p className="__description">{description}</p>
           <CategoryButton itemCategory={category} disabled={true} />
@@ -42,7 +46,12 @@ const RenderFeedback = ({
           </div>
         </div>
       ) : (
-        <div className={`feedback ${clickable && "--clickable"}`} onClick={handleClick}>
+        <div
+          className={`feedback ${clickable && "--clickable"} ${
+            isBlank && "--blank"
+          }`}
+          onClick={handleClick}
+        >
           <UpVote feedback={feedback} />
           <div className="__middle">
             <h1 className="__title">{title}</h1>

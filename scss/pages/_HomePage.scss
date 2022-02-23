@@ -41,3 +41,18 @@
     }
   }
 }
+
+.all-feedback {
+  @for $i from 1 to 10 {
+    div:nth-child(#{$i + 1}) {
+      animation-delay: $i * 0.1s;
+    }
+  }
+
+  .feedback {
+    animation-name: cascade;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    transition: all 0.4s ease;
+  }
+}

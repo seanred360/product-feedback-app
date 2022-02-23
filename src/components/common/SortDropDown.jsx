@@ -89,10 +89,6 @@ const SortDropDown = ({ dataToSort, setData }) => {
       </button>
       <ul
         className={`dropdown-menu has-fade ${isOpen ? "fade-in" : "fade-out"}`}
-        // style={{
-        //   display: isOpen ? "block" : "none",
-        //   width: isOpen ? "255px" : "none",
-        // }}
       >
         {filterCategories.map((item) => (
           <li key={item}>

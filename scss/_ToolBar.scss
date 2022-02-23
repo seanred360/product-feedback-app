@@ -1,11 +1,12 @@
 .toolbar-container {
-  padding: 16px 24px;
   height: 56px;
+  padding: 16px 24px;
   background-color: $blueGrey2;
   color: $white;
 
   @include respond-above(sm) {
     height: 72px;
+    margin-bottom: 16px;
     border-radius: 10px;
   }
 

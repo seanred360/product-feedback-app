@@ -18,10 +18,6 @@ const HomePage = () => {
     url: process.env.REACT_APP_MONGO_URL,
   });
 
-  const updateMedia = () => {
-    setIsMobile(window.innerWidth < 576);
-  };
-
   useEffect(() => {
     if (response !== null) {
       setFeedbackPosts(response);
@@ -30,9 +26,12 @@ const HomePage = () => {
     return () => {
       //if the ajax call doesn't finish before we unmount, cancel it
       controller.abort();
-      window.removeEventListener("resize", updateMedia);
     };
   }, [response, controller]);
+
+  const updateMedia = () => {
+    setIsMobile(window.innerWidth < 576);
+  };
 
   useEffect(() => {
     window.addEventListener("resize", updateMedia);

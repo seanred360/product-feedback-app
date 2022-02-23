@@ -38,3 +38,15 @@
 .fade-out {
   animation: fade-out 200ms ease-in-out forwards;
 }
+
+@keyframes cascade {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}

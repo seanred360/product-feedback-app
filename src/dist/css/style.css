@@ -40,6 +40,17 @@
   animation: fade-out 200ms ease-in-out forwards;
 }
 
+@keyframes cascade {
+  from {
+    opacity: 0;
+    transform: scaleY(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+
 html {
   font-size: 100%;
   box-sizing: border-box;
@@ -722,6 +733,53 @@ textarea:last-of-type {
   margin-bottom: 24px;
 }
 
+.pagination-btns-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  height: 64px;
+}
+
+@media (min-width: 576px) {
+  .pagination-btns-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.pagination-btns-container .btn {
+  width: 32px;
+  height: 32px;
+  margin-left: 10px;
+  border-radius: 100%;
+  font-size: 16px;
+  font-family: Jost;
+  font-weight: bold;
+  color: #647196;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  background: #ffffff;
+}
+
+.pagination-btns-container .btn.next,
+.pagination-btns-container .btn.prev {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  font-size: 2.8rem;
+  border: none;
+}
+
+.pagination-btns-container .active {
+  width: 4rem;
+  height: 4rem;
+  background: #ad1fea;
+  color: white;
+}
+
 .logo-container {
   position: relative;
   padding: 16px 24px;
@@ -790,8 +848,8 @@ textarea:last-of-type {
 }
 
 .toolbar-container {
-  padding: 16px 24px;
   height: 56px;
+  padding: 16px 24px;
   background-color: #3a4374;
   color: #ffffff;
 }
@@ -799,6 +857,7 @@ textarea:last-of-type {
 @media (min-width: 576px) {
   .toolbar-container {
     height: 72px;
+    margin-bottom: 16px;
     border-radius: 10px;
   }
 }
@@ -874,6 +933,10 @@ textarea:last-of-type {
   border-radius: 10px;
   font-weight: normal;
   transition: all 0.3s ease;
+}
+
+.feedback.--blank {
+  visibility: hidden;
 }
 
 .feedback.--clickable {
@@ -1342,6 +1405,49 @@ textarea:last-of-type {
   .home-page .__left-content .widget-road-map {
     margin-bottom: 24px;
   }
+}
+
+.all-feedback div:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.all-feedback div:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.all-feedback div:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.all-feedback div:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.all-feedback div:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+.all-feedback div:nth-child(7) {
+  animation-delay: 0.6s;
+}
+
+.all-feedback div:nth-child(8) {
+  animation-delay: 0.7s;
+}
+
+.all-feedback div:nth-child(9) {
+  animation-delay: 0.8s;
+}
+
+.all-feedback div:nth-child(10) {
+  animation-delay: 0.9s;
+}
+
+.all-feedback .feedback {
+  animation-name: cascade;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+  transition: all 0.4s ease;
 }
 
 .edit-account-page {
