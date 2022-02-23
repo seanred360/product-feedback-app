@@ -76,7 +76,7 @@ const RoadMapPage = () => {
           </div>
           <div className="__nav-mobile">
             <button
-              className={activeStatus === "planned" && "--active --orange"}
+              className={activeStatus === "planned" ? "--active --orange" : ""}
               onClick={() => handleClick("planned", getFeedbackPlanned())}
             >
               Planned ({getFeedbackPlanned().length})
@@ -142,7 +142,7 @@ const RoadMapPage = () => {
                     Ideas prioritized for research
                   </span>
                 </div>
-                {activeStatusArray.map((feedback) => (
+                {getFeedbackPlanned().map((feedback) => (
                   <RoadMapContentBox
                     key={feedback._id}
                     feedback={feedback}
@@ -161,7 +161,7 @@ const RoadMapPage = () => {
                     Features currently being developed
                   </span>
                 </div>
-                {activeStatusArray.map((feedback) => (
+                {getFeedbackInProgress().map((feedback) => (
                   <RoadMapContentBox
                     key={feedback._id}
                     feedback={feedback}
@@ -180,7 +180,7 @@ const RoadMapPage = () => {
                     Released features
                   </span>
                 </div>
-                {activeStatusArray.map((feedback) => (
+                {getFeedbackLive().map((feedback) => (
                   <RoadMapContentBox
                     key={feedback._id}
                     feedback={feedback}
