@@ -36,7 +36,7 @@ const SortDropDown = ({ dataToSort, setData }) => {
   };
   const sortByOldest = () => {
     reorderedProductRequests.sort((a, b) => {
-      return new DateTime.fromISO(a.date) - new DateTime.fromISO(b.date);
+      return new DateTime.fromISO(a.date).ts - new DateTime.fromISO(b.date).ts;
     });
     setData([...reorderedProductRequests]); // must use spread operator or React won't re render
   };

@@ -8,6 +8,8 @@ import WidgetUser from "../widgets/WidgetUser";
 import WidgetSelectCategory from "..//widgets/WidgetSelectCategory";
 import WidgetRoadMap from "../widgets/WidgetRoadMap";
 import ToolBar from "../ToolBar";
+import { DateTime } from "luxon";
+
 
 const HomePage = () => {
   const [feedbackPosts, setFeedbackPosts] = useState();
@@ -20,8 +22,11 @@ const HomePage = () => {
 
   useEffect(() => {
     if (response !== null) {
-      setFeedbackPosts(response);
-      setFilteredFeedback(response);
+      const sorted = response.sort((a, b) => {
+        return new DateTime.fromISO(b.date) - new DateTime.fromISO(a.date);
+      });
+      setFeedbackPosts(sorted);
+      setFilteredFeedback(sorted);
     }
     return () => {
       //if the ajax call doesn't finish before we unmount, cancel it
