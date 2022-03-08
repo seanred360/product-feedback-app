@@ -6,7 +6,7 @@ const Logo = ({ onOpen, isOpen }) => {
     <div className="logo-container">
       <div className="logo">
         <div className="__left-content">
-          <span className="__app-name">Frontend Mentor</span>
+          <span className="__app-name">seanred.io</span>
           <span className="__app-label">Feedback Board</span>
         </div>
         <HamburgerButton onOpen={onOpen} isOpen={isOpen} />
