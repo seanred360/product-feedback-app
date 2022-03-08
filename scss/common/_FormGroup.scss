@@ -11,7 +11,6 @@ form {
   .form-group {
     label {
       font-weight: bold;
-      color: #3a4374;
 
       &::before {
         display: block;
@@ -38,6 +37,7 @@ textarea {
   border: none;
   border-radius: 5px;
   resize: none;
+  color: #3a4374;
 
   &::placeholder {
     position: absolute;

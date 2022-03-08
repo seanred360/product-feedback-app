@@ -661,7 +661,6 @@ form {
 
 form .form-group label {
   font-weight: bold;
-  color: #3a4374;
 }
 
 form .form-group label::before {
@@ -686,6 +685,7 @@ textarea {
   border: none;
   border-radius: 5px;
   resize: none;
+  color: #3a4374;
 }
 
 input::placeholder,
