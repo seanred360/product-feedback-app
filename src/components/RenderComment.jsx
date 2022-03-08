@@ -1,7 +1,7 @@
 import React from "react";
 import RenderReply from "./RenderReply";
 import PostReply from "./PostReply";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 
 const RenderComment = ({ id, userImage, userName, content, replies }) => {
   const [toggleReply, setToggleReply] = useState(false);
