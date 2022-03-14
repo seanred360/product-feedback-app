@@ -1,70 +1,180 @@
-# Getting Started with Create React App
+# seanred.io feedback app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This full stack app is a message board for giving feedback to seanred.io.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [User Stories](#user-stories)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+- [Author](#author)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### User Stories
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Users should be able to:
 
-### `npm test`
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Create, read, update, upvote, and delete feedback posts
+- Receive form validations when trying to create/edit feedback posts
+- Sort suggestions by most/least upvotes and most/least comments
+- Filter suggestions by category
+- Add comments and replies to a feedback post
+- Create an account login, logout
+- Change email, name, password, profile picture
+- Only change their own posts and account details
+- See which suggestions are in progress or implemented
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Screenshots
 
-### `npm run build`
+![screenshot](./screenshots/preview-feedback-app.gif)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Links
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Front-end GitHub URL: [https://github.com/seanred360/product-feedback-app]
+- Back-end GitHub URL: [https://github.com/seanred360/product-feedback-app-backend]
+- Live Site URL: [https://seanredfeedback.netlify.app/]
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## My process
 
-### `npm run eject`
+### Built with
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- [MongoDB](https://www.mongodb.com/)
+- [Express](https://expressjs.com/)
+- [React](https://reactjs.org/) - JS library
+- [NodeJS](https://nodejs.org/en/)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Configuring environment variables
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+I learned very quickly that my API keys will be exposed if I save them inside the frontend. So I learned the proper way to configure the app for dev and production environments and NOT TO COMMIT THE .ENV FILE TO GITHUB. Netlify makes this extremly easy to configure in production.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Creating a login system with Firebase
 
-## Learn More
+```js
+const app = firebase.initializeApp({
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+});
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+I had no idea where to start with this one, so I used Firebase's api to impliment a login system. Now that I see how it works, I could definitly make my own login system on the next project. I saved a lot of time here by using Firebase and not reinventing the wheel. I created a useContext hook to share the current user and common functions with all the components in the app.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```js
+const AuthProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState();
+  const [loading, setLoading] = useState(true);
 
-### Code Splitting
+  function login(email, password) {
+    return auth.signInWithEmailAndPassword(email, password);
+  }
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  function logout() {
+    auth.signOut();
+  }
 
-### Analyzing the Bundle Size
+  function resetPassword(email) {
+    return auth.sendPasswordResetEmail(email);
+  }
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Creating private routes
 
-### Making a Progressive Web App
+```html
+<Switch>
+  <PrivateRoute exact path="/" component="{HomePage}" />
+  <PrivateRoute path="/road-map" component="{RoadMapPage}" />
+  <PrivateRoute path="/account" component="{AccountPage}" />
+  <PrivateRoute path="/edit-account-email" component="{EditAccountEmailPage}" />
+  <PrivateRoute path="/edit-account" component="{EditAccountNamePage}" />
+  <PrivateRoute path="/update-profile" component="{UpdateProfilePage}" />
+  <PrivateRoute path="/new" component="{PostFeedbackPage}" />
+  <PrivateRoute path="/edit/:slug" component="{EditFeedbackPage}" />
+  <PrivateRoute path="/reset-password" component="{ResetPasswordPage}" />
+  <PrivateRoute path="/sign-up" isPublic="{true}" component="{SignupPage}" />
+  <Route path="/log-in" component="{LoginPage}" />
+  <Route path="/not-found" component="{NotFoundPage}" />
+  <PrivateRoute path="/:slug" component="{ViewFeedbackPage}" />
+</Switch>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+This was a totally foreign concept to me. How does one restrict access to certain pages for certain users? Appearently it isn't very complicated with React. I just created a wrapper component for the route component.
 
-### Advanced Configuration
+```js
+const PrivateRoute = ({ component: Component, isPublic = false, ...rest }) => {
+  const { currentUser } = useAuth();
+  return (
+    <Route
+      {...rest}
+      render={({ location }) => {
+        return currentUser ? (
+          <Component {...location} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/log-in",
+              state: { from: location },
+            }}
+          />
+        );
+      }}
+    />
+  );
+};
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+All this component does is check if the user is logged in, if not, then redirect the user to the login page. This stops the user from visiting pages like the account page.
 
-### Deployment
+#### Form validation with joi
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+[Joi](https://joi.dev)
 
-### `npm run build` fails to minify
+![screenshot](./screenshots/sign-up.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This is my first time using a schema description language. It is much easier to make a schema of your forms and compare the user's input to the schema, than to make your own new rules for every form you make. Joi also creates an error object that can be used to disable buttons and display error messages.
+
+```js
+const validateProperty = ({ name, value }) => {
+  const obj = { [name]: value };
+  const propertySchema = { [name]: Joi.string().required() };
+  const { errors } = Joi.validate(obj, propertySchema);
+  return errors ? errors.details[0].message : null;
+};
+
+const handleChange = (input) => {
+  const errors = { ...error };
+  const errorMessage = validateProperty(input);
+  if (errorMessage) errors[input.name] = errorMessage;
+  else delete errors[input.name];
+
+  const data = { ...formData };
+  data.content = input.value;
+
+  setFormData(data);
+  setError(errors);
+};
+```
+
+### Continued development
+
+I hope to take what I learned from making this app and add social media functionality to my teaching website. That way I can communicate with my clients through the site rather than Wechat.
+
+## Author
+
+- Website - [Sean Redmon](https://seanred.io)
+- GitHub - [Sean Redmon](https://github.com/seanred360)
+
+```
+
+```
