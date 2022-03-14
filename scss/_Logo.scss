@@ -1,6 +1,6 @@
 .logo-container {
   position: relative;
-  padding: 16px 24px;
+  // padding: 16px 24px;
   background: radial-gradient(
     128.88% 128.88% at 103.9% -10.39%,
     #e84d70 0%,
@@ -18,10 +18,22 @@
     height: 137px;
   }
 
+  &::before {
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-image: url("../../logo-192x192.png");
+    background-repeat: no-repeat;
+    background-position: top right;
+    opacity: 0.2;
+  }
+
   .logo {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 16px 24px;
 
     @include respond-above(sm) {
       position: absolute;
