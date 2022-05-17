@@ -23,7 +23,6 @@
     padding: 24px;
     background: $white;
     border-radius: 10px;
-    overflow: scroll;
     z-index: 10;
 
     @include respond-above(sm) {

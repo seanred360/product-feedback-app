@@ -2088,7 +2088,6 @@ textarea:last-of-type {
   padding: 24px;
   background: #ffffff;
   border-radius: 10px;
-  overflow: scroll;
   z-index: 10;
 }
 
