@@ -659,6 +659,10 @@ form {
   }
 }
 
+form .form-group {
+  line-height: 32px;
+}
+
 form .form-group label {
   font-weight: bold;
 }
@@ -1464,30 +1468,45 @@ textarea:last-of-type {
 
 .edit-account-page {
   height: 100vh;
-  padding: 34px 24px;
   background: #f2f4ff;
 }
 
+@media (min-width: 576px) {
+  .edit-account-page {
+    padding: 52px 42px;
+  }
+}
+
 .edit-account-page .__top-group {
-  max-width: 400px;
+  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 28px;
 }
 
+.edit-account-page h1 {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 2.1875rem;
+  letter-spacing: -0.33px;
+}
+
 .edit-account-page form {
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: center;
   position: relative;
-  max-width: 400px;
+  max-width: 500px;
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 24px;
   padding: 24px;
   background: #ffffff;
   border-radius: 10px;
+}
+
+@media (min-width: 576px) {
+  .edit-account-page form {
+    padding: 52px 42px;
+  }
 }
 
 .edit-account-page form label {
@@ -1517,6 +1536,20 @@ textarea:last-of-type {
 
 .edit-account-page form .__buttons .--purple-button {
   margin-right: 10px;
+}
+
+.edit-account-page form .__login-link {
+  margin-top: 24px;
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.edit-account-page form .__sign-up {
+  margin-bottom: 32px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 24px;
 }
 
 .account-page {
@@ -1898,7 +1931,6 @@ textarea:last-of-type {
 }
 
 .password-page {
-  height: 100vh;
   padding: 34px 24px;
   background: #f2f4ff;
 }
@@ -1968,9 +2000,17 @@ textarea:last-of-type {
 
 .signup-page,
 .login-page {
-  height: 100%;
-  padding: 34px 24px;
+  flex-direction: column;
+  height: 100vh;
   background: #f2f4ff;
+  overflow: scroll;
+}
+
+@media (min-width: 576px) {
+  .signup-page,
+  .login-page {
+    padding: 52px 42px;
+  }
 }
 
 .signup-page .__top-group,
@@ -1983,14 +2023,13 @@ textarea:last-of-type {
 
 .signup-page form,
 .login-page form {
-  position: relative;
+  width: 100%;
   max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 24px;
+  margin: auto auto;
   padding: 24px;
   background: #ffffff;
   border-radius: 10px;
+  overflow: scroll;
 }
 
 @media (min-width: 576px) {
@@ -2045,17 +2084,41 @@ textarea:last-of-type {
   margin-bottom: 0;
 }
 
+.signup-page form .__forgot-password,
+.login-page form .__forgot-password {
+  letter-spacing: 0.5px;
+  padding: 10px;
+  padding-left: 0;
+}
+
 .signup-page form .__bottom,
 .login-page form .__bottom {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin-top: 24px;
 }
 
 .signup-page form .__bottom .--gradiant-button,
 .login-page form .__bottom .--gradiant-button {
   width: 100%;
   margin: 24px 0;
+}
+
+.signup-page form .__bottom div,
+.login-page form .__bottom div {
+  margin-top: 24px;
+  margin-bottom: 32px;
+  font-size: 18px;
+  text-align: center;
+  line-height: 24px;
+}
+
+.signup-page form .__bottom div span,
+.login-page form .__bottom div span {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 /*# sourceMappingURL=style.css.map */

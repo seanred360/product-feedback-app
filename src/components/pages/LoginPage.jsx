@@ -52,7 +52,7 @@ const LoginPage = () => {
           <BackButton />
         </div>
       ) : null}
-      <form onSubmit={handleSubmit}>
+      <form className="__login-form" onSubmit={handleSubmit}>
         <div className="__top">
           <h1>Login</h1>
         </div>
@@ -93,10 +93,16 @@ const LoginPage = () => {
           >
             Log In
           </button>
-          <br />
           {history.location.reauthenticate ? null : (
             <div>
-              Need an account? <Link to="/sign-up">Sign Up</Link>
+              <p>
+                Need an account? <Link to="/sign-up">Sign Up</Link>
+              </p>
+              <span>
+                Or use:
+                <br /> email: "guest@fake.com"
+                <br /> password: "123456"
+              </span>
             </div>
           )}
         </div>

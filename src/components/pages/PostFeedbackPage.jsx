@@ -45,6 +45,7 @@ const PostFeedbackPage = () => {
   };
 
   const handleChange = (input) => {
+    console.log(input.value);
     const errors = { ...error };
     const errorMessage = validateProperty(input);
     if (errorMessage) errors[input.name] = errorMessage;

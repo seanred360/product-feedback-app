@@ -65,9 +65,10 @@ const ResetPasswordPage = () => {
             <Spinner />
           ) : (
             <>
+              <h1>Reset Password</h1>
               <TextInput
                 name={"email"}
-                label={"Reset Password"}
+                label={"Email"}
                 type={"email"}
                 placeholder="&#xf0e0;"
                 instructions={"Please enter your email to reset your password"}
@@ -96,10 +97,10 @@ const ResetPasswordPage = () => {
           </span>
           {isReauthenticate || loading ? null : (
             <>
-              <div>
+              <div className="__login-link">
                 <Link to="/log-in">Login</Link>
               </div>
-              <div>
+              <div className="__sign-up">
                 Need an account? <Link to="/sign-up">Sign Up</Link>
               </div>
             </>
@@ -122,7 +123,7 @@ const ResetPasswordPage = () => {
               Log In
             </button>
           </div>
-          <div>
+          <div className="__sign-up">
             Need an account? <Link to="/sign-up">Sign Up</Link>
           </div>
         </div>

@@ -28,9 +28,9 @@ const Routes = () => {
       <PrivateRoute path="/update-profile" component={UpdateProfilePage} />
       <PrivateRoute path="/new" component={PostFeedbackPage} />
       <PrivateRoute path="/edit/:slug" component={EditFeedbackPage} />
-      <PrivateRoute path="/reset-password" component={ResetPasswordPage} />
       <PrivateRoute path="/sign-up" isPublic={true} component={SignupPage} />
       <Route path="/log-in" component={LoginPage} />
+      <Route path="/reset-password" component={ResetPasswordPage} />
       <Route path="/not-found" component={NotFoundPage} />
       <PrivateRoute path="/:slug" component={ViewFeedbackPage} />
     </Switch>

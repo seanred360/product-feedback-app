@@ -1,28 +1,39 @@
 .edit-account-page {
   height: 100vh;
-  padding: 34px 24px;
   background: $grey;
 
+  @include respond-above(sm) {
+    padding: 52px 42px;
+  }
+
   .__top-group {
-    max-width: 400px;
+    max-width: 500px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 28px;
   }
 
+  h1 {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 2.1875rem;
+    letter-spacing: -0.33px;
+  }
+
   form {
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-    justify-content: center;
     position: relative;
-    max-width: 400px;
+    max-width: 500px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 24px;
     padding: 24px;
     background: $white;
     border-radius: 10px;
+
+    @include respond-above(sm) {
+      padding: 52px 42px;
+    }
 
     label {
       font-size: 24px;
@@ -51,6 +62,20 @@
       .--purple-button {
         margin-right: 10px;
       }
+    }
+
+    .__login-link {
+      margin-top: 24px;
+      padding: 10px;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    .__sign-up {
+      margin-bottom: 32px;
+      text-align: center;
+      font-size: 18px;
+      line-height: 24px;
     }
   }
 }

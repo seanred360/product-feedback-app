@@ -1,8 +1,14 @@
 .signup-page,
 .login-page {
-  height: 100%;
-  padding: 34px 24px;
+  // display: flex;
+  flex-direction: column;
+  height: 100vh;
   background: $grey;
+  overflow: scroll;
+
+  @include respond-above(sm) {
+    padding: 52px 42px;
+  }
 
   .__top-group {
     max-width: 500px;
@@ -12,14 +18,13 @@
   }
 
   form {
-    position: relative;
+    width: 100%;
     max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 24px;
+    margin: auto auto;
     padding: 24px;
     background: $white;
     border-radius: 10px;
+    overflow: scroll;
 
     @include respond-above(sm) {
       padding: 52px 42px;
@@ -63,15 +68,36 @@
       }
     }
 
+    .__forgot-password {
+      letter-spacing: 0.5px;
+      padding: 10px;
+      padding-left: 0;
+    }
+
     .__bottom {
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      margin-top: 24px;
 
       .--gradiant-button {
         width: 100%;
         margin: 24px 0;
+      }
+
+      div {
+        margin-top: 24px;
+        margin-bottom: 32px;
+        font-size: 18px;
+        text-align: center;
+        line-height: 24px;
+
+        span {
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 0.5px;
+        }
       }
     }
   }
