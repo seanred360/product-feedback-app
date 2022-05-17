@@ -1,8 +1,6 @@
 .signup-page,
 .login-page {
-  // display: flex;
-  flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   background: $grey;
   overflow: scroll;
 
@@ -18,6 +16,7 @@
   }
 
   form {
+    position: relative;
     width: 100%;
     max-width: 500px;
     margin: auto auto;
@@ -25,6 +24,7 @@
     background: $white;
     border-radius: 10px;
     overflow: scroll;
+    z-index: 10;
 
     @include respond-above(sm) {
       padding: 52px 42px;

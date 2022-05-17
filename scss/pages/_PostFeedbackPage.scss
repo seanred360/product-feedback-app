@@ -1,5 +1,7 @@
 .post-feedback-page,
 .edit-feedback-page {
+  min-height: 100vh;
+
   .__top-group {
     margin-bottom: 55px;
   }
@@ -9,6 +11,7 @@
     padding: 24px;
     background: $white;
     border-radius: 10px;
+    z-index: 10;
 
     @include respond-above(sm) {
       padding: 42px;

@@ -43,6 +43,9 @@
 }
 
 .all-feedback {
+  position: relative;
+  z-index: 10;
+  
   @for $i from 1 to 10 {
     div:nth-child(#{$i + 1}) {
       animation-delay: $i * 0.1s;

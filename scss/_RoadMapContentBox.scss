@@ -1,9 +1,11 @@
 .roadmap-content-box {
+  position: relative;
   margin-bottom: 16px;
   padding: 24px;
   background: $white;
   border-radius: 10px;
   text-align: left;
+  z-index: 10;
 
   &.--orange {
     border-top: 5px solid $peach;

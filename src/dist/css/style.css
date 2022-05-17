@@ -495,6 +495,7 @@ Link:focus, Link:hover, Link:visited, Link:link, Link:active {
 }
 
 .sort-dropdown {
+  position: relative;
   transition: all 0.3s ease;
 }
 
@@ -556,7 +557,7 @@ Link:focus, Link:hover, Link:visited, Link:link, Link:active {
   cursor: pointer;
   background: #ffffff;
   transition: all 0.3s ease;
-  z-index: 10;
+  z-index: 20;
 }
 
 .sort-dropdown .dropdown-menu :first-child button {
@@ -741,8 +742,11 @@ textarea:last-of-type {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: auto;
   height: 64px;
+  margin-top: auto;
+  padding: 48px 24px;
+  background: #ffffff;
+  border-radius: 10px;
 }
 
 @media (min-width: 576px) {
@@ -764,7 +768,7 @@ textarea:last-of-type {
   cursor: pointer;
   transition: all 0.3s ease;
   border: none;
-  background: #ffffff;
+  background: #f2f4ff;
 }
 
 .pagination-btns-container .btn.next,
@@ -782,6 +786,34 @@ textarea:last-of-type {
   height: 4rem;
   background: #ad1fea;
   color: white;
+}
+
+.custom-shape-divider-bottom-1652808131 {
+  display: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+@media (min-width: 576px) {
+  .custom-shape-divider-bottom-1652808131 {
+    display: block;
+  }
+}
+
+.custom-shape-divider-bottom-1652808131 svg {
+  position: relative;
+  display: block;
+  width: calc(109% + 1.3px);
+  height: 192px;
+}
+
+.custom-shape-divider-bottom-1652808131 .shape-fill {
+  fill: #a337f6;
 }
 
 .logo-container {
@@ -1076,9 +1108,11 @@ textarea:last-of-type {
 
 .comments-section,
 .post-comment {
+  position: relative;
   padding: 24px;
   background: #ffffff;
   border-radius: 10px;
+  z-index: 10;
 }
 
 .comments-section .comments-count,
@@ -1204,11 +1238,13 @@ textarea:last-of-type {
 }
 
 .roadmap-content-box {
+  position: relative;
   margin-bottom: 16px;
   padding: 24px;
   background: #ffffff;
   border-radius: 10px;
   text-align: left;
+  z-index: 10;
 }
 
 .roadmap-content-box.--orange {
@@ -1283,10 +1319,12 @@ textarea:last-of-type {
 }
 
 .widget-user {
+  position: relative;
   width: 223px;
   padding: 24px;
   background: #ffffff;
   border-radius: 10px;
+  z-index: 10;
 }
 
 .widget-user .__bottom {
@@ -1301,6 +1339,7 @@ textarea:last-of-type {
 }
 
 .widget-select-category {
+  position: relative;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -1308,6 +1347,7 @@ textarea:last-of-type {
   padding: 1.5rem 1.5rem;
   background: #ffffff;
   border-radius: 10px;
+  z-index: 10;
 }
 
 .widget-select-category .category-button {
@@ -1315,11 +1355,13 @@ textarea:last-of-type {
 }
 
 .widget-road-map {
+  position: relative;
   width: 223px;
   height: 178px;
   padding: 1.5rem 1.5rem;
   background: #ffffff;
   border-radius: 10px;
+  z-index: 10;
 }
 
 .widget-road-map .__title {
@@ -1423,6 +1465,11 @@ textarea:last-of-type {
   }
 }
 
+.all-feedback {
+  position: relative;
+  z-index: 10;
+}
+
 .all-feedback div:nth-child(2) {
   animation-delay: 0.1s;
 }
@@ -1467,7 +1514,7 @@ textarea:last-of-type {
 }
 
 .edit-account-page {
-  height: 100vh;
+  min-height: 100vh;
   background: #f2f4ff;
 }
 
@@ -1553,6 +1600,7 @@ textarea:last-of-type {
 }
 
 .account-page {
+  min-height: 100vh;
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
@@ -1614,10 +1662,12 @@ textarea:last-of-type {
 }
 
 .account-page .__account-details {
+  position: relative;
   display: flex;
   flex-direction: column;
   background: #ffffff;
   border-radius: 10px;
+  z-index: 10;
 }
 
 .account-page .__account-details ul {
@@ -1692,6 +1742,11 @@ textarea:last-of-type {
   color: #647196;
 }
 
+.post-feedback-page,
+.edit-feedback-page {
+  min-height: 100vh;
+}
+
 .post-feedback-page .__top-group,
 .edit-feedback-page .__top-group {
   margin-bottom: 55px;
@@ -1703,6 +1758,7 @@ textarea:last-of-type {
   padding: 24px;
   background: #ffffff;
   border-radius: 10px;
+  z-index: 10;
 }
 
 @media (min-width: 576px) {
@@ -1802,6 +1858,7 @@ textarea:last-of-type {
 .view-feedback-page,
 .post-feedback-page,
 .edit-feedback-page {
+  min-height: 100vh;
   max-width: 730px;
   margin: 0 auto;
   padding: 34px 24px;
@@ -1809,6 +1866,7 @@ textarea:last-of-type {
 }
 
 .road-map-page {
+  min-height: 100vh;
   max-width: 1110px;
   margin-right: auto;
   margin-left: auto;
@@ -1931,6 +1989,7 @@ textarea:last-of-type {
 }
 
 .password-page {
+  min-height: 100vh;
   padding: 34px 24px;
   background: #f2f4ff;
 }
@@ -2000,8 +2059,7 @@ textarea:last-of-type {
 
 .signup-page,
 .login-page {
-  flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   background: #f2f4ff;
   overflow: scroll;
 }
@@ -2023,6 +2081,7 @@ textarea:last-of-type {
 
 .signup-page form,
 .login-page form {
+  position: relative;
   width: 100%;
   max-width: 500px;
   margin: auto auto;
@@ -2030,6 +2089,7 @@ textarea:last-of-type {
   background: #ffffff;
   border-radius: 10px;
   overflow: scroll;
+  z-index: 10;
 }
 
 @media (min-width: 576px) {

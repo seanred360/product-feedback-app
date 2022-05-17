@@ -1,9 +1,11 @@
 .widget-road-map {
+  position: relative;
   width: 223px;
   height: 178px;
   padding: 1.5rem 1.5rem;
   background: $white;
   border-radius: 10px;
+  z-index: 10;
 
   .__title {
     font-weight: bold;

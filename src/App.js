@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import Routes from "./components/Routes";
 import { ToastContainer } from "react-toastify";
 import AuthProvider from "./custom-hooks/AuthContext";
+import CurveDivider from "./components/common/CurveDivider";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
           <Routes />
         </BrowserRouter>
       </AuthProvider>
+      <CurveDivider />
     </div>
   );
 };

@@ -1,5 +1,5 @@
 .edit-account-page {
-  height: 100vh;
+  min-height: 100vh;
   background: $grey;
 
   @include respond-above(sm) {
